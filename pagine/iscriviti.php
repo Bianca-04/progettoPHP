@@ -23,24 +23,24 @@
         </div>
         <ul class="menu">
             <li>
-                <a href="../home.html">
+                <a href="../home.php">
                     <div class="elenco">HOME</div>
                 </a>
             </li>
             <li class="has-children">
-                <a href="../pagine/shop.html">
+                <a href="../pagine/shop.php">
                     <div class="elenco">SHOP</div>
                 </a>
             </li>
             <li>
-                <a href="../pagine/assistenza.html">
+                <a href="../pagine/assistenza.php">
                     <div class="elenco">ASSISTENZA</div>
                 </a>
             </li>
         </ul>
 
         <div class="cta">
-            <a href="../pagine/accedi.html" class="buttona">Accedi</a>
+            <a href="../pagine/accedi.php" class="buttona">Accedi</a>
         </div>
         <div class="hamburger">
             <span></span>

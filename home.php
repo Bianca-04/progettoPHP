@@ -23,29 +23,29 @@
         </div>
         <ul class="menu">
             <li>
-                <a href="home.html">
+                <a href="home.php">
                     <div class="elenco">HOME</div>
                 </a>
             </li>
             <li class="has-children">
-                <a href="pagine/shop.html">
+                <a href="pagine/shop.php">
                     <div class="elenco">SHOP</div>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="pagine/shopl.html">labbra</a></li>
-                    <li><a href="pagine/shopo.html">occhi</a></li>
-                    <li><a href="pagine/shop.html">viso</a></li>
+                    <li><a href="pagine/shopl.php">labbra</a></li>
+                    <li><a href="pagine/shopo.php">occhi</a></li>
+                    <li><a href="pagine/shop.php">viso</a></li>
                 </ul>
             </li>
             <li>
-                <a href="pagine/assistenza.html">
+                <a href="pagine/assistenza.php">
                     <div class="elenco">ASSISTENZA</div>
                 </a>
             </li>
         </ul>
 
         <div class="cta">
-            <a href="pagine/accedi.html" class="buttona">Accedi</a>
+            <a href="pagine/accedi.php" class="buttona">Accedi</a>
         </div>
         <div class="hamburger">
             <span></span>
@@ -83,7 +83,7 @@
                 <h3 class="big-text">NEW START</h3>
                 <p>Migliora la tua routine di bellezza e cura della pelle grazie ai consigli dei nostri esperti.</p>
             </div>
-            <a href="pagine/shop.html" class="button">Shop Now</a>
+            <a href="pagine/shop.php" class="button">Shop Now</a>
         </div>
 
         <div class="poster__img  reveal">
@@ -109,15 +109,15 @@
                 <h3 class="big-text">START FRESH</h3>
                 <p>Studi clinici dimostrano gli effetti positivi dei nostri prodotti occhi</p>
             </div>
-            <a href="pagine/shop.html" class="button">Shop Now</a>
+            <a href="pagine/shop.php" class="button">Shop Now</a>
         </div>
     </div>
 
     <div class="footer">
         <ul class="social">
-            <li><a href="pagine/iscriviti.html">Iscriviti Ora</a></li>
-            <li><a href="pagine/shop.html">Rivenditori</a></li>
-            <li><a href="pagine/contatti.html">Contatti</a></li>
+            <li><a href="pagine/iscriviti.php">Iscriviti Ora</a></li>
+            <li><a href="pagine/shop.php">Rivenditori</a></li>
+            <li><a href="pagine/contatti.php">Contatti</a></li>
         </ul>
         <ul class="social">
             <li><a href="https://www.instagram.com/">Instagram</a></li>

@@ -23,29 +23,29 @@
         </div>
         <ul class="menu">
             <li>
-                <a href="../home.html">
+                <a href="../home.php">
                     <div class="elenco">HOME</div>
                 </a>
             </li>
             <li class="has-children">
-                <a href="../pagine/shop.html">
+                <a href="../pagine/shop.php">
                     <div class="elenco">SHOP</div>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="../pagine/shopl.html">labbra</a></li>
-                    <li><a href="../pagine/shopo.html">occhi</a></li>
-                    <li><a href="../pagine/shop.html">viso</a></li>
+                    <li><a href="../pagine/shopl.php">labbra</a></li>
+                    <li><a href="../pagine/shopo.php">occhi</a></li>
+                    <li><a href="../pagine/shop.php">viso</a></li>
                 </ul>
             </li>
             <li>
-                <a href="../pagine/assistenza.html">
+                <a href="../pagine/assistenza.php">
                     <div class="elenco">ASSISTENZA</div>
                 </a>
             </li>
         </ul>
 
         <div class="cta">
-            <a href="../pagine/accedi.html" class="buttona">Accedi</a>
+            <a href="../pagine/accedi.php" class="buttona">Accedi</a>
         </div>
         <div class="hamburger">
             <span></span>
@@ -78,7 +78,7 @@
                             window.open(apri, "", stile);
                         }
                     </script>
-                    <a href="javascript:Popup('../pagine/acquisto.html')">BUY</a></div></span>
+                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/fondotinta.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip">FONDOTINTA<div class="buttonbuy"><script type="text/javascript">
@@ -88,7 +88,7 @@
                             window.open(apri, "", stile);
                         }
                     </script>
-                    <a href="javascript:Popup('../pagine/acquisto.html')">BUY</a></div></span>
+                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/correttore.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip">CORRETTORE<div class="buttonbuy"><script type="text/javascript">
@@ -98,7 +98,7 @@
                             window.open(apri, "", stile);
                         }
                     </script>
-                    <a href="javascript:Popup('../pagine/acquisto.html')">BUY</a></div></span>
+                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/conturing.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip">CONTURING<div class="buttonbuy"><script type="text/javascript">
@@ -108,7 +108,7 @@
                             window.open(apri, "", stile);
                         }
                     </script>
-                    <a href="javascript:Popup('../pagine/acquisto.html')">BUY</a></div></span>
+                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
                 </div>
             </div>
             <div class="col panel-blue__text reveal">
@@ -137,7 +137,7 @@
                             window.open(apri, "", stile);
                         }
                     </script>
-                    <a href="javascript:Popup('../pagine/acquisto.html')">BUY</a></div></span>
+                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/lucidalabbra.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip">LUCIDALABBRA<div class="buttonbuy"><script type="text/javascript">
@@ -147,7 +147,7 @@
                             window.open(apri, "", stile);
                         }
                     </script>
-                    <a href="javascript:Popup('../pagine/acquisto.html')">BUY</a></div></span>
+                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/tintalabbra.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip">TINTALABBRA<div class="buttonbuy"><script type="text/javascript">
@@ -157,7 +157,7 @@
                             window.open(apri, "", stile);
                         }
                     </script>
-                    <a href="javascript:Popup('../pagine/acquisto.html')">BUY</a></div></span>
+                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/burrocacao.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip">BURROCACAO<div class="buttonbuy"><script type="text/javascript">
@@ -167,7 +167,7 @@
                             window.open(apri, "", stile);
                         }
                     </script>
-                    <a href="javascript:Popup('../pagine/acquisto.html')">BUY</a></div></span>
+                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
                 </div>
             </div>
             <div class="col panel-blue__text reveal">
@@ -196,7 +196,7 @@
                             window.open(apri, "", stile);
                         }
                     </script>
-                    <a href="javascript:Popup('../pagine/acquisto.html')">BUY</a></div></span>
+                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/ombretto.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip">OMBRETTO<div class="buttonbuy"><script type="text/javascript">
@@ -206,7 +206,7 @@
                             window.open(apri, "", stile);
                         }
                     </script>
-                    <a href="javascript:Popup('../pagine/acquisto.html')">BUY</a></div></span>
+                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/eyeliner.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip">EYELINER<div class="buttonbuy"><script type="text/javascript">
@@ -216,7 +216,7 @@
                             window.open(apri, "", stile);
                         }
                     </script>
-                    <a href="javascript:Popup('../pagine/acquisto.html')">BUY</a></div></span>
+                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/matita.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip">MATITA<div class="buttonbuy"><script type="text/javascript">
@@ -226,7 +226,7 @@
                             window.open(apri, "", stile);
                         }
                     </script>
-                    <a href="javascript:Popup('../pagine/acquisto.html')">BUY</a></div></span>
+                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
                 </div>
             </div>
             <div class="col panel-blue__text reveal">
@@ -244,15 +244,15 @@
 
     <div class="spazio"></div>
     <div class="join reveal">
-        <p><a href="../pagine/accedi.html" class="join"># Join the IG Makeup Community</a></p>
+        <p><a href="../pagine/accedi.php" class="join"># Join the IG Makeup Community</a></p>
     </div>
     <div class="spazio"></div>
 
     <div class="footer">
         <ul class="social">
-            <li><a href="../pagine/iscriviti.html">Iscriviti Ora</a></li>
-            <li><a href="../pagine/shop.html">Rivenditori</a></li>
-            <li><a href="../pagine/contatti.html">Contatti</a></li>
+            <li><a href="../pagine/iscriviti.php">Iscriviti Ora</a></li>
+            <li><a href="../pagine/shop.php">Rivenditori</a></li>
+            <li><a href="../pagine/contatti.php">Contatti</a></li>
         </ul>
         <ul class="social">
             <li><a href="https://www.instagram.com/">Instagram</a></li>

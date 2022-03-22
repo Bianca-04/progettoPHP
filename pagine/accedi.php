@@ -23,29 +23,29 @@
         </div>
         <ul class="menu">
             <li>
-                <a href="../home.html">
+                <a href="../home.php">
                     <div class="elenco">HOME</div>
                 </a>
             </li>
             <li class="has-children">
-                <a href="../pagine/shop.html">
+                <a href="../pagine/shop.php">
                     <div class="elenco">SHOP</div>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="../pagine/shopl.html">labbra</a></li>
-                    <li><a href="../pagine/shopo.html">occhi</a></li>
-                    <li><a href="../pagine/shop.html">viso</a></li>
+                    <li><a href="../pagine/shopl.php">labbra</a></li>
+                    <li><a href="../pagine/shopo.php">occhi</a></li>
+                    <li><a href="../pagine/shop.php">viso</a></li>
                 </ul>
             </li>
             <li>
-                <a href="../pagine/assistenza.html">
+                <a href="../pagine/assistenza.php">
                     <div class="elenco">ASSISTENZA</div>
                 </a>
             </li>
         </ul>
 
         <div class="cta">
-            <a href="../pagine/accedi.html" class="buttona">Accedi</a>
+            <a href="../pagine/accedi.php" class="buttona">Accedi</a>
         </div>
         <div class="hamburger">
             <span></span>
@@ -71,7 +71,7 @@
         <div class="VideoAccedi__content reveal">
             <ul class="normal-text reveal">indirizzo e-mail:<input type="text" name="indirizzo"></ul>
             <ul class="normal-text reveal">password:<input type="password"><button onclick="lavatrice()">login</button></ul>
-            <div class="passdim reveal"><a href="../pagine/password.html">recupera password</a></div>
+            <div class="passdim reveal"><a href="../pagine/password.php">recupera password</a></div>
         </div>
 
         <video autoplay muted loop id="VideoIscriviti">
