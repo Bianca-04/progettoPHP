@@ -821,6 +821,12 @@ h3 {
     color: burlywood;
 }
 
+.form_accedi {
+    color: burlywood;
+    text-align: left;
+    margin: auto;
+}
+
 
 /*CONTATTI*/
 
@@ -1000,3 +1006,28 @@ h3 {
         justify-content: center;
     }
 }
+
+
+/* PHP CSS */
+
+#tab_dati_personali {
+    text-align: left;
+    margin: auto;
+}
+
+
+/* ex tab_input */
+
+.tab_accedi {
+    text-align: left;
+    margin: auto;
+}
+
+.input_dati_personali {
+    width: 300px;
+}
+
+
+/* input {
+    font-family: 'Open Sans', Verdana, 'DejaVu Sans', Arial, sans-serif;
+} */
