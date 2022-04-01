@@ -491,7 +491,6 @@ h3 {
         display: none;
     }
     .VideoAccedi__content {
-        border: 2px burlywood solid;
         margin: 0 auto;
         width: 70%;
         height: 200px;
@@ -641,7 +640,6 @@ h3 {
     z-index: 1;
     color: burlywood;
     width: 100%;
-    margin-top: 200px;
 }
 
 .VideoAccedi ul {
@@ -678,7 +676,6 @@ h3 {
 }
 
 .VideoAccedi__content {
-    border: 2px burlywood solid;
     margin: 0 auto;
     width: 70%;
     height: 200px;
@@ -796,7 +793,6 @@ h3 {
 }
 
 .VideoIscriviti__content {
-    border: 2px burlywood solid;
     margin: 0 auto;
     width: 50%;
     position: relative;
@@ -825,6 +821,14 @@ h3 {
     color: burlywood;
     text-align: left;
     margin: auto;
+    font-size: 30px;
+    font-family: sans-serif;
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+.grandezzainput {
+    font-size: 20px;
 }
 
 
