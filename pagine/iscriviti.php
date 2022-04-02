@@ -1,3 +1,21 @@
+<?php
+    if(isset($_POST["username"])) $username=$_POST["username"]; else $username="";
+    if(isset($_POST["password"])) $password=$_POST["password"]; else $password="";
+    if(isset($_POST["conferma"])) $conferma = $_POST["conferma"];  else $conferma = "";
+    if(isset($_POST["nome"])) $nome = $_POST["nome"];  else $nome = "";
+    if(isset($_POST["cognome"])) $cognome = $_POST["cognome"];  else $cognome = "";
+    if(isset($_POST["email"])) $email = $_POST["email"];  else $email = "";
+    if(isset($_POST["telefono"])) $telefono = $_POST["telefono"];  else $telefono = "";
+    if(isset($_POST["comune"])) $comune = $_POST["comune"];  else $comune = "";
+    if(isset($_POST["via"])) $via = $_POST["via"];  else $via = "";
+    if(isset($_POST["civico"])) $civico = $_POST["civico"];  else $civico = "";
+
+    error_reporting(E_ALL ^ E_WARNING); // metodo globale ^ significa tranne e funziona da qui in poi
+    // include('footer.php');
+    // @include('footerrr.php');  // con @ evito la generazione di warnings o errors da parte della funzione
+?>
+
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -49,7 +67,7 @@
         </div>
 
     </div>
-    <!-- Jquery -->
+    <!-- APERTURA MENU -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -61,28 +79,6 @@
         });
     </script>
 
-    <div class="VideoIscriviti">
-
-        <div class="VideoIscriviti__content reveal">
-            <ul>
-                <h3 class="normal-text reveal">nome:</h3><input type="text" name="indirizzo"></ul>
-            <ul>
-                <h3 class="normal-text reveal">cognome:</h3><input type="text"></ul>
-            <ul>
-                <h3 class="normal-text reveal">indirizzo e-mail:</h3><input type="text" name="indirizzo"></ul>
-            <ul>
-                <h3 class="normal-text reveal">password:</h3><input type="password"><button onclick="lavatrice()">login</button></ul>
-        </div>
-        <video autoplay muted loop id="VideoIscriviti">
-            <source src="../immagini/VideoIscriviti.mp4" type="video/mp4">
-          </video>
-    </div>
-    <script>
-        function lavatrice() {
-            document.write("azione avvenuta con successo, tornare nella home premendo la freccina in alto a sinistra");
-
-        }
-    </script>
     <script>
         $(document).ready(function() {
             /* Open Panel */
@@ -106,6 +102,109 @@
             mobile: false,
         });
     </script>
+
+    <div class="VideoIscriviti">
+
+        <div class="VideoIscriviti__content reveal">
+
+        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post"> 
+            <table class="form_iscriviti" id="tab_registrati">
+                <tr>
+                    <td>Username:</td>
+                    <td><input class="registrati" type="text" name="username" <?php echo "value = '$username'" ?> required></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input class="registrati" type="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td>Conferma password:</td>
+                    <td><input class="registrati" type="password" name="conferma" required></td>
+                </tr>
+                <tr>
+                    <td>Nome:</td>
+                    <td><input class="registrati" type="text" name="nome" <?php echo "value = '$nome'" ?>></td>
+                </tr>
+                <tr>
+                    <td>Cognome:</td>
+                    <td><input type="text" class="registrati" name="cognome" <?php echo "value = '$cognome'" ?>></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" class="registrati" name="email" <?php echo "value = '$email'" ?>></td>
+                </tr>
+                <tr>
+                    <td>Telefono:</td>
+                    <td><input type="text" class="registrati" name="telefono" <?php echo "value = '$telefono'" ?>></td>
+                </tr>
+                <tr>
+                    <td>Comune:</td>
+                    <td><input type="text" class="registrati" name="comune" <?php echo "value = '$comune'" ?>></td>
+                </tr>
+                <tr>
+                    <td>Via:</td>
+                    <td><input type="text" class="registrati" name="via" <?php echo "value = '$via'" ?>></td>
+                </tr>
+                <tr>
+                    <td>Civico:</td>
+                    <td><input type="number" class="registrati" name="civico" <?php echo "value = '$civico'"?>> </td>
+                </tr>
+            </table><br>
+            <p style="text-align: center">
+                <input class="grandezzainput" type="submit" value="INVIA">
+            </p>
+        </form>
+
+        <!-- CERCARE DI SPOSTARE QUELLO CHE STAMPA IN ALTO -->
+        <p class="stampaphp">
+            <?php
+            if(isset($_POST["username"]) and isset($_POST["password"])) {
+                if ($_POST["username"] == "" or $_POST["password"] == "") {
+                    echo "username e password non possono essere vuoti!";
+                } elseif ($_POST["password"] != $_POST["conferma"]){
+                    echo "Le password inserite non corrispondono";
+                } else {
+                    $conn = new mysqli("localhost", "root", "", "negozio_gbg");
+                    if($conn->connect_error){
+                        die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
+                    }
+
+                    $myquery = "SELECT username 
+						    FROM utente
+						    WHERE username='" . $_POST["username"] . "'";
+
+                    $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
+                    if ($ris->num_rows > 0) {
+                        echo "Questo username è già stato usato";
+                    } else {
+
+                        $myquery = "INSERT INTO utente (username, password, nome, cognome, email, telefono, comune, via, civico)
+                                    VALUES ('$username', '$password', '$nome', '$cognome','$email','$telefono','$comune','$via', '$civico')";
+
+                        if ($conn->query($myquery) === true) {
+                            session_start();
+                            $_SESSION["username"]=$username;
+                            
+						    $conn->close();
+
+                            echo "Registrazione effettuata con successo!<br>sarai indirizzato al tuo account tra pochi secondi.";
+                            header('refresh: 3; url=./home.php'); //PERCHE NON SI REINDIRIZZA
+
+                        } else {
+                            echo "Non è stato possibile effettuare la registrazione per il seguente motivo: " . $conn->error;
+                        }
+                    }
+                }
+            }
+            ?>
+        </p>
+    </div>
+
+        <video autoplay muted loop id="VideoIscriviti">
+            <source src="../immagini/VideoIscriviti.mp4" type="video/mp4">
+          </video>
+    </div>
+    
 </body>
 
 </html>

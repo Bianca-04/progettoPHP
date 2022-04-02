@@ -831,6 +831,16 @@ h3 {
     font-size: 20px;
 }
 
+.form_iscriviti {
+    color: burlywood;
+    text-align: left;
+    margin: auto;
+    font-size: 20px;
+    font-family: sans-serif;
+    margin-top: 40px;
+    font-weight: bold;
+}
+
 
 /*CONTATTI*/
 
@@ -1014,21 +1024,27 @@ h3 {
 
 /* PHP CSS */
 
-#tab_dati_personali {
+#tab_registrati {
     text-align: left;
     margin: auto;
+    padding: 20px;
 }
-
-
-/* ex tab_input */
 
 .tab_accedi {
     text-align: left;
     margin: auto;
 }
 
-.input_dati_personali {
+.registrati {
     width: 300px;
+    margin-top: 10px;
+}
+
+.stampaphp {
+    color: burlywood;
+    font-weight: bold;
+    font-size: 15px;
+    text-replace: 150px;
 }
 
 

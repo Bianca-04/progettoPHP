@@ -95,7 +95,7 @@
         });
     </script>
 
-<script>
+    <script>
         $(document).ready(function() {
             /* Open Panel */
             $(".hamburger").on('click', function() {
@@ -169,19 +169,9 @@
 			}
 			?>
             
-            <h3 class="med-text"  style="margin-top: 20px;">Non hai ancora un account?<br><br>REGISTRATI ORA! </h3>
+            <h3 class="med-text"  style="margin-top: 20px;">Non hai ancora un account?<br><br><a href="iscriviti.php" style="color:antiquewhite">REGISTRATI ORA!</a> </h3>
             
     </div>
-
-
-
-        <!-- FORM CHE BISOGNA CAPIRE SE RIMETTERE DENTRO AL VIDEO -->
-        <!-- <div class="VideoAccedi__content reveal">
-            <ul class="normal-text reveal">indirizzo e-mail:<input type="text" name="indirizzo"></ul>
-            <ul class="normal-text reveal">password:<input type="password"><button onclick="lavatrice()">login</button></ul>
-            <div class="passdim reveal"><a href="../pagine/password.php">recupera password</a></div>
-        </div> -->
-
         <video autoplay muted loop id="VideoIscriviti">
             <source src="../immagini/VideoAccedi.mp4" type="video/mp4">
           </video>
