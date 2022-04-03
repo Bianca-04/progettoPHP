@@ -181,6 +181,10 @@ h3 {
     padding: 10px;
 }
 
+.sub-menu li a {
+    padding: 10px;
+}
+
 .sub-menu a:hover {
     background: cornsilk;
     color: black;
