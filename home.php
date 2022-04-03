@@ -1,3 +1,26 @@
+<!-- 
+    COSE DA METTERE:
+    - sistemare il reindirizzamento pagina login
+    - sistemare il reindirizzamento pagina iscriviti -> dovrebbe andare al login ma non va
+    - aggiungere i prezzi sotto i prodotti
+    - aggiungere il carrello -> che ti reindirizza al login
+    - aggiungere barra di ricerca -> si mettono i nomi dei porodtti e ti reindirizza a quello
+    - aggiungere pagina personale di chi accede 
+    - dalla pagina personale aggiungere il carrello, la tessera con i punti e gli acquisti gia fatti
+    - mettere la cosa per cui si può avere uno sconto con tot punti?
+    - controllo che sia stata inserita una mail
+    - controllo che sia stata inserita o la mail o il cellulare almeno
+    
+    AGGIUNTIVE:
+    - inventario di quanti prodotti ci sono in magazzino, quindi una pagina del personale che può aumentarli quando finiscono perchè
+    quando vengono comprati diminuiscono uno a uno -> e da questo si può mettere che possono essere restituiti (questa seconda parte non
+    so quanto abbia senso perchè sono trucchi)
+    - possibilità di mettere una recensione dei prodotti che poi si vede in una pagina apposta (magari con il link al posto di 
+    assistenza o di iscriviti ora in basso)
+ -->
+
+
+
 <!DOCTYPE html>
 <html lang="it">
 
