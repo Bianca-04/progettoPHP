@@ -32,9 +32,9 @@
                     <div class="elenco">SHOP</div>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="pagine/shopl.php">labbra</a></li>
-                    <li><a href="pagine/shopo.php">occhi</a></li>
-                    <li><a href="pagine/shop.php">viso</a></li>
+                    <li><a  href="pagine/shop.php #labbra">labbra</a></li>
+                    <li><a href="pagine/shop.php #occhi">occhi</a></li>
+                    <li><a href="pagine/shop.php #viso">viso</a></li>
                 </ul>
             </li>
             <li>

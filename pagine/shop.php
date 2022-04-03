@@ -32,9 +32,9 @@
                     <div class="elenco">SHOP</div>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="../pagine/shopl.php">labbra</a></li>
-                    <li><a href="../pagine/shopo.php">occhi</a></li>
-                    <li><a href="../pagine/shop.php">viso</a></li>
+                    <li><a href="#labbra">labbra</a></li>
+                    <li><a href="#occhi">occhi</a></li>
+                    <li><a href="#viso">viso</a></li>
                 </ul>
             </li>
             <li>
@@ -67,7 +67,7 @@
 
     <div class="spessore-menu"></div>
 
-    <div class="panel-blue mt-3">
+    <a name="viso"></a><div class="panel-blue mt-3">
         <div class="grid">
             <div class="col panel-blue__dots reveal">
                 <div class="dot" style="background: url(../immagini/cipria.jpg) no-repeat center center; background-size: cover;">
@@ -126,7 +126,7 @@
 
     <div class="spazio"></div>
 
-    <div class="panel-blue mt-3">
+    <a name="labbra"></a><div class="panel-blue mt-3">
         <div class="grid">
             <div class="col panel-blue__dots reveal">
                 <div class="dot" style="background: url(../immagini/rossetto.jpg) no-repeat center center; background-size: cover;">
@@ -185,7 +185,7 @@
 
     <div class="spazio"></div>
 
-    <div class="panel-blue mt-3">
+    <a name="occhi"></a><div class="panel-blue mt-3">
         <div class="grid">
             <div class="col panel-blue__dots reveal">
                 <div class="dot" style="background: url(../immagini/mascara.jpg) no-repeat center center; background-size: cover;">
