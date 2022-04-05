@@ -71,44 +71,20 @@
         <div class="grid">
             <div class="col panel-blue__dots reveal">
                 <div class="dot" style="background: url(../immagini/cipria.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">CIPRIA<div class="buttonbuy"><script type="text/javascript">
-                        var stile = "top=10, left=10, width=250, height=200, status=no, menubar=no, toolbar=no scrollbars=no";
-                
-                        function Popup(apri) {
-                            window.open(apri, "", stile);
-                        }
-                    </script>
-                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
+                    <span class="tooltip">CIPRIA<div class="buttonbuy">
+                    <a href="accedi.php">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/fondotinta.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">FONDOTINTA<div class="buttonbuy"><script type="text/javascript">
-                        var stile = "top=10, left=10, width=250, height=200, status=no, menubar=no, toolbar=no scrollbars=no";
-                
-                        function Popup(apri) {
-                            window.open(apri, "", stile);
-                        }
-                    </script>
-                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
+                    <span class="tooltip">FONDOTINTA<div class="buttonbuy">
+                    <a href="accedi.php">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/correttore.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">CORRETTORE<div class="buttonbuy"><script type="text/javascript">
-                        var stile = "top=10, left=10, width=250, height=200, status=no, menubar=no, toolbar=no scrollbars=no";
-                
-                        function Popup(apri) {
-                            window.open(apri, "", stile);
-                        }
-                    </script>
-                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
+                    <span class="tooltip">CORRETTORE<div class="buttonbuy">
+                    <a href="accedi.php">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/conturing.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">CONTURING<div class="buttonbuy"><script type="text/javascript">
-                        var stile = "top=10, left=10, width=250, height=200, status=no, menubar=no, toolbar=no scrollbars=no";
-                
-                        function Popup(apri) {
-                            window.open(apri, "", stile);
-                        }
-                    </script>
-                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
+                    <span class="tooltip">CONTURING<div class="buttonbuy">
+                    <a href="accedi.php">BUY</a></div></span>
                 </div>
             </div>
             <div class="col panel-blue__text reveal">
@@ -130,44 +106,20 @@
         <div class="grid">
             <div class="col panel-blue__dots reveal">
                 <div class="dot" style="background: url(../immagini/rossetto.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">ROSSETTO<div class="buttonbuy"><script type="text/javascript">
-                        var stile = "top=10, left=10, width=250, height=200, status=no, menubar=no, toolbar=no scrollbars=no";
-                
-                        function Popup(apri) {
-                            window.open(apri, "", stile);
-                        }
-                    </script>
-                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
+                    <span class="tooltip">ROSSETTO<div class="buttonbuy">
+                    <a href="accedi.php">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/lucidalabbra.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">LUCIDALABBRA<div class="buttonbuy"><script type="text/javascript">
-                        var stile = "top=10, left=10, width=250, height=200, status=no, menubar=no, toolbar=no scrollbars=no";
-                
-                        function Popup(apri) {
-                            window.open(apri, "", stile);
-                        }
-                    </script>
-                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
+                    <span class="tooltip">LUCIDALABBRA<div class="buttonbuy">
+                    <a href="accedi.php">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/tintalabbra.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">TINTALABBRA<div class="buttonbuy"><script type="text/javascript">
-                        var stile = "top=10, left=10, width=250, height=200, status=no, menubar=no, toolbar=no scrollbars=no";
-                
-                        function Popup(apri) {
-                            window.open(apri, "", stile);
-                        }
-                    </script>
-                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
+                    <span class="tooltip">TINTALABBRA<div class="buttonbuy">
+                    <a href="accedi.php">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/burrocacao.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">BURROCACAO<div class="buttonbuy"><script type="text/javascript">
-                        var stile = "top=10, left=10, width=250, height=200, status=no, menubar=no, toolbar=no scrollbars=no";
-                
-                        function Popup(apri) {
-                            window.open(apri, "", stile);
-                        }
-                    </script>
-                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
+                    <span class="tooltip">BURROCACAO<div class="buttonbuy">
+                    <a href="accedi.php">BUY</a></div></span>
                 </div>
             </div>
             <div class="col panel-blue__text reveal">
@@ -189,44 +141,20 @@
         <div class="grid">
             <div class="col panel-blue__dots reveal">
                 <div class="dot" style="background: url(../immagini/mascara.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">MASCARA<div class="buttonbuy"><script type="text/javascript">
-                        var stile = "top=10, left=10, width=250, height=200, status=no, menubar=no, toolbar=no scrollbars=no";
-                
-                        function Popup(apri) {
-                            window.open(apri, "", stile);
-                        }
-                    </script>
-                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
+                    <span class="tooltip">MASCARA<div class="buttonbuy">
+                    <a href="accedi.php">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/ombretto.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">OMBRETTO<div class="buttonbuy"><script type="text/javascript">
-                        var stile = "top=10, left=10, width=250, height=200, status=no, menubar=no, toolbar=no scrollbars=no";
-                
-                        function Popup(apri) {
-                            window.open(apri, "", stile);
-                        }
-                    </script>
-                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
+                    <span class="tooltip">OMBRETTO<div class="buttonbuy">
+                    <a href="accedi.php">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/eyeliner.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">EYELINER<div class="buttonbuy"><script type="text/javascript">
-                        var stile = "top=10, left=10, width=250, height=200, status=no, menubar=no, toolbar=no scrollbars=no";
-                
-                        function Popup(apri) {
-                            window.open(apri, "", stile);
-                        }
-                    </script>
-                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
+                    <span class="tooltip">EYELINER<div class="buttonbuy">
+                    <a href="accedi.php">BUY</a></div></span>
                 </div>
                 <div class="dot" style="background: url(../immagini/matita.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">MATITA<div class="buttonbuy"><script type="text/javascript">
-                        var stile = "top=10, left=10, width=250, height=200, status=no, menubar=no, toolbar=no scrollbars=no";
-                
-                        function Popup(apri) {
-                            window.open(apri, "", stile);
-                        }
-                    </script>
-                    <a href="javascript:Popup('../pagine/acquisto.php')">BUY</a></div></span>
+                    <span class="tooltip">MATITA<div class="buttonbuy">
+                    <a href="accedi.php">BUY</a></div></span>
                 </div>
             </div>
             <div class="col panel-blue__text reveal">
