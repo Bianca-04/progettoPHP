@@ -5,9 +5,9 @@
 	require('../data/connessione_database.php');
     echo session_id();
 
-	if(isset($_SESSION['username'])){
-		header('location: pagine/home.php');
-	}
+	// if(isset($_SESSION['username'])){
+	// 	header('location: pagine/home.php');
+	// }
 
 	if(isset($_POST["username"])){
 		$username = $_POST["username"];
@@ -145,12 +145,12 @@
 						die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
 					}
 					
-                    $utente = $_POST["username"];
 					//sistemare questo from
 					$myquery = "SELECT username, password 
-								FROM $utente
+								FROM utente
 								WHERE username='$username'
 									AND password='$password'";
+                    echo 
 
 					$ris = $conn->query($myquery) or die("<p>Query fallita! ".$conn->error."</p>");
 
@@ -162,7 +162,7 @@
 						$_SESSION["username"]=$username;
 												
 						$conn->close();
-						header("location: pagine/home.php");
+						header("location: ../pagine/account.php");
 
 					}
 				}

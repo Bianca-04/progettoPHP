@@ -1,11 +1,13 @@
 <!-- 
     COSE DA METTERE:
+    - aggiungere pagina personale di chi accede 
     - sistemare il reindirizzamento pagina login
     - sistemare il reindirizzamento pagina iscriviti -> dovrebbe andare al login ma non va
+
+    
     - aggiungere i prezzi sotto i prodotti
     - aggiungere il carrello -> che ti reindirizza al login
-    - aggiungere barra di ricerca -> si mettono i nomi dei porodtti e ti reindirizza a quello
-    - aggiungere pagina personale di chi accede 
+    - aggiungere barra di ricerca -> si mettono i nomi dei prodotti e ti reindirizza a quello
     - dalla pagina personale aggiungere il carrello, la tessera con i punti e gli acquisti gia fatti
     - mettere la cosa per cui si può avere uno sconto con tot punti?
     - controllo che sia stata inserita una mail
