@@ -123,11 +123,11 @@
                 </tr>
                 <tr>
                     <td>Nome:</td>
-                    <td><input class="registrati" type="text" name="nome" <?php echo "value = '$nome'" ?>></td>
+                    <td><input class="registrati" type="text" name="nome" <?php echo "value = '$nome'" ?> required></td>
                 </tr>
                 <tr>
                     <td>Cognome:</td>
-                    <td><input type="text" class="registrati" name="cognome" <?php echo "value = '$cognome'" ?>></td>
+                    <td><input type="text" class="registrati" name="cognome" <?php echo "value = '$cognome'" ?> required></td>
                 </tr>
                 <tr>
                     <td>Email:</td>

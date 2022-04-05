@@ -1051,7 +1051,41 @@ h3 {
     text-replace: 150px;
 }
 
+.fotoaccount {
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    margin-top: 76px;
+}
 
-/* input {
-    font-family: 'Open Sans', Verdana, 'DejaVu Sans', Arial, sans-serif;
-} */
+.fotoaccount img {
+    margin-left: 0px;
+    width: 100%;
+    margin-top: -150px;
+}
+
+.fotoaccount h3 {
+    font-weight: bold;
+    margin: 0 auto;
+    z-index: 2;
+    color: burlywood;
+    /* color: black; */
+    margin-top: 90px;
+    position: absolute;
+    top: 0;
+    text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+}
+
+.fotoaccount p {
+    font-size: 40px;
+    z-index: 2;
+    color: burlywood;
+    margin-top: -150px;
+    position: absolute;
+    width: 100%;
+    /* margin-left: 38%; */
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}

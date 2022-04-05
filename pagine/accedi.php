@@ -71,16 +71,6 @@
             </li>
         </ul>
 
-<!-- TOGLIERE IL BOTTONE -->
-        <!-- <div class="cta">
-            <a href="../pagine/accedi.php" class="buttona">Accedi</a>
-        </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div> -->
-
     </div>
 
     <!-- Jquery - FORM CHE SCENDE -->
@@ -162,7 +152,7 @@
 						$_SESSION["username"]=$username;
 												
 						$conn->close();
-						header("location: ../pagine/account.php");
+						header("location: ../pagine/login/account.php");
 
 					}
 				}
