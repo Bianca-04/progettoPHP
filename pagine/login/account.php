@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li class="has-children">
-                <a href="pagine/shop.php">
+                <a href="shop_login.php">
                     <div class="elenco">SHOP</div>
                 </a>
                 <ul class="sub-menu">
@@ -46,7 +46,7 @@
                 </ul>
             </li>
             <li>
-                <a href="pagine/assistenza.php">
+                <a href="assistenza_login.php">
                     <div class="elenco">ASSISTENZA</div>
                 </a>
             </li>
