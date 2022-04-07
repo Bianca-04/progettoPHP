@@ -44,18 +44,18 @@
         </div>
         <ul class="menu">
             <li>
-                <a href="home_login.php">
+                <a href="account.php">
                     <div class="elenco">HOME</div>
                 </a>
             </li>
             <li class="has-children">
-                <a href="../pagine/shop.php">
+                <a href="shop_login.php">
                     <div class="elenco">SHOP</div>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="#labbra">labbra</a></li>
-                    <li><a href="#occhi">occhi</a></li>
-                    <li><a href="#viso">viso</a></li>
+                    <li><a href="shop_login.php #labbra">labbra</a></li>
+                    <li><a href="shop_login.php #occhi">occhi</a></li>
+                    <li><a href="shop_login.php #viso">viso</a></li>
                 </ul>
             </li>
             <li>

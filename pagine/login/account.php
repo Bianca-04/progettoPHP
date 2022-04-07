@@ -31,7 +31,7 @@
         </div>
         <ul class="menu">
             <li>
-                <a href="home_login.php">
+                <a href="account.php">
                     <div class="elenco">HOME</div>
                 </a>
             </li>
@@ -85,5 +85,7 @@
         </div>
         <img src="../../immagini/sfondo_account.jpeg" alt="L'immagine non è disponibile">
     </div>
+
+    <p><a href="carrello.php">CARRELLO</a></p>
 </body>
 </html>
