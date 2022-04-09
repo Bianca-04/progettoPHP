@@ -86,6 +86,25 @@
         <img src="../../immagini/sfondo_account.jpeg" alt="L'immagine non è disponibile">
     </div>
 
-    <p><a href="carrello.php">CARRELLO</a></p>
+    <div class="spazio"></div>
+    <div class="tabellaaccount">
+				<div class="container">
+					<figure><img src="../../immagini/dati.jpeg"><figcaption><div class="figurecaption"><p><b><a href="???.php">I TUOI DATI</a></b></p></div></figcaption></figure>
+
+                </div>
+                <div class="container">
+					<figure><img src="../../immagini/carrello.jpeg"><figcaption><div class="figurecaption"><p><b><a href="carrello.php">CARRELLO</a></b></p></div></figcaption></figure>
+
+                </div>
+                <div class="container">
+					<figure><img src="../../immagini/acquisti.jpeg"><figcaption><div class="figurecaption"><p><b><a href="???.php">I TUOI ACQUISTI</a></b></p></div></figcaption></figure>
+
+                </div>
+				
+    </div>
+    <div class="spazio"></div>
+    <br> 
+
+
 </body>
 </html>
