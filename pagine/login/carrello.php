@@ -11,17 +11,17 @@
 	$username = $_SESSION["username"];
 	//echo $username;
 
-	// $conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
-	// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	// 	$libri = isset($_POST['cod_libri']) ? $_POST['cod_libri'] : array();
-	// 	foreach($libri as $libro) {
-  	// 		//echo $libro . '<br/>';
-  	// 		$sql = "UPDATE libri
-  	// 				SET username_utente = '".$username."'
-  	// 				WHERE cod_libro = '".$libro."'";
-	// 		$conn->query($sql) or die("<p>Query fallita!</p>");
-	// 	}
-	// }
+	$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		$prodotti = isset($_POST['nomep']) ? $_POST['nomep'] : array();
+		foreach($prodotti as $prodotto) {
+  			//echo $libro . '<br/>';
+  			$sql = "UPDATE prodotto
+  					SET utente.username = '".$username."'
+  					WHERE nomep = '".$prodotto."'";
+			$conn->query($sql) or die("<p>Query fallita!</p>");
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -77,17 +77,13 @@
     <br<br><h3 class="big-text" style="margin-top: 100px;">I PRODOTTI NEL TUO CARRELLO</h3>
 
     <div class="prodottisel">
-			<h2>Libri presi in prestito</h2>
 			<?php
-				//qui usa una query per prendere i libri giusti
 				$sql = "SELECT carrello.nomep, carrello.quantità 
 						FROM carrello
-                        --  JOIN libri ON utenti.username = libri.username_utente 
-						-- 			JOIN autori ON libri.cod_autore = autori.cod_autore  
 						WHERE carrello.username='$username'";
 				$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
 				if ($ris->num_rows == 0) {
-					echo "<p style='text-align:center'>Nessuno";
+					echo "<p style='text-align:center'>Non hai aggiunto nessun prodotto";
 				}
 			?>
 			<ol>
