@@ -1,5 +1,49 @@
+<?php
+	session_start();
+	//echo session_id();
+
+	require('../../data/connessione_database.php');
+
+	if(!isset($_SESSION['username'])){
+		header('location: ../index.php');
+	}
+	
+	$username = $_SESSION["username"];
+	//echo $username;
+
+	$strmodifica = "Modifica";
+	$strconferma = "Conferma";
+
+	$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
+	$modifica = false;
+	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["pulsante_modifica"])) {
+		if($_POST["pulsante_modifica"] == $strmodifica){
+			$modifica = true;
+		} else {
+			$modifica = false;
+		}
+
+		if ($modifica == false){
+			$sql = "UPDATE utenti
+					SET password = '".$_POST["password"]."', 
+						nome = '".$_POST["nome"]."', 
+						cognome = '".$_POST["cognome"]."', 
+						email = '".$_POST["email"]."', 
+						telefono = '".$_POST["telefono"]."', 
+						comune = '".$_POST["comune"]."', 
+						via = '".$_POST["via"]."' 
+                        civico = '".$_POST["civico"]."',
+					WHERE username = '".$username."'";
+			if($conn->query($sql) === true) {
+				//echo "Record updated successfully";
+			} else {
+				echo "Error updating record: " . $conn->error;
+			}
+		}
+	}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +72,7 @@
                     <div class="elenco">SHOP</div>
                 </a>
                 <ul class="sub-menu">
-                    <li><a  href="shop_login.php #labbra">labbra</a></li>
+                    <li><a href="shop_login.php #labbra">labbra</a></li>
                     <li><a href="shop_login.php #occhi">occhi</a></li>
                     <li><a href="shop_login.php #viso">viso</a></li>
                 </ul>
@@ -41,15 +85,65 @@
         </ul>
 
         <div class="cta">
-            <a href="../../pagine/logout.php" class="buttona">Logout</a>
+            <a href="../logout.php" class="buttona">Logout</a>
         </div>
-
         <div class="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
     </div>
-    
+
+    <br<br><h3 class="big-text" style="margin-top: 100px;">I TUOI DATI</h3>
+
+	<div class="contenuto">
+		<h1>Dati Personali</h1>
+
+		<?php
+			$sql = "SELECT username, password, nome, cognome, email, telefono, comune, via, civico 
+				FROM utenti 
+				WHERE username='".$username."'";
+			//echo $sql;
+			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
+			// $row = $ris->fetch_array(MYSQLI_ASSOC);
+			$row = $ris->fetch_assoc();
+		?>
+
+		<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+			<table id="tab_datipersonali">
+				<tr>
+					<td>Username:</td> <td><input class="input_datipersonali" type="text" name="username" value="<?php echo $row["username"]; ?>" disabled="disabled"></td>
+				</tr>
+				<tr>
+					<td>Password:</td> <td><input class="input_datipersonali" type="text" name="password" value="<?php echo $row["password"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+				</tr>
+				<tr>
+					<td>Nome:</td> <td><input class="input_datipersonali" type="text" name="nome" value="<?php echo $row["nome"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+				</tr>
+				<tr>
+					<td>Cognome:</td> <td><input type="text" class="input_datipersonali" name="cognome" value="<?php echo $row["cognome"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+				</tr>
+				<tr>
+					<td>Email:</td> <td><input type="text" class="input_datipersonali" name="email" value="<?php echo $row["email"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+				</tr>
+				<tr>
+					<td>Telefono:</td> <td><input type="text" class="input_datipersonali" name="telefono" value="<?php echo $row["telefono"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+				</tr>
+				<tr>
+					<td>Comune:</td> <td><input type="text" class="input_datipersonali" name="comune" value="<?php echo $row["comune"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+				</tr>
+				<tr>
+					<td>Via:</td> <td><input type="text" class="input_datipersonali" name="via" value="<?php echo $row["via"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+				</tr>
+                <tr>
+					<td>Civico:</td> <td><input type="text" class="input_datipersonali" name="civico" value="<?php echo $row["civico"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+				</tr>
+			</table>
+			<p style="text-align: center">
+				<input type="submit" name="pulsante_modifica" value="<?php if($modifica==false) echo $strmodifica; else echo $strconferma; ?>">
+			</p>
+		</form>	
+	</div>	
+	
 </body>
 </html>

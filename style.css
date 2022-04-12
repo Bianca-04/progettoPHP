@@ -1179,3 +1179,25 @@ h4 {
     margin: 10px;
     margin-left: 0px;
 }
+
+
+/* DATI PERSONALI */
+
+.contenuto {
+    width: 550px;
+    margin: auto;
+    padding: 15px;
+    text-align: center;
+    /* background-color: white; */
+    padding-bottom: 35px;
+}
+
+#tab_datipersonali {
+    /* width: 500px; */
+    text-align: left;
+    margin: auto;
+}
+
+.input_dati_personali {
+    width: 300px;
+}
