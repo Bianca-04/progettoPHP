@@ -188,7 +188,9 @@
 						    $conn->close();
 
                             echo "Registrazione effettuata con successo!<br>sarai indirizzato al tuo account tra pochi secondi.";
-                            header('refresh: 3; url=./home.php'); //PERCHE NON SI REINDIRIZZA
+                            header('Refresh: 1; URL=login/account.php'); //PERCHE NON SI REINDIRIZZA
+                            // header('location: account.php'); //PERCHE NON SI REINDIRIZZA
+                            echo "<p><a href='login/account.php'>entra</p>";
 
                         } else {
                             echo "Non è stato possibile effettuare la registrazione per il seguente motivo: " . $conn->error;
