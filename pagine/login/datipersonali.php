@@ -7,7 +7,7 @@
 	if(!isset($_SESSION['username'])){
 		header('location: ../index.php');
 	}
-	
+
 	$username = $_SESSION["username"];
 	//echo $username;
 
@@ -57,8 +57,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="header">
-        <div class="logo">
+<div class="header">     <div class="logo">
             <img src="../../immagini/logo.png" alt="immagine non disponibile">
         </div>
         <ul class="menu">
@@ -97,11 +96,10 @@
     <br<br><h3 class="big-text" style="margin-top: 100px;">I TUOI DATI</h3>
 
 	<div class="contenuto">
-		<h1>Dati Personali</h1>
 
 		<?php
 			$sql = "SELECT username, password, nome, cognome, email, telefono, comune, via, civico 
-				FROM utenti 
+				FROM utente
 				WHERE username='".$username."'";
 			//echo $sql;
 			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
@@ -110,7 +108,7 @@
 		?>
 
 		<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-			<table id="tab_datipersonali">
+			<table class="form_modificadati" id="tab_modificadati">
 				<tr>
 					<td>Username:</td> <td><input class="input_datipersonali" type="text" name="username" value="<?php echo $row["username"]; ?>" disabled="disabled"></td>
 				</tr>
