@@ -1,15 +1,4 @@
-<!-- SI PUO CANELLARE -->
-
-
-
-
-
-
-
-
-
-
-
+<!-- SI PUO CANCELLARE -->
 
 <?php
     session_start();

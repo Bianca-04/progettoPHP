@@ -1,11 +1,9 @@
 <!-- 
-    COSE DA METTERE:
-    - sistemare il reindirizzamento pagina iscriviti -> dovrebbe andare al login ma non va
-
-    
+    COSE DA METTERE: 
     - aggiungere i prezzi sotto i prodotti
     - aggiungere barra di ricerca -> si mettono i nomi dei prodotti e ti reindirizza a quello
     - dalla pagina personale aggiungere il carrello e gli acquisti gia fatti
+    - togliere prodotti dal carrello
 
     IN PIU (FACILI):
     - controllo che sia stata inserita una mail
