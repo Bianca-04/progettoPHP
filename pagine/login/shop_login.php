@@ -118,7 +118,7 @@
                                 </tr>
                             </table>
                             <br>
-                            <p><input type="submit" $sel = false value="aggiungi al carrello"></p>
+                            <p><input type="submit" $sel = true value="aggiungi al carrello"></p>
                         </form>
 
                         <?php
@@ -130,8 +130,6 @@
                             $nomep = "cipria";
                             
                             if($sel == true){
-                               if($sel == false){
-                               if($sel == false){
                                 $sql = "SELECT prezzo
 								FROM prodotto
 								WHERE prodotto.nomep = '$nomep'";
@@ -144,8 +142,6 @@
                             VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
 
                             $conn->query($myquery);
-                            }
-                            }
                             }
                         ?>
                         
@@ -182,8 +178,6 @@
                             $nomep = "fondotinta";
                             
                             if($sel == false){
-                               if($sel == false){
-                               if($sel == false){
                                 $sql = "SELECT prezzo
 								FROM prodotto
 								WHERE prodotto.nomep = '$nomep'";
@@ -196,8 +190,6 @@
                             VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
 
                             $conn->query($myquery);
-                            }
-                            }
                             }
                         ?>
                     </span>
@@ -220,7 +212,7 @@
                                 </tr>
                             </table>
                             <br>
-                            <p><input type="submit" $sel = false value="aggiungi al carrello"></p>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
                         </form>
 
                         <?php
@@ -231,8 +223,7 @@
 
                             $nomep = "correttore";
                             
-                           if($sel == false){
-                               if($sel == false){
+                            if($sel == false){
                                 $sql = "SELECT prezzo
 								FROM prodotto
 								WHERE prodotto.nomep = '$nomep'";
@@ -245,7 +236,6 @@
                             VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
 
                             $conn->query($myquery);
-                            }
                             }
                         ?>
                     </span>
@@ -268,7 +258,7 @@
                                 </tr>
                             </table>
                             <br>
-                            <p><input type="submit" $sel = false value="aggiungi al carrello"></p>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
                         </form>
 
                         <?php
@@ -279,8 +269,7 @@
 
                             $nomep = "conturing";
                             
-                           if($sel == false){
-                               if($sel == false){
+                            if($sel == false){
                                 $sql = "SELECT prezzo
 								FROM prodotto
 								WHERE prodotto.nomep = '$nomep'";
@@ -293,7 +282,6 @@
                             VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
 
                             $conn->query($myquery);
-                            }
                             }
                         ?>
                     </span>
@@ -336,7 +324,7 @@
                                 </tr>
                             </table>
                             <br>
-                            <p><input type="submit" $sel = false value="aggiungi al carrello"></p>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
                         </form>
 
                         <?php
@@ -347,8 +335,7 @@
 
                             $nomep = "rossetto";
                             
-                           if($sel == false){
-                               if($sel == false){
+                            if($sel == false){
                                 $sql = "SELECT prezzo
 								FROM prodotto
 								WHERE prodotto.nomep = '$nomep'";
@@ -361,7 +348,6 @@
                             VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
 
                             $conn->query($myquery);
-                            }
                             }
                         ?>
                     </span>
@@ -384,7 +370,7 @@
                                 </tr>
                             </table>
                             <br>
-                            <p><input type="submit" $sel = false value="aggiungi al carrello"></p>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
                         </form>
 
                         <?php
@@ -395,8 +381,7 @@
 
                             $nomep = "lucidalabbra";
                             
-                           if($sel == false){
-                               if($sel == false){
+                            if($sel == false){
                                 $sql = "SELECT prezzo
 								FROM prodotto
 								WHERE prodotto.nomep = '$nomep'";
@@ -409,7 +394,6 @@
                             VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
 
                             $conn->query($myquery);
-                            }
                             }
                         ?>
                     </span>
@@ -432,7 +416,7 @@
                                 </tr>
                             </table>
                             <br>
-                            <p><input type="submit" $sel = false value="aggiungi al carrello"></p>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
                         </form>
 
                         <?php
@@ -443,8 +427,7 @@
 
                             $nomep = "tintalabbra";
                             
-                           if($sel == false){
-                               if($sel == false){
+                            if($sel == false){
                                 $sql = "SELECT prezzo
 								FROM prodotto
 								WHERE prodotto.nomep = '$nomep'";
@@ -457,7 +440,6 @@
                             VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
 
                             $conn->query($myquery);
-                            }
                             }
                         ?>
                     </span>
@@ -480,7 +462,7 @@
                                 </tr>
                             </table>
                             <br>
-                            <p><input type="submit" $sel = false value="aggiungi al carrello"></p>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
                         </form>
 
                         <?php
@@ -491,8 +473,7 @@
 
                             $nomep = "burrocacao";
                             
-                           if($sel == false){
-                               if($sel == false){
+                            if($sel == false){
                                 $sql = "SELECT prezzo
 								FROM prodotto
 								WHERE prodotto.nomep = '$nomep'";
@@ -505,7 +486,6 @@
                             VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
 
                             $conn->query($myquery);
-                            }
                             }
                         ?>
                     </span>
@@ -548,7 +528,7 @@
                                 </tr>
                             </table>
                             <br>
-                            <p><input type="submit" $sel = false value="aggiungi al carrello"></p>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
                         </form>
 
                         <?php
@@ -559,8 +539,7 @@
 
                             $nomep = "mascara";
                             
-                           if($sel == false){
-                               if($sel == false){
+                            if($sel == false){
                                 $sql = "SELECT prezzo
 								FROM prodotto
 								WHERE prodotto.nomep = '$nomep'";
@@ -573,7 +552,6 @@
                             VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
 
                             $conn->query($myquery);
-                            }
                             }
                         ?>
                     </span>
@@ -596,7 +574,7 @@
                                 </tr>
                             </table>
                             <br>
-                            <p><input type="submit" $sel = false value="aggiungi al carrello"></p>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
                         </form>
 
                         <?php
@@ -607,8 +585,7 @@
 
                             $nomep = "ombretto";
                             
-                           if($sel == false){
-                               if($sel == false){
+                            if($sel == false){
                                 $sql = "SELECT prezzo
 								FROM prodotto
 								WHERE prodotto.nomep = '$nomep'";
@@ -621,7 +598,6 @@
                             VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
 
                             $conn->query($myquery);
-                            }
                             }
                         ?>
                     </span>
@@ -644,7 +620,7 @@
                                 </tr>
                             </table>
                             <br>
-                            <p><input type="submit" $sel = false value="aggiungi al carrello"></p>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
                         </form>
 
                         <?php
@@ -655,8 +631,7 @@
 
                             $nomep = "eyeliner";
                             
-                           if($sel == false){
-                               if($sel == false){
+                            if($sel == false){
                                 $sql = "SELECT prezzo
 								FROM prodotto
 								WHERE prodotto.nomep = '$nomep'";
@@ -669,7 +644,6 @@
                             VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
 
                             $conn->query($myquery);
-                            }
                             }
                         ?>
                     </span>
@@ -704,7 +678,7 @@
                                 </tr>
                             </table>
                             <br>
-                            <p><input type="submit" $sel = false value="aggiungi al carrello"></p>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
                         </form>
 
                         <?php
@@ -715,8 +689,7 @@
 
                             $nomep = "matita";
                             
-                           if($sel == false){
-                               if($sel == false){
+                            if($sel == false){
                                 $sql = "SELECT prezzo
 								FROM prodotto
 								WHERE prodotto.nomep = '$nomep'";
@@ -729,7 +702,6 @@
                             VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
 
                             $conn->query($myquery);
-                            }
                             }
                         ?>
                     </span>
