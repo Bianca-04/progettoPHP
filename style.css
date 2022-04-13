@@ -44,6 +44,12 @@ h3 {
     font-size: 14px;
 }
 
+.text-quantita {
+    font-size: 13px;
+    letter-spacing: 0em;
+    padding-left: 18px;
+}
+
 
 /*HOME*/
 
@@ -530,13 +536,13 @@ h3 {
     height: 250px;
     width: 250px;
     border-radius: 100%;
-    line-height: 250px;
     text-align: center;
     align-items: center;
     display: inline-block;
     margin-bottom: 40px;
     margin-left: 2%;
     border: 2px black solid;
+    position: relative;
 }
 
 .dot:hover {
@@ -550,6 +556,7 @@ h3 {
     font-weight: 900;
     letter-spacing: 0.2em;
     margin: 2px;
+    text-align: center;
 }
 
 .colreveal {
@@ -584,6 +591,10 @@ h3 {
     transition: all ease .5s;
     font-weight: 900;
     letter-spacing: 0.2em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .dot:hover .tooltip {
@@ -600,7 +611,6 @@ h3 {
     font-weight: 900;
     letter-spacing: 0.2em;
     margin: 2px;
-    text-decoration: underline solid 2px;
 }
 
 @media (max-width: 768px) {

@@ -78,7 +78,7 @@
 
     <div class="prodottisel">
 			<?php
-				$sql = "SELECT carrello.nomep, carrello.quantità 
+				$sql = "SELECT carrello.nomep, carrello.quantita, carrello.prezzo
 						FROM carrello
 						WHERE carrello.username='$username'";
 				$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
@@ -90,10 +90,12 @@
 				<?php
 					foreach($ris as $riga){
 						echo "
-							<li>";
-								echo $riga["titolo"]." - ".$riga["nome"]." ".$riga["cognome"]."
-							</li>";
-						}
+							<tr>
+								<td> 
+									".$riga["nomep"]." - ".$riga["quantita"]." ".$riga["prezzo"]."
+								</td>
+							</tr>";
+					}
 				?>		
 			</ol>
 		</div>

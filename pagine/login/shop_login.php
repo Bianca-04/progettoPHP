@@ -3,20 +3,26 @@
 
     require('../../data/connessione_database.php');
 
-    if(!isset($_SESSION['username'])){
+    if (!isset($_SESSION['username'])) {
         header('location: ../account.php');
     }
 
     // if( $_SESSION["tipologia"]!="utenti"){ //controlla che siano utenti altrimenti da il logout
-	//     header('location: logout.php');
-	// }
+    //     header('location: logout.php');
+    // }
 
     $username = $_SESSION['username'];
-    $conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
+    $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
     // if($_SERVER["REQUEST METHOD"] == "POST"){
 
     // }
 
+    if (isset($_POST["nomep"])) $nomep = $_POST["nomep"];
+    else $nomep = "";
+    if (isset($_POST["prezzo"])) $prezzo = $_POST["prezzo"];
+    else $prezzo = "";
+    if (isset($_POST["quantita"])) $quantita = $_POST["quantita"];
+    else $quantita = "";
 ?>
 
 <!DOCTYPE html>
@@ -88,24 +94,121 @@
 
     <div class="spessore-menu"></div>
 
-    <a name="viso"></a><div class="panel-blue mt-3">
+    <a name="viso"></a>
+    <div class="panel-blue mt-3">
         <div class="grid">
             <div class="col panel-blue__dots reveal">
                 <div class="dot" style="background: url(../../immagini/cipria.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">CIPRIA<div class="buttonbuy">
-                    <a href="accedi.php">BUY</a></div></span>
+                    <span class="tooltip"><br>CIPRIA <br><br>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+                            <table>
+                                <tr>
+                                    <td class="text-quantita"> Quantità:
+                                    <td><select name="quantita">
+                                            <option type="number">1</option>
+                                            <option type="number">2</option>
+                                            <option type="number">3</option>
+                                            <option type="number">4</option>
+                                            <option type="number">5</option>
+                                        </select>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
+                        </form>
+
+                        <?php
+                            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
+                            if($conn->connect_error){
+                                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
+                            }
+
+                            $nomep = "cipria";
+                            
+                            $sql = "SELECT prezzo
+								FROM prodotto
+								WHERE prodotto.nomep = '$nomep'";
+                            $ris=$conn->query($sql);
+                            $prezzo = $ris->fetch_assoc();
+                            $prezzo = $prezzo['prezzo'];
+                            $prezzo = $quantita*$prezzo;
+
+                            $myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
+                            VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
+
+                            $conn->query($myquery);
+                        ?>
+                        
+
+                    </span>
                 </div>
                 <div class="dot" style="background: url(../../immagini/fondotinta.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">FONDOTINTA<div class="buttonbuy">
-                    <a href="accedi.php">BUY</a></div></span>
+                    <span class="tooltip"><br>FONDOTINTA <br><br>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+                            <table>
+                                <tr>
+                                    <td class="text-quantita"> Quantità:
+                                    <td><select name="quantità">
+                                            <option value="art1">1</option>
+                                            <option value="art2">2</option>
+                                            <option value="art3">3</option>
+                                            <option value="art3">4</option>
+                                            <option value="art3">5</option>
+                                        </select>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
+                        </form>
+                    </span>
                 </div>
                 <div class="dot" style="background: url(../../immagini/correttore.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">CORRETTORE<div class="buttonbuy">
-                    <a href="accedi.php">BUY</a></div></span>
+                    <span class="tooltip"><br>CORRETTORE <br><br>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+                            <table>
+                                <tr>
+                                    <td class="text-quantita"> Quantità:
+                                    <td><select name="quantità">
+                                            <option value="art1">1</option>
+                                            <option value="art2">2</option>
+                                            <option value="art3">3</option>
+                                            <option value="art3">4</option>
+                                            <option value="art3">5</option>
+                                        </select>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
+                        </form>
+                    </span>
                 </div>
                 <div class="dot" style="background: url(../../immagini/conturing.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">CONTURING<div class="buttonbuy">
-                    <a href="accedi.php">BUY</a></div></span>
+                    <span class="tooltip"><br>CONTURING <br><br>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+                            <table>
+                                <tr>
+                                    <td class="text-quantita"> Quantità:
+                                    <td><select name="quantità">
+                                            <option value="art1">1</option>
+                                            <option value="art2">2</option>
+                                            <option value="art3">3</option>
+                                            <option value="art3">4</option>
+                                            <option value="art3">5</option>
+                                        </select>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
+                        </form>
+                    </span>
                 </div>
             </div>
             <div class="col panel-blue__text reveal">
@@ -123,24 +226,97 @@
 
     <div class="spazio"></div>
 
-    <a name="labbra"></a><div class="panel-blue mt-3">
+    <a name="labbra"></a>
+    <div class="panel-blue mt-3">
         <div class="grid">
             <div class="col panel-blue__dots reveal">
                 <div class="dot" style="background: url(../../immagini/rossetto.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">ROSSETTO<div class="buttonbuy">
-                    <a href="accedi.php">BUY</a></div></span>
+                    <span class="tooltip"><br>ROSSETTO <br><br>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+                            <table>
+                                <tr>
+                                    <td class="text-quantita"> Quantità:
+                                    <td><select name="quantità">
+                                            <option value="art1">1</option>
+                                            <option value="art2">2</option>
+                                            <option value="art3">3</option>
+                                            <option value="art3">4</option>
+                                            <option value="art3">5</option>
+                                        </select>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
+                        </form>
+                    </span>
                 </div>
                 <div class="dot" style="background: url(../../immagini/lucidalabbra.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">LUCIDALABBRA<div class="buttonbuy">
-                    <a href="accedi.php">BUY</a></div></span>
+                    <span class="tooltip"><br>LUCIDALABBRA <br><br>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+                            <table>
+                                <tr>
+                                    <td class="text-quantita"> Quantità:
+                                    <td><select name="quantità">
+                                            <option value="art1">1</option>
+                                            <option value="art2">2</option>
+                                            <option value="art3">3</option>
+                                            <option value="art3">4</option>
+                                            <option value="art3">5</option>
+                                        </select>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
+                        </form>
+                    </span>
                 </div>
                 <div class="dot" style="background: url(../../immagini/tintalabbra.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">TINTALABBRA<div class="buttonbuy">
-                    <a href="accedi.php">BUY</a></div></span>
+                    <span class="tooltip"><br>TINTALABBRA <br><br>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+                            <table>
+                                <tr>
+                                    <td class="text-quantita"> Quantità:
+                                    <td><select name="quantità">
+                                            <option value="art1">1</option>
+                                            <option value="art2">2</option>
+                                            <option value="art3">3</option>
+                                            <option value="art3">4</option>
+                                            <option value="art3">5</option>
+                                        </select>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
+                        </form>
+                    </span>
                 </div>
                 <div class="dot" style="background: url(../../immagini/burrocacao.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">BURROCACAO<div class="buttonbuy">
-                    <a href="accedi.php">BUY</a></div></span>
+                    <span class="tooltip"><br>BURROCACAO <br><br>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+                            <table>
+                                <tr>
+                                    <td class="text-quantita"> Quantità:
+                                    <td><select name="quantità">
+                                            <option value="art1">1</option>
+                                            <option value="art2">2</option>
+                                            <option value="art3">3</option>
+                                            <option value="art3">4</option>
+                                            <option value="art3">5</option>
+                                        </select>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
+                        </form>
+                    </span>
                 </div>
             </div>
             <div class="col panel-blue__text reveal">
@@ -158,24 +334,97 @@
 
     <div class="spazio"></div>
 
-    <a name="occhi"></a><div class="panel-blue mt-3">
+    <a name="occhi"></a>
+    <div class="panel-blue mt-3">
         <div class="grid">
             <div class="col panel-blue__dots reveal">
                 <div class="dot" style="background: url(../../immagini/mascara.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">MASCARA<div class="buttonbuy">
-                    <a href="accedi.php">BUY</a></div></span>
+                    <span class="tooltip"><br>MASCARA <br><br>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+                            <table>
+                                <tr>
+                                    <td class="text-quantita"> Quantità:
+                                    <td><select name="quantità">
+                                            <option value="art1">1</option>
+                                            <option value="art2">2</option>
+                                            <option value="art3">3</option>
+                                            <option value="art3">4</option>
+                                            <option value="art3">5</option>
+                                        </select>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
+                        </form>
+                    </span>
                 </div>
                 <div class="dot" style="background: url(../../immagini/ombretto.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">OMBRETTO<div class="buttonbuy">
-                    <a href="accedi.php">BUY</a></div></span>
+                    <span class="tooltip"><br>OMBRETTO <br><br>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+                            <table>
+                                <tr>
+                                    <td class="text-quantita"> Quantità:
+                                    <td><select name="quantità">
+                                            <option value="art1">1</option>
+                                            <option value="art2">2</option>
+                                            <option value="art3">3</option>
+                                            <option value="art3">4</option>
+                                            <option value="art3">5</option>
+                                        </select>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
+                        </form>
+                    </span>
                 </div>
                 <div class="dot" style="background: url(../../immagini/eyeliner.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">EYELINER<div class="buttonbuy">
-                    <a href="accedi.php">BUY</a></div></span>
+                    <span class="tooltip"><br>EYELINER <br><br>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+                            <table>
+                                <tr>
+                                    <td class="text-quantita"> Quantità:
+                                    <td><select name="quantità">
+                                            <option value="art1">1</option>
+                                            <option value="art2">2</option>
+                                            <option value="art3">3</option>
+                                            <option value="art3">4</option>
+                                            <option value="art3">5</option>
+                                        </select>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
+                        </form>
+                    </span>
                 </div>
                 <div class="dot" style="background: url(../../immagini/matita.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip">MATITA<div class="buttonbuy">
-                    <a href="accedi.php">BUY</a></div></span>
+                    <span class="tooltip"><br>MATITA <br><br>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+                            <table>
+                                <tr>
+                                    <td class="text-quantita"> Quantità:
+                                    <td><select name="quantità">
+                                            <option value="art1">1</option>
+                                            <option value="art2">2</option>
+                                            <option value="art3">3</option>
+                                            <option value="art3">4</option>
+                                            <option value="art3">5</option>
+                                        </select>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <p><input type="submit" value="aggiungi al carrello"></p>
+                        </form>
+                    </span>
                 </div>
             </div>
             <div class="col panel-blue__text reveal">
@@ -194,7 +443,7 @@
     <!--sistemare questo-->
     <div class="spazio"></div>
     <div class="join reveal">
-        <p><a href="../pagine/accedi.php" class="join"># Join the IG Makeup Community</a></p> 
+        <p><a href="../pagine/accedi.php" class="join"># Join the IG Makeup Community</a></p>
     </div>
     <div class="spazio"></div>
 

@@ -15,6 +15,51 @@
     // @include('footerrr.php');  // con @ evito la generazione di warnings o errors da parte della funzione
 ?>
 
+<p class="stampaphp">
+            <?php
+            if(isset($_POST["username"]) and isset($_POST["password"])) {
+                if ($_POST["username"] == "" or $_POST["password"] == "") {
+                    echo "username e password non possono essere vuoti!";
+                } elseif ($_POST["password"] != $_POST["conferma"]){
+                    echo "Le password inserite non corrispondono";
+                } else {
+                    $conn = new mysqli("localhost", "root", "", "negozio_gbg");
+                    if($conn->connect_error){
+                        die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
+                    }
+
+                    $myquery = "SELECT username 
+						    FROM utente
+						    WHERE username='" . $_POST["username"] . "'";
+
+                    $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
+                    if ($ris->num_rows > 0) {
+                        echo "Questo username è già stato usato";
+                    } else {
+
+                        $myquery = "INSERT INTO utente (username, password, nome, cognome, email, telefono, comune, via, civico)
+                                    VALUES ('$username', '$password', '$nome', '$cognome','$email','$telefono','$comune','$via', '$civico')";
+
+                        if ($conn->query($myquery) === true) {
+                            session_start();
+                            $_SESSION["username"]=$username;
+                            
+						    $conn->close();
+
+                            echo "Registrazione effettuata con successo!<br>sarai indirizzato al tuo account tra pochi secondi.";
+                            header('Refresh: 1; URL=login/account.php'); //PERCHE NON SI REINDIRIZZA
+                            // header('location: account.php'); //PERCHE NON SI REINDIRIZZA
+                            echo "<p><a href='login/account.php'>entra</p>";
+
+                        } else {
+                            echo "Non è stato possibile effettuare la registrazione per il seguente motivo: " . $conn->error;
+                        }
+                    }
+                }
+            }
+            ?>
+        </p>
+
 
 <!DOCTYPE html>
 <html lang="it">
@@ -156,50 +201,7 @@
         </form>
 
         <!-- CERCARE DI SPOSTARE QUELLO CHE STAMPA IN ALTO -->
-        <p class="stampaphp">
-            <?php
-            if(isset($_POST["username"]) and isset($_POST["password"])) {
-                if ($_POST["username"] == "" or $_POST["password"] == "") {
-                    echo "username e password non possono essere vuoti!";
-                } elseif ($_POST["password"] != $_POST["conferma"]){
-                    echo "Le password inserite non corrispondono";
-                } else {
-                    $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                    if($conn->connect_error){
-                        die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                    }
-
-                    $myquery = "SELECT username 
-						    FROM utente
-						    WHERE username='" . $_POST["username"] . "'";
-
-                    $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
-                    if ($ris->num_rows > 0) {
-                        echo "Questo username è già stato usato";
-                    } else {
-
-                        $myquery = "INSERT INTO utente (username, password, nome, cognome, email, telefono, comune, via, civico)
-                                    VALUES ('$username', '$password', '$nome', '$cognome','$email','$telefono','$comune','$via', '$civico')";
-
-                        if ($conn->query($myquery) === true) {
-                            session_start();
-                            $_SESSION["username"]=$username;
-                            
-						    $conn->close();
-
-                            echo "Registrazione effettuata con successo!<br>sarai indirizzato al tuo account tra pochi secondi.";
-                            header('Refresh: 1; URL=login/account.php'); //PERCHE NON SI REINDIRIZZA
-                            // header('location: account.php'); //PERCHE NON SI REINDIRIZZA
-                            echo "<p><a href='login/account.php'>entra</p>";
-
-                        } else {
-                            echo "Non è stato possibile effettuare la registrazione per il seguente motivo: " . $conn->error;
-                        }
-                    }
-                }
-            }
-            ?>
-        </p>
+        
     </div>
 
         <video autoplay muted loop id="VideoIscriviti">

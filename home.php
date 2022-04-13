@@ -1,18 +1,20 @@
 <!-- 
     COSE DA METTERE:
-    - aggiungere pagina personale di chi accede 
-    - sistemare il reindirizzamento pagina login
     - sistemare il reindirizzamento pagina iscriviti -> dovrebbe andare al login ma non va
 
     
     - aggiungere i prezzi sotto i prodotti
-    - aggiungere il carrello -> che ti reindirizza al login
     - aggiungere barra di ricerca -> si mettono i nomi dei prodotti e ti reindirizza a quello
-    - dalla pagina personale aggiungere il carrello, la tessera con i punti e gli acquisti gia fatti
-    - mettere la cosa per cui si può avere uno sconto con tot punti?
+    - dalla pagina personale aggiungere il carrello e gli acquisti gia fatti
+
+    IN PIU (FACILI):
     - controllo che sia stata inserita una mail
     - controllo che sia stata inserita o la mail o il cellulare almeno
-    
+
+    SE FACCIAMO LA TESSERA:
+    - dal Carrello aggiungere la tessera con i punti
+    - mettere la cosa per cui si può avere uno sconto con tot punti
+
     AGGIUNTIVE:
     - inventario di quanti prodotti ci sono in magazzino, quindi una pagina del personale che può aumentarli quando finiscono perchè
     quando vengono comprati diminuiscono uno a uno -> e da questo si può mettere che possono essere restituiti (questa seconda parte non
