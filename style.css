@@ -70,6 +70,19 @@ h3 {
     border-color: white;
 }
 
+.iconacarrello img {
+    width: 4%;
+    height: auto;
+    position: fixed;
+    margin-top: 18px;
+    margin-left: -55px;
+}
+
+.iconacarrello img:hover {
+    transform: scale(1.1);
+    transition: all 0.1s ease-in-out;
+}
+
 @media (max-width: 768px) {
     .big-text {
         font-size: 40px;
@@ -80,6 +93,10 @@ h3 {
         justify-content: left;
         color: white;
         border: solid white 2px;
+    }
+    .iconacarrello {
+        margin-top: 15px;
+        margin-left: -300px;
     }
 }
 
@@ -611,6 +628,13 @@ h3 {
     font-weight: 900;
     letter-spacing: 0.2em;
     margin: 2px;
+}
+
+.big-text1 {
+    font-size: 70px;
+    font-weight: 900;
+    width: 100%;
+    text-align: left;
 }
 
 @media (max-width: 768px) {

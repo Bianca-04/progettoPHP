@@ -83,6 +83,10 @@
             </li>
         </ul>
 
+		<div class="iconacarrello">
+        <a href="carrello.php"><img src="../../immagini/iconacarrello.png" alt="immagine non disponibile"></a>
+        </div>
+
         <div class="cta">
             <a href="../logout.php" class="buttona">Logout</a>
         </div>
@@ -137,6 +141,7 @@
 					<td>Civico:</td> <td><input type="text" class="input_datipersonali" name="civico" value="<?php echo $row["civico"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
 				</tr>
 			</table>
+			<br><br>
 			<p style="text-align: center">
 				<input type="submit" name="pulsante_modifica" value="<?php if($modifica==false) echo $strmodifica; else echo $strconferma; ?>">
 			</p>

@@ -73,6 +73,10 @@
             </li>
         </ul>
 
+        <div class="iconacarrello">
+        <a href="carrello.php"><img src="../../immagini/iconacarrello.png" alt="immagine non disponibile"></a>
+        </div>
+
         <div class="cta">
             <a href="../logout.php" class="buttona">Logout</a>
         </div>
@@ -290,7 +294,7 @@
             <div class="col panel-blue__text reveal">
                 <div class="grid">
                     <div class="colreveal">
-                        <h3 class="big-text tw">VISO</h3>
+                        <h3 class="big-text1 tw">VISO</h3>
                     </div>
                     <div class="colreveal">
                         <p class="mt-sma-0">Un bel trucco inizia senza dubbio anche da una bella base viso e da un pelle il più possibile priva di imperfezioni come rossori o occhiaie.</p>
@@ -494,7 +498,7 @@
             <div class="col panel-blue__text reveal">
                 <div class="grid">
                     <div class="colreveal">
-                        <h3 class="big-text tw">LABBRA</h3>
+                        <h3 class="big-text1 tw">LABBRA</h3>
                     </div>
                     <div class="colreveal">
                         <p class="mt-sma-0">Labbra secche e screpolate? Un buon trattamento labbra è indispensabile tanto quanto la protezione della tua pelle!</p>
@@ -710,7 +714,7 @@
             <div class="col panel-blue__text reveal">
                 <div class="grid">
                     <div class="colreveal">
-                        <h3 class="big-text tw">OCCHI</h3>
+                        <h3 class="big-text1 tw">OCCHI</h3>
                     </div>
                     <div class="colreveal">
                         <p class="mt-sma-0">La formulazione dei nuovi prodotti è arricchita con vitamina E ed estratti di camomilla per offrire alla palpebra un comfort mai visto prima.</p>
