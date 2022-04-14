@@ -1,3 +1,12 @@
+<?php
+	session_start();
+
+	require('../data/connessione_database.php');
+    if (isset($_POST["cerca"])) $cerca = $_POST["cerca"];
+    else $cerca = "";
+    $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -70,8 +79,28 @@
         <div class="videoassistenza_content">
             <h3 class="big-text reveal">CIAO, HAI BISOGNO DI AIUTO?</h3>
             <div class="ricerca reveal">
-                <ul><input type="text" name="" placeholder="cosa cerchi?"></ul>
-                <button>search</button>
+                <ul><form action = "<?php $_SERVER['PHP_SELF'] ?>" method = "post">
+                    <input type="text" name="cerca" placeholder="cosa cerchi?"></ul>
+                    <button>search</button>
+                    </form>
+        <?php 
+            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
+            if($conn->connect_error){
+                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");}
+            
+            $cerca = $_POST['cerca'];
+            $sql = "SELECT nomep
+                    FROM prodotto
+                    WHERE nomep LIKE '%$cerca%'";
+                    $ris=$conn->query($sql);
+                    $cerca = $ris->fetch_assoc();
+                    $cerca = $cerca['cerca'];
+                    echo $cerca;
+        ?>
+
+
+
+
 
             </div>
         </div>
