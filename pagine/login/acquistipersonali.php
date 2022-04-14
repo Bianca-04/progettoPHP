@@ -40,6 +40,10 @@
             </li>
         </ul>
 
+        <div class="iconacarrello">
+        <a href="carrello.php"><img src="../../immagini/iconacarrello.png" alt="immagine non disponibile"></a>
+        </div>
+
         <div class="cta">
             <a href="../../pagine/logout.php" class="buttona">Logout</a>
         </div>
