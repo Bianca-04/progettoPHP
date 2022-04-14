@@ -102,6 +102,18 @@
             <div class="col panel-blue__dots reveal">
                 <div class="dot" style="background: url(../../immagini/cipria.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip"><br>CIPRIA <br><br>
+                    <?php
+                        $nomep = "cipria";
+
+                        $sql = "SELECT prezzo
+                            FROM prodotto
+                            WHERE nomep = '$nomep'";
+
+                        $ris = $conn -> query($sql);
+                        $prezzo = $ris -> fetch_assoc();
+                        $prezzo = $prezzo['prezzo'];
+                        echo $prezzo . '€'
+                    ?><br><br>
                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                             <table>
                                 <tr>
@@ -119,6 +131,11 @@
                             </table>
                             <br>
                             <p><input type="submit" $sel = true value="aggiungi al carrello"></p>
+                            <?php 
+                                if(isset($_POST["submit"])){
+                                    $quantita = $_POST["quantita"];
+                                }
+                            ?>
                         </form>
 
                         <?php
@@ -129,7 +146,7 @@
                             
                             $nomep = "cipria";
                             
-                            if($sel == true){
+                            if($sel == false){
                                 $sql = "SELECT prezzo
 								FROM prodotto
 								WHERE prodotto.nomep = '$nomep'";
@@ -150,6 +167,18 @@
                 </div>
                 <div class="dot" style="background: url(../../immagini/fondotinta.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip"><br>FONDOTINTA <br><br>
+                    <?php
+                        $nomep = "fondotinta";
+
+                        $sql = "SELECT prezzo
+                            FROM prodotto
+                            WHERE nomep = '$nomep'";
+
+                        $ris = $conn -> query($sql);
+                        $prezzo = $ris -> fetch_assoc();
+                        $prezzo = $prezzo['prezzo'];
+                        echo $prezzo . '€'
+                    ?><br><br>
                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                             <table>
                                 <tr>
@@ -167,6 +196,12 @@
                             </table>
                             <br>
                             <p><input type="submit" $sel = false value="aggiungi al carrello"></p>
+                            <?php 
+                                echo "ciao";
+                                if(isset($_POST["submit"])){
+                                    $quantita = $_POST["quantita"];
+                                }
+                            ?>
                         </form>
 
                         <?php
@@ -196,6 +231,18 @@
                 </div>
                 <div class="dot" style="background: url(../../immagini/correttore.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip"><br>CORRETTORE <br><br>
+                    <?php
+                        $nomep = "correttore";
+
+                        $sql = "SELECT prezzo
+                            FROM prodotto
+                            WHERE nomep = '$nomep'";
+
+                        $ris = $conn -> query($sql);
+                        $prezzo = $ris -> fetch_assoc();
+                        $prezzo = $prezzo['prezzo'];
+                        echo $prezzo . '€'
+                    ?><br><br>
                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                             <table>
                                 <tr>
@@ -242,6 +289,18 @@
                 </div>
                 <div class="dot" style="background: url(../../immagini/conturing.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip"><br>CONTURING <br><br>
+                    <?php
+                        $nomep = "conturing";
+
+                        $sql = "SELECT prezzo
+                            FROM prodotto
+                            WHERE nomep = '$nomep'";
+
+                        $ris = $conn -> query($sql);
+                        $prezzo = $ris -> fetch_assoc();
+                        $prezzo = $prezzo['prezzo'];
+                        echo $prezzo . '€'
+                    ?><br><br>
                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                             <table>
                                 <tr>
@@ -308,6 +367,18 @@
             <div class="col panel-blue__dots reveal">
                 <div class="dot" style="background: url(../../immagini/rossetto.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip"><br>ROSSETTO <br><br>
+                    <?php
+                        $nomep = "rossetto";
+
+                        $sql = "SELECT prezzo
+                            FROM prodotto
+                            WHERE nomep = '$nomep'";
+
+                        $ris = $conn -> query($sql);
+                        $prezzo = $ris -> fetch_assoc();
+                        $prezzo = $prezzo['prezzo'];
+                        echo $prezzo . '€'
+                    ?><br><br>
                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                             <table>
                                 <tr>
@@ -354,6 +425,18 @@
                 </div>
                 <div class="dot" style="background: url(../../immagini/lucidalabbra.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip"><br>LUCIDALABBRA <br><br>
+                    <?php
+                        $nomep = "lucidalabbra";
+
+                        $sql = "SELECT prezzo
+                            FROM prodotto
+                            WHERE nomep = '$nomep'";
+
+                        $ris = $conn -> query($sql);
+                        $prezzo = $ris -> fetch_assoc();
+                        $prezzo = $prezzo['prezzo'];
+                        echo $prezzo . '€'
+                    ?><br><br>
                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                             <table>
                                 <tr>
@@ -400,6 +483,18 @@
                 </div>
                 <div class="dot" style="background: url(../../immagini/tintalabbra.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip"><br>TINTALABBRA <br><br>
+                    <?php
+                        $nomep = "tintalabbra";
+
+                        $sql = "SELECT prezzo
+                            FROM prodotto
+                            WHERE nomep = '$nomep'";
+
+                        $ris = $conn -> query($sql);
+                        $prezzo = $ris -> fetch_assoc();
+                        $prezzo = $prezzo['prezzo'];
+                        echo $prezzo . '€'
+                    ?><br><br>
                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                             <table>
                                 <tr>
@@ -446,6 +541,18 @@
                 </div>
                 <div class="dot" style="background: url(../../immagini/burrocacao.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip"><br>BURROCACAO <br><br>
+                    <?php
+                        $nomep = "burrocacao";
+
+                        $sql = "SELECT prezzo
+                            FROM prodotto
+                            WHERE nomep = '$nomep'";
+
+                        $ris = $conn -> query($sql);
+                        $prezzo = $ris -> fetch_assoc();
+                        $prezzo = $prezzo['prezzo'];
+                        echo $prezzo . '€'
+                    ?><br><br>
                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                             <table>
                                 <tr>
@@ -512,6 +619,18 @@
             <div class="col panel-blue__dots reveal">
                 <div class="dot" style="background: url(../../immagini/mascara.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip"><br>MASCARA <br><br>
+                    <?php
+                        $nomep = "mascara";
+
+                        $sql = "SELECT prezzo
+                            FROM prodotto
+                            WHERE nomep = '$nomep'";
+
+                        $ris = $conn -> query($sql);
+                        $prezzo = $ris -> fetch_assoc();
+                        $prezzo = $prezzo['prezzo'];
+                        echo $prezzo . '€'
+                    ?><br><br>
                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                             <table>
                                 <tr>
@@ -558,6 +677,18 @@
                 </div>
                 <div class="dot" style="background: url(../../immagini/ombretto.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip"><br>OMBRETTO <br><br>
+                    <?php
+                        $nomep = "ombretto";
+
+                        $sql = "SELECT prezzo
+                            FROM prodotto
+                            WHERE nomep = '$nomep'";
+
+                        $ris = $conn -> query($sql);
+                        $prezzo = $ris -> fetch_assoc();
+                        $prezzo = $prezzo['prezzo'];
+                        echo $prezzo . '€'
+                    ?><br><br>
                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                             <table>
                                 <tr>
@@ -604,6 +735,18 @@
                 </div>
                 <div class="dot" style="background: url(../../immagini/eyeliner.jpg) no-repeat center center; background-size: cover;">
                     <span class="tooltip"><br>EYELINER <br><br>
+                    <?php
+                        $nomep = "eyeliner";
+
+                        $sql = "SELECT prezzo
+                            FROM prodotto
+                            WHERE nomep = '$nomep'";
+
+                        $ris = $conn -> query($sql);
+                        $prezzo = $ris -> fetch_assoc();
+                        $prezzo = $prezzo['prezzo'];
+                        echo $prezzo . '€'
+                    ?><br><br>
                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                             <table>
                                 <tr>
