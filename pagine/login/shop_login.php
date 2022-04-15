@@ -1,30 +1,30 @@
 <?php
-    session_start();
+session_start();
 
-    require('../../data/connessione_database.php');
+require('../../data/connessione_database.php');
 
-    if (!isset($_SESSION['username'])) {
-        header('location: ../account.php');
-    }
+if (!isset($_SESSION['username'])) {
+    header('location: ../account.php');
+}
 
-    // if( $_SESSION["tipologia"]!="utenti"){ //controlla che siano utenti altrimenti da il logout
-    //     header('location: logout.php');
-    // }
+// if( $_SESSION["tipologia"]!="utenti"){ //controlla che siano utenti altrimenti da il logout
+//     header('location: logout.php');
+// }
 
-    $username = $_SESSION['username'];
-    $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
-    // if($_SERVER["REQUEST METHOD"] == "POST"){
+$username = $_SESSION['username'];
+$conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
+// if($_SERVER["REQUEST METHOD"] == "POST"){
 
-    // }
+// }
 
-    if (isset($_POST["nomep"])) $nomep = $_POST["nomep"];
-    else $nomep = "";
-    if (isset($_POST["prezzo"])) $prezzo = $_POST["prezzo"];
-    else $prezzo = "";
-    if (isset($_POST["quantita"])) $quantita = $_POST["quantita"];
-    else $quantita = "";
-    if (isset($_POST["sel"])) $sel = $_POST["sel"];
-    else $sel = "";
+if (isset($_POST["nomep"])) $nomep = $_POST["nomep"];
+else $nomep = "";
+if (isset($_POST["prezzo"])) $prezzo = $_POST["prezzo"];
+else $prezzo = "";
+if (isset($_POST["quantita"])) $quantita = $_POST["quantita"];
+else $quantita = "";
+if (isset($_POST["sel"])) $sel = $_POST["sel"];
+else $sel = "";
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +74,7 @@
         </ul>
 
         <div class="iconacarrello">
-        <a href="carrello.php"><img src="../../immagini/iconacarrello.png" alt="immagine non disponibile"></a>
+            <a href="carrello.php"><img src="../../immagini/iconacarrello.png" alt="immagine non disponibile"></a>
         </div>
 
         <div class="cta">
@@ -104,252 +104,39 @@
     <div class="panel-blue mt-3">
         <div class="grid">
             <div class="col panel-blue__dots reveal">
-                <div class="dot" style="background: url(../../immagini/cipria.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip"><br>CIPRIA <br><br>
-                    <?php
-                        $nomep = "cipria";
+                <?php $sql = "SELECT *
+                    FROM prodotto
+                    WHERE categoria = 'viso' ";
+                $ris = $conn->query($sql);
+                while ($row = $ris->fetch_assoc()) {
+                    $prodotto = $row['nomep'];
+                    $prezzo = $row['prezzo'];
+                    echo '<div class="dot" style="background: url(../../immagini/'.$prodotto.'.jpg) no-repeat center center; background-size: cover;">
+                <span class="tooltip"><br> '.$prodotto.' <br><br> '.$prezzo.' €
+                <br><br>
+                    <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
+                        <table>
+                            <tr>
+                                <td class="text-quantita"> Quantità:
+                                <td><select name="quantita">
+                                        <option type="number">1</option>
+                                        <option type="number">2</option>
+                                        <option type="number">3</option>
+                                        <option type="number">4</option>
+                                        <option type="number">5</option>
+                                    </select>
+                                </td>
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                        <p><option class="hidden" name="prodotto" value="'.$prodotto.'"></option><input type="submit" name="prodotto" value="Aggiungi al carrello"></p>
+                    </form>
 
-                        $sql = "SELECT prezzo
-                            FROM prodotto
-                            WHERE nomep = '$nomep'";
+                </span>
+            </div>';
+                } ?>
 
-                        $ris = $conn -> query($sql);
-                        $prezzo = $ris -> fetch_assoc();
-                        $prezzo = $prezzo['prezzo'];
-                        echo $prezzo . '€'
-                    ?><br><br>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                            <table>
-                                <tr>
-                                    <td class="text-quantita"> Quantità:
-                                    <td><select name="quantita">
-                                            <option type="number">1</option>
-                                            <option type="number">2</option>
-                                            <option type="number">3</option>
-                                            <option type="number">4</option>
-                                            <option type="number">5</option>
-                                        </select>
-                                    </td>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <p><input type="submit" $sel = true value="aggiungi al carrello"></p>
-                            <?php 
-                                if(isset($_POST["submit"])){
-                                    $quantita = $_POST["quantita"];
-                                }
-                            ?>
-                        </form>
-
-                        <?php
-                            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                            if($conn->connect_error){
-                                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                            }
-                            
-                            $nomep = "cipria";
-                            
-                            if($sel == false){
-                                $sql = "SELECT prezzo
-								FROM prodotto
-								WHERE prodotto.nomep = '$nomep'";
-                            $ris=$conn->query($sql);
-                            $prezzo = $ris->fetch_assoc();
-                            $prezzo = $prezzo['prezzo'];
-                            $prezzo = (int)$quantita * (int)$prezzo;
-
-                            $myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
-                            VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
-
-                            $conn->query($myquery);
-                            }
-                        ?>
-                        
-
-                    </span>
-                </div>
-                <div class="dot" style="background: url(../../immagini/fondotinta.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip"><br>FONDOTINTA <br><br>
-                    <?php
-                        $nomep = "fondotinta";
-
-                        $sql = "SELECT prezzo
-                            FROM prodotto
-                            WHERE nomep = '$nomep'";
-
-                        $ris = $conn -> query($sql);
-                        $prezzo = $ris -> fetch_assoc();
-                        $prezzo = $prezzo['prezzo'];
-                        echo $prezzo . '€'
-                    ?><br><br>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                            <table>
-                                <tr>
-                                    <td class="text-quantita"> Quantità:
-                                    <td><select name="quantita">
-                                            <option type="number">1</option>
-                                            <option type="number">2</option>
-                                            <option type="number">3</option>
-                                            <option type="number">4</option>
-                                            <option type="number">5</option>
-                                        </select>
-                                    </td>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <p><input type="submit" $sel = false value="aggiungi al carrello"></p>
-                            <?php 
-                                echo "ciao";
-                                if(isset($_POST["submit"])){
-                                    $quantita = $_POST["quantita"];
-                                }
-                            ?>
-                        </form>
-
-                        <?php
-                            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                            if($conn->connect_error){
-                                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                            }
-
-                            $nomep = "fondotinta";
-                            
-                            if($sel == false){
-                                $sql = "SELECT prezzo
-								FROM prodotto
-								WHERE prodotto.nomep = '$nomep'";
-                            $ris=$conn->query($sql);
-                            $prezzo = $ris->fetch_assoc();
-                            $prezzo = $prezzo['prezzo'];
-                            $prezzo = (int)$quantita * (int)$prezzo;
-
-                            $myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
-                            VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
-
-                            $conn->query($myquery);
-                            }
-                        ?>
-                    </span>
-                </div>
-                <div class="dot" style="background: url(../../immagini/correttore.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip"><br>CORRETTORE <br><br>
-                    <?php
-                        $nomep = "correttore";
-
-                        $sql = "SELECT prezzo
-                            FROM prodotto
-                            WHERE nomep = '$nomep'";
-
-                        $ris = $conn -> query($sql);
-                        $prezzo = $ris -> fetch_assoc();
-                        $prezzo = $prezzo['prezzo'];
-                        echo $prezzo . '€'
-                    ?><br><br>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                            <table>
-                                <tr>
-                                    <td class="text-quantita"> Quantità:
-                                    <td><select name="quantita">
-                                            <option type="number">1</option>
-                                            <option type="number">2</option>
-                                            <option type="number">3</option>
-                                            <option type="number">4</option>
-                                            <option type="number">5</option>
-                                        </select>
-                                    </td>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <p><input type="submit" value="aggiungi al carrello"></p>
-                        </form>
-
-                        <?php
-                            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                            if($conn->connect_error){
-                                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                            }
-
-                            $nomep = "correttore";
-                            
-                            if($sel == false){
-                                $sql = "SELECT prezzo
-								FROM prodotto
-								WHERE prodotto.nomep = '$nomep'";
-                            $ris=$conn->query($sql);
-                            $prezzo = $ris->fetch_assoc();
-                            $prezzo = $prezzo['prezzo'];
-                            $prezzo = (int)$quantita * (int)$prezzo;
-
-                            $myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
-                            VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
-
-                            $conn->query($myquery);
-                            }
-                        ?>
-                    </span>
-                </div>
-                <div class="dot" style="background: url(../../immagini/conturing.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip"><br>CONTURING <br><br>
-                    <?php
-                        $nomep = "conturing";
-
-                        $sql = "SELECT prezzo
-                            FROM prodotto
-                            WHERE nomep = '$nomep'";
-
-                        $ris = $conn -> query($sql);
-                        $prezzo = $ris -> fetch_assoc();
-                        $prezzo = $prezzo['prezzo'];
-                        echo $prezzo . '€'
-                    ?><br><br>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                            <table>
-                                <tr>
-                                    <td class="text-quantita"> Quantità:
-                                    <td><select name="quantita">
-                                            <option type="number">1</option>
-                                            <option type="number">2</option>
-                                            <option type="number">3</option>
-                                            <option type="number">4</option>
-                                            <option type="number">5</option>
-                                        </select>
-                                    </td>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <p><input type="submit" value="aggiungi al carrello"></p>
-                        </form>
-
-                        <?php
-                            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                            if($conn->connect_error){
-                                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                            }
-
-                            $nomep = "conturing";
-                            
-                            if($sel == false){
-                                $sql = "SELECT prezzo
-								FROM prodotto
-								WHERE prodotto.nomep = '$nomep'";
-                            $ris=$conn->query($sql);
-                            $prezzo = $ris->fetch_assoc();
-                            $prezzo = $prezzo['prezzo'];
-                            $prezzo = (int)$quantita * (int)$prezzo;
-
-                            $myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
-                            VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
-
-                            $conn->query($myquery);
-                            }
-                        ?>
-                    </span>
-                </div>
-            </div>
             <div class="col panel-blue__text reveal">
                 <div class="grid">
                     <div class="colreveal">
@@ -369,239 +156,39 @@
     <div class="panel-blue mt-3">
         <div class="grid">
             <div class="col panel-blue__dots reveal">
-                <div class="dot" style="background: url(../../immagini/rossetto.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip"><br>ROSSETTO <br><br>
-                    <?php
-                        $nomep = "rossetto";
+            <?php $sql = "SELECT *
+                    FROM prodotto
+                    WHERE categoria = 'labbra' ";
+                $ris = $conn->query($sql);
+                while ($row = $ris->fetch_assoc()) {
+                    $prodotto = $row['nomep'];
+                    $prezzo = $row['prezzo'];
+                    echo '<div class="dot" style="background: url(../../immagini/'.$prodotto.'.jpg) no-repeat center center; background-size: cover;">
+                <span class="tooltip"><br> '.$prodotto.' <br><br> '.$prezzo.' €
+                <br><br>
+                    <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
+                        <table>
+                            <tr>
+                                <td class="text-quantita"> Quantità:
+                                <td><select name="quantita">
+                                        <option type="number">1</option>
+                                        <option type="number">2</option>
+                                        <option type="number">3</option>
+                                        <option type="number">4</option>
+                                        <option type="number">5</option>
+                                    </select>
+                                </td>
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                        <p><option class="hidden" name="prodotto" value="'.$prodotto.'"></option><input type="submit" name="prodotto" value="Aggiungi al carrello"></p>
+                    </form>
 
-                        $sql = "SELECT prezzo
-                            FROM prodotto
-                            WHERE nomep = '$nomep'";
+                </span>
+            </div>';
+                } ?>
 
-                        $ris = $conn -> query($sql);
-                        $prezzo = $ris -> fetch_assoc();
-                        $prezzo = $prezzo['prezzo'];
-                        echo $prezzo . '€'
-                    ?><br><br>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                            <table>
-                                <tr>
-                                    <td class="text-quantita"> Quantità:
-                                    <td><select name="quantita">
-                                            <option type="number">1</option>
-                                            <option type="number">2</option>
-                                            <option type="number">3</option>
-                                            <option type="number">4</option>
-                                            <option type="number">5</option>
-                                        </select>
-                                    </td>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <p><input type="submit" value="aggiungi al carrello"></p>
-                        </form>
-
-                        <?php
-                            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                            if($conn->connect_error){
-                                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                            }
-
-                            $nomep = "rossetto";
-                            
-                            if($sel == false){
-                                $sql = "SELECT prezzo
-								FROM prodotto
-								WHERE prodotto.nomep = '$nomep'";
-                            $ris=$conn->query($sql);
-                            $prezzo = $ris->fetch_assoc();
-                            $prezzo = $prezzo['prezzo'];
-                            $prezzo = (int)$quantita * (int)$prezzo;
-
-                            $myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
-                            VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
-
-                            $conn->query($myquery);
-                            }
-                        ?>
-                    </span>
-                </div>
-                <div class="dot" style="background: url(../../immagini/lucidalabbra.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip"><br>LUCIDALABBRA <br><br>
-                    <?php
-                        $nomep = "lucidalabbra";
-
-                        $sql = "SELECT prezzo
-                            FROM prodotto
-                            WHERE nomep = '$nomep'";
-
-                        $ris = $conn -> query($sql);
-                        $prezzo = $ris -> fetch_assoc();
-                        $prezzo = $prezzo['prezzo'];
-                        echo $prezzo . '€'
-                    ?><br><br>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                            <table>
-                                <tr>
-                                    <td class="text-quantita"> Quantità:
-                                    <td><select name="quantita">
-                                            <option type="number">1</option>
-                                            <option type="number">2</option>
-                                            <option type="number">3</option>
-                                            <option type="number">4</option>
-                                            <option type="number">5</option>
-                                        </select>
-                                    </td>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <p><input type="submit" value="aggiungi al carrello"></p>
-                        </form>
-
-                        <?php
-                            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                            if($conn->connect_error){
-                                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                            }
-
-                            $nomep = "lucidalabbra";
-                            
-                            if($sel == false){
-                                $sql = "SELECT prezzo
-								FROM prodotto
-								WHERE prodotto.nomep = '$nomep'";
-                            $ris=$conn->query($sql);
-                            $prezzo = $ris->fetch_assoc();
-                            $prezzo = $prezzo['prezzo'];
-                            $prezzo = (int)$quantita * (int)$prezzo;
-
-                            $myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
-                            VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
-
-                            $conn->query($myquery);
-                            }
-                        ?>
-                    </span>
-                </div>
-                <div class="dot" style="background: url(../../immagini/tintalabbra.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip"><br>TINTALABBRA <br><br>
-                    <?php
-                        $nomep = "tintalabbra";
-
-                        $sql = "SELECT prezzo
-                            FROM prodotto
-                            WHERE nomep = '$nomep'";
-
-                        $ris = $conn -> query($sql);
-                        $prezzo = $ris -> fetch_assoc();
-                        $prezzo = $prezzo['prezzo'];
-                        echo $prezzo . '€'
-                    ?><br><br>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                            <table>
-                                <tr>
-                                    <td class="text-quantita"> Quantità:
-                                    <td><select name="quantita">
-                                            <option type="number">1</option>
-                                            <option type="number">2</option>
-                                            <option type="number">3</option>
-                                            <option type="number">4</option>
-                                            <option type="number">5</option>
-                                        </select>
-                                    </td>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <p><input type="submit" value="aggiungi al carrello"></p>
-                        </form>
-
-                        <?php
-                            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                            if($conn->connect_error){
-                                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                            }
-
-                            $nomep = "tintalabbra";
-                            
-                            if($sel == false){
-                                $sql = "SELECT prezzo
-								FROM prodotto
-								WHERE prodotto.nomep = '$nomep'";
-                            $ris=$conn->query($sql);
-                            $prezzo = $ris->fetch_assoc();
-                            $prezzo = $prezzo['prezzo'];
-                            $prezzo = (int)$quantita * (int)$prezzo;
-
-                            $myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
-                            VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
-
-                            $conn->query($myquery);
-                            }
-                        ?>
-                    </span>
-                </div>
-                <div class="dot" style="background: url(../../immagini/burrocacao.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip"><br>BURROCACAO <br><br>
-                    <?php
-                        $nomep = "burrocacao";
-
-                        $sql = "SELECT prezzo
-                            FROM prodotto
-                            WHERE nomep = '$nomep'";
-
-                        $ris = $conn -> query($sql);
-                        $prezzo = $ris -> fetch_assoc();
-                        $prezzo = $prezzo['prezzo'];
-                        echo $prezzo . '€'
-                    ?><br><br>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                            <table>
-                                <tr>
-                                    <td class="text-quantita"> Quantità:
-                                    <td><select name="quantita">
-                                            <option type="number">1</option>
-                                            <option type="number">2</option>
-                                            <option type="number">3</option>
-                                            <option type="number">4</option>
-                                            <option type="number">5</option>
-                                        </select>
-                                    </td>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <p><input type="submit" value="aggiungi al carrello"></p>
-                        </form>
-
-                        <?php
-                            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                            if($conn->connect_error){
-                                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                            }
-
-                            $nomep = "burrocacao";
-                            
-                            if($sel == false){
-                                $sql = "SELECT prezzo
-								FROM prodotto
-								WHERE prodotto.nomep = '$nomep'";
-                            $ris=$conn->query($sql);
-                            $prezzo = $ris->fetch_assoc();
-                            $prezzo = $prezzo['prezzo'];
-                            $prezzo = (int)$quantita * (int)$prezzo;
-
-                            $myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
-                            VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
-
-                            $conn->query($myquery);
-                            }
-                        ?>
-                    </span>
-                </div>
-            </div>
             <div class="col panel-blue__text reveal">
                 <div class="grid">
                     <div class="colreveal">
@@ -621,239 +208,39 @@
     <div class="panel-blue mt-3">
         <div class="grid">
             <div class="col panel-blue__dots reveal">
-                <div class="dot" style="background: url(../../immagini/mascara.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip"><br>MASCARA <br><br>
-                    <?php
-                        $nomep = "mascara";
+            <?php $sql = "SELECT *
+                    FROM prodotto
+                    WHERE categoria = 'occhi' ";
+                $ris = $conn->query($sql);
+                while ($row = $ris->fetch_assoc()) {
+                    $prodotto = $row['nomep'];
+                    $prezzo = $row['prezzo'];
+                    echo '<div class="dot" style="background: url(../../immagini/'.$prodotto.'.jpg) no-repeat center center; background-size: cover;">
+                <span class="tooltip"><br> '.$prodotto.' <br><br> '.$prezzo.' €
+                <br><br>
+                    <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
+                        <table>
+                            <tr>
+                                <td class="text-quantita"> Quantità:
+                                <td><select name="quantita">
+                                        <option type="number">1</option>
+                                        <option type="number">2</option>
+                                        <option type="number">3</option>
+                                        <option type="number">4</option>
+                                        <option type="number">5</option>
+                                    </select>
+                                </td>
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                        <p><option class="hidden" name="prodotto" value="'.$prodotto.'"></option><input type="submit" name="prodotto" value="Aggiungi al carrello"></p>
+                    </form>
 
-                        $sql = "SELECT prezzo
-                            FROM prodotto
-                            WHERE nomep = '$nomep'";
+                </span>
+            </div>';
+                } ?>
 
-                        $ris = $conn -> query($sql);
-                        $prezzo = $ris -> fetch_assoc();
-                        $prezzo = $prezzo['prezzo'];
-                        echo $prezzo . '€'
-                    ?><br><br>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                            <table>
-                                <tr>
-                                    <td class="text-quantita"> Quantità:
-                                    <td><select name="quantita">
-                                            <option type="number">1</option>
-                                            <option type="number">2</option>
-                                            <option type="number">3</option>
-                                            <option type="number">4</option>
-                                            <option type="number">5</option>
-                                        </select>
-                                    </td>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <p><input type="submit" value="aggiungi al carrello"></p>
-                        </form>
-
-                        <?php
-                            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                            if($conn->connect_error){
-                                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                            }
-
-                            $nomep = "mascara";
-                            
-                            if($sel == false){
-                                $sql = "SELECT prezzo
-								FROM prodotto
-								WHERE prodotto.nomep = '$nomep'";
-                            $ris=$conn->query($sql);
-                            $prezzo = $ris->fetch_assoc();
-                            $prezzo = $prezzo['prezzo'];
-                            $prezzo = (int)$quantita * (int)$prezzo;
-
-                            $myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
-                            VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
-
-                            $conn->query($myquery);
-                            }
-                        ?>
-                    </span>
-                </div>
-                <div class="dot" style="background: url(../../immagini/ombretto.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip"><br>OMBRETTO <br><br>
-                    <?php
-                        $nomep = "ombretto";
-
-                        $sql = "SELECT prezzo
-                            FROM prodotto
-                            WHERE nomep = '$nomep'";
-
-                        $ris = $conn -> query($sql);
-                        $prezzo = $ris -> fetch_assoc();
-                        $prezzo = $prezzo['prezzo'];
-                        echo $prezzo . '€'
-                    ?><br><br>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                            <table>
-                                <tr>
-                                    <td class="text-quantita"> Quantità:
-                                    <td><select name="quantita">
-                                            <option type="number">1</option>
-                                            <option type="number">2</option>
-                                            <option type="number">3</option>
-                                            <option type="number">4</option>
-                                            <option type="number">5</option>
-                                        </select>
-                                    </td>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <p><input type="submit" value="aggiungi al carrello"></p>
-                        </form>
-
-                        <?php
-                            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                            if($conn->connect_error){
-                                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                            }
-
-                            $nomep = "ombretto";
-                            
-                            if($sel == false){
-                                $sql = "SELECT prezzo
-								FROM prodotto
-								WHERE prodotto.nomep = '$nomep'";
-                            $ris=$conn->query($sql);
-                            $prezzo = $ris->fetch_assoc();
-                            $prezzo = $prezzo['prezzo'];
-                            $prezzo = (int)$quantita * (int)$prezzo;
-
-                            $myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
-                            VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
-
-                            $conn->query($myquery);
-                            }
-                        ?>
-                    </span>
-                </div>
-                <div class="dot" style="background: url(../../immagini/eyeliner.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip"><br>EYELINER <br><br>
-                    <?php
-                        $nomep = "eyeliner";
-
-                        $sql = "SELECT prezzo
-                            FROM prodotto
-                            WHERE nomep = '$nomep'";
-
-                        $ris = $conn -> query($sql);
-                        $prezzo = $ris -> fetch_assoc();
-                        $prezzo = $prezzo['prezzo'];
-                        echo $prezzo . '€'
-                    ?><br><br>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                            <table>
-                                <tr>
-                                    <td class="text-quantita"> Quantità:
-                                    <td><select name="quantita">
-                                            <option type="number">1</option>
-                                            <option type="number">2</option>
-                                            <option type="number">3</option>
-                                            <option type="number">4</option>
-                                            <option type="number">5</option>
-                                        </select>
-                                    </td>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <p><input type="submit" value="aggiungi al carrello"></p>
-                        </form>
-
-                        <?php
-                            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                            if($conn->connect_error){
-                                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                            }
-
-                            $nomep = "eyeliner";
-                            
-                            if($sel == false){
-                                $sql = "SELECT prezzo
-								FROM prodotto
-								WHERE prodotto.nomep = '$nomep'";
-                            $ris=$conn->query($sql);
-                            $prezzo = $ris->fetch_assoc();
-                            $prezzo = $prezzo['prezzo'];
-                            $prezzo = (int)$quantita * (int)$prezzo;
-
-                            $myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
-                            VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
-
-                            $conn->query($myquery);
-                            }
-                        ?>
-                    </span>
-                </div>
-                <div class="dot" style="background: url(../../immagini/matita.jpg) no-repeat center center; background-size: cover;">
-                    <span class="tooltip"><br>MATITA <br><br>
-                    <?php
-                        $nomep = "matita";
-
-                        $sql = "SELECT prezzo
-                            FROM prodotto
-                            WHERE nomep = '$nomep'";
-
-                        $ris = $conn -> query($sql);
-                        $prezzo = $ris -> fetch_assoc();
-                        $prezzo = $prezzo['prezzo'];
-                        echo $prezzo . '€'
-                    ?><br><br>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                            <table>
-                                <tr>
-                                    <td class="text-quantita"> Quantità:
-                                    <td><select name="quantita">
-                                            <option type="number">1</option>
-                                            <option type="number">2</option>
-                                            <option type="number">3</option>
-                                            <option type="number">4</option>
-                                            <option type="number">5</option>
-                                        </select>
-                                    </td>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <p><input type="submit" value="aggiungi al carrello"></p>
-                        </form>
-
-                        <?php
-                            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                            if($conn->connect_error){
-                                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                            }
-
-                            $nomep = "matita";
-                            
-                            if($sel == false){
-                                $sql = "SELECT prezzo
-								FROM prodotto
-								WHERE prodotto.nomep = '$nomep'";
-                            $ris=$conn->query($sql);
-                            $prezzo = $ris->fetch_assoc();
-                            $prezzo = $prezzo['prezzo'];
-                            $prezzo = (int)$quantita * (int)$prezzo;
-
-                            $myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
-                            VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
-
-                            $conn->query($myquery);
-                            }
-                        ?>
-                    </span>
-                </div>
-            </div>
             <div class="col panel-blue__text reveal">
                 <div class="grid">
                     <div class="colreveal">
@@ -909,6 +296,43 @@
             mobile: false,
         });
     </script>
+
+
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+$conn = new mysqli("localhost", "root", "", "negozio_gbg");
+if ($conn->connect_error) {
+    die("<p>Connessione al server non riuscita: " . $conn->connect_error . "</p>");
+}
+
+$nomep = $_POST['prodotto'];
+$quantita = $_POST['quantita'];
+
+$sql = "SELECT prezzo
+		FROM prodotto
+		WHERE prodotto.nomep = '$nomep'";
+$ris = $conn->query($sql);
+$prezzo = $ris->fetch_assoc();
+$prezzo = $prezzo['prezzo'];
+$prezzo = (int)$quantita * (int)$prezzo;
+
+$myquery = "INSERT INTO carrello (username, nomep, quantita, prezzo)
+    VALUES ('$username', '$nomep', '$quantita', '$prezzo')";
+
+$conn->query($myquery);
+
+?>

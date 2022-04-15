@@ -1247,3 +1247,7 @@ h4 {
     margin-top: 40px;
     font-weight: bold;
 }
+
+.hidden {
+    display: none;
+}
