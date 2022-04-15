@@ -69,6 +69,10 @@
             </li>
         </ul>
 
+        <div class="iconacarrello">
+        <a href="pagine/accedi.php"><img src="immagini/iconacarrello.png" alt="immagine non disponibile"></a>
+        </div>
+
         <div class="cta">
             <a href="pagine/accedi.php" class="buttona">Accedi</a>
         </div>
