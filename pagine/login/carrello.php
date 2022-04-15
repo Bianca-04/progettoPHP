@@ -10,12 +10,34 @@
 	
 	$username = $_SESSION["username"];
 
-    if (isset($_POST['nomep'])) $nomep = $_POST["nomep"];
-    else $nomep = "";
+    if (isset($_POST['prodotto'])) $prodotto = $_POST["prodotto"];
+    else $prodotto = "";
     if (isset($_POST['quantita'])) $quantita = $_POST["quantita"];
-    else $quantita = "";
+    else $quantita = 0;
 
     $conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
+
+    
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $sql = "SELECT prezzo
+                FROM prodotto
+                WHERE nomep = '".$prodotto."'";
+        $ris = $conn->query($sql) or die("<p>Query fallita!</p>");
+        
+        $riga = $ris->fetch_assoc();
+        $prezzo = $riga['prezzo'];
+        
+        $sql = "UPDATE carrello
+                SET carrello.quantita = '.$quantita.', carrello.prezzo = '".$quantita * $prezzo."'
+                WHERE nomep = '".$prodotto."'";
+        $conn->query($sql) or die("<p>Query fallita!</p>");
+        
+    }
+
+    
+
+    echo "prodotto: "
 ?>
 
 <!DOCTYPE html>
@@ -82,9 +104,11 @@
 			?>
 			<ol>
 				<?php
+                    echo '<table class = "pcarrello">';
 					foreach($ris as $riga){
-						echo '
-                        <table class = "pcarrello">
+                        $prodotto = $riga['nomep'];
+                        $prezzo = $riga['prezzo'];
+						echo'
 							<tr>
 								<td> 
 									Nome: '.$riga["nomep"].' <br><br>
@@ -94,15 +118,15 @@
                                     
                                     <td><form action="' . $_SERVER['PHP_SELF'] . '" method="post">
                                     <input class = "quantitacarr" type="number" name="quantita" placeholder="'.$riga["quantita"].'">
-                                    <option class="hidden" name="quantita" value='.$_POST['quantita'].'></option><input type="submit" name="prodotto" value="Modifica"></p>
+                                    <input class="hidden" name="prodotto" value='.$prodotto.' ></input><input type="submit" value="Modifica"></p>
                                     </form>
                                 </td>
                                 <td>
                                     Prezzo: '.$riga["prezzo"].' €
                                 </td>
-							</tr>
-                        </table>';;
+							</tr>';
 					}
+                    echo '</table>';
 				?>
 			</ol>
 		</div>
@@ -111,17 +135,3 @@
 
 </body>
 </html>
-
-
-<?php
-    $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $prodotti = isset($_POST['nomep']) ? $_POST['nomep'] : array();
-            
-                  $sql = "UPDATE carrello
-                          SET carrello.quantita = '.$_POST[quantita].'
-                          WHERE nomep = '".$nomep."'";
-                $conn->query($sql) or die("<p>Query fallita!</p>");
-            
-        }
-?>

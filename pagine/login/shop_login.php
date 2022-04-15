@@ -105,6 +105,7 @@ else $quantita = "";
                 <?php $sql = "SELECT *
                     FROM prodotto
                     WHERE categoria = 'viso' ";
+
                 $ris = $conn->query($sql);
                 while ($row = $ris->fetch_assoc()) {
                     $prodotto = $row['nomep'];
@@ -128,7 +129,7 @@ else $quantita = "";
                             </tr>
                         </table>
                         <br>
-                        <p><option class="hidden" name="prodotto" value="'.$prodotto.'"></option><input type="submit" name="prodotto" value="Aggiungi al carrello"></p>
+                        <p><input class="hidden" name="prodotto" value="'.$prodotto.'"></input><input type="submit" value="Aggiungi al carrello"></p>
                     </form>
 
                 </span>
@@ -181,7 +182,7 @@ else $quantita = "";
                             </tr>
                         </table>
                         <br>
-                        <p><option class="hidden" name="prodotto" value="'.$prodotto.'"></option><input type="submit" name="prodotto" value="Aggiungi al carrello"></p>
+                        <p><input class="hidden" name="prodotto" value="'.$prodotto.'"></input><input type="submit" value="Aggiungi al carrello"></p>
                     </form>
 
                 </span>
@@ -234,7 +235,7 @@ else $quantita = "";
                             </tr>
                         </table>
                         <br>
-                        <p><option class="hidden" name="prodotto" value="'.$prodotto.'"></option><input type="submit" name="prodotto" value="Aggiungi al carrello"></p>
+                        <p><input class="hidden" name="prodotto" value="'.$prodotto.'"></input><input type="submit" value="Aggiungi al carrello"></p>
                     </form>
 
                 </span>

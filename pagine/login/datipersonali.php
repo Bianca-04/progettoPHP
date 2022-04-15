@@ -23,7 +23,7 @@
 			$modifica = false;
 		}
 
-		if ($modifica == false){
+		if ($modifica == true){
 			$sql = "UPDATE utenti
 					SET password = '".$_POST["password"]."', 
 						nome = '".$_POST["nome"]."', 
