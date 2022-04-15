@@ -23,8 +23,6 @@ if (isset($_POST["prezzo"])) $prezzo = $_POST["prezzo"];
 else $prezzo = "";
 if (isset($_POST["quantita"])) $quantita = $_POST["quantita"];
 else $quantita = "";
-if (isset($_POST["sel"])) $sel = $_POST["sel"];
-else $sel = "";
 ?>
 
 <!DOCTYPE html>
@@ -149,6 +147,7 @@ else $sel = "";
             </div>
         </div>
     </div>
+    </div>
 
     <div class="spazio"></div>
 
@@ -200,6 +199,7 @@ else $sel = "";
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="spazio"></div>
@@ -253,6 +253,7 @@ else $sel = "";
             </div>
         </div>
     </div>
+    </div>
 
     <!--sistemare questo-->
     <div class="spazio"></div>
@@ -301,17 +302,6 @@ else $sel = "";
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
 $conn = new mysqli("localhost", "root", "", "negozio_gbg");

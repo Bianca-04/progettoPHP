@@ -1251,3 +1251,16 @@ h4 {
 .hidden {
     display: none;
 }
+
+.pcarrello {
+    width: 750px;
+}
+
+.pcarrello td {
+    width: 250px;
+}
+
+.quantitacarr {
+    width: 40px;
+    margin-left: 10px;
+}

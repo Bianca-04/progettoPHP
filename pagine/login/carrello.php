@@ -9,19 +9,13 @@
 	}
 	
 	$username = $_SESSION["username"];
-	//echo $username;
 
-	$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		$prodotti = isset($_POST['nomep']) ? $_POST['nomep'] : array();
-		foreach($prodotti as $prodotto) {
-  			//echo $libro . '<br/>';
-  			$sql = "UPDATE prodotto
-  					SET utente.username = '".$username."'
-  					WHERE nomep = '".$prodotto."'";
-			$conn->query($sql) or die("<p>Query fallita!</p>");
-		}
-	}
+    if (isset($_POST['nomep'])) $nomep = $_POST["nomep"];
+    else $nomep = "";
+    if (isset($_POST['quantita'])) $quantita = $_POST["quantita"];
+    else $quantita = "";
+
+    $conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
 ?>
 
 <!DOCTYPE html>
@@ -89,14 +83,27 @@
 			<ol>
 				<?php
 					foreach($ris as $riga){
-						echo "
+						echo '
+                        <table class = "pcarrello">
 							<tr>
 								<td> 
-									".$riga["nomep"]." - ".$riga["quantita"]." ".$riga["prezzo"]."
+									Nome: '.$riga["nomep"].' <br><br>
 								</td>
-							</tr>";
+                                <td colspan = 2>
+                                    Quantità:
+                                    
+                                    <td><form action="' . $_SERVER['PHP_SELF'] . '" method="post">
+                                    <input class = "quantitacarr" type="number" name="quantita" placeholder="'.$riga["quantita"].'">
+                                    <option class="hidden" name="quantita" value='.$_POST['quantita'].'></option><input type="submit" name="prodotto" value="Modifica"></p>
+                                    </form>
+                                </td>
+                                <td>
+                                    Prezzo: '.$riga["prezzo"].' €
+                                </td>
+							</tr>
+                        </table>';;
 					}
-				?>		
+				?>
 			</ol>
 		</div>
 			
@@ -104,3 +111,17 @@
 
 </body>
 </html>
+
+
+<?php
+    $conn = new mysqli("localhost", "root", "", "negozio_gbg");
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $prodotti = isset($_POST['nomep']) ? $_POST['nomep'] : array();
+            
+                  $sql = "UPDATE carrello
+                          SET carrello.quantita = '.$_POST[quantita].'
+                          WHERE nomep = '".$nomep."'";
+                $conn->query($sql) or die("<p>Query fallita!</p>");
+            
+        }
+?>
