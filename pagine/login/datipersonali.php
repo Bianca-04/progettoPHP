@@ -41,33 +41,9 @@
 			}
 		}
 	}
-
-	/*
-	//secondo esempio
-	$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
-	$modifica = false;
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		if($_POST["modifica"]==true) {
-			$modifica = true;
-		} else {
-			$sql = "UPDATE utenti
-					SET password = '".$_POST["password"]."', 
-						nome = '".$_POST["nome"]."', 
-						cognome = '".$_POST["cognome"]."', 
-						email = '".$_POST["email"]."', 
-						telefono = '".$_POST["telefono"]."', 
-						comune = '".$_POST["comune"]."', 
-						via = '".$_POST["via"]."' 
-						civico = '".$_POST["civico"]."'
-					WHERE username = '".$username."'";
-			if($conn->query($sql) === true) {
-				//echo "Record updated successfully";
-			} else {
-				echo "Error updating record: " . $conn->error;
-			}
-		}
-	}*/
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>

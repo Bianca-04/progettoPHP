@@ -1,23 +1,53 @@
 <?php
-	session_start();
-	//echo session_id();
+session_start();
+//echo session_id();
 
-	require('../../data/connessione_database.php');
+require('../../data/connessione_database.php');
 
-	if(!isset($_SESSION['username'])){
-		header('location: ../index.php');
-	}
-	
-	$username = $_SESSION["username"];
+if (!isset($_SESSION['username'])) {
+    header('location: ../../home.php');
+}
 
-    if (isset($_POST['prodotto'])) $prodotto = $_POST["prodotto"];
-    else $prodotto = "";
-    if (isset($_POST['elimina'])) $elimina = $_POST["elimina"];
-    else $elimina = "";
-    if (isset($_POST['quantita'])) $quantita = $_POST["quantita"];
-    else $quantita = 0;
+$username = $_SESSION["username"];
 
-    $conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
+if (isset($_POST["prodotto"])) $prodotto = $_POST["prodotto"];
+else $prodotto = "";
+if (isset($_POST["prosegui"])) $prosegui = $_POST["prosegui"];
+else $prosegui = "";
+if (isset($_POST["vindirizzo"]))  $vindirizzo = $_POST["vindirizzo"];
+else $vindirizzo = "";
+
+// if ($prosegui = $_POST["prosegui"]) {
+//     header('URL=compra.php #indirizzo');
+// }
+
+$conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
+
+$sql = "SELECT comune, via, civico
+        FROM utente
+        WHERE username = '" . $username . "' ";
+$ris = $conn->query($sql) or die("<p>Query fallita</p>");
+$indirizzo = $ris->fetch_assoc();
+$comune = $indirizzo["comune"];
+$via = $indirizzo["via"];
+$civico = $indirizzo['civico'];
+
+
+if ($subindirizzo = $_POST["subindirizzo"]) {
+    $sql = "UPDATE utente
+            SET comune = '" . $_POST["comune"] . "', 
+                via = '" . $_POST["via"] . "', 
+                civico = '" . $_POST["civico"] . "'
+            WHERE username = '" . $username . "'";
+    $conn->query($sql);
+
+    $comune = $_POST["comune"];
+    $via = $indirizzo["via"];
+    $civico = $indirizzo['civico'];
+}
+
+$vindirizzo = false;
+echo "ciao CIAO". "$vindirizzo";
 ?>
 
 
@@ -113,10 +143,11 @@
         });
     </script>
 
-<br<br><h3 class="big-text" style="margin-top: 100px;">I PRODOTTI NEL <br> TUO CARRELLO</h3>
+    <br<br>
+        <h3 class="big-text" style="margin-top: 100px;">IL TUO ORDINE</h3>
 
-<div class="prodottisel">
-        <?php
+        <div class="prodottisel">
+            <?php
             $sql = "SELECT carrello.nomep, carrello.quantita, carrello.prezzo
                     FROM carrello
                     WHERE carrello.username='$username'";
@@ -124,45 +155,71 @@
             if ($ris->num_rows == 0) {
                 echo "<p style='text-align:center'>Non hai aggiunto nessun prodotto";
             }
-        ?>
-        <ol>
-            <?php
+            ?>
+            <ol>
+                <?php
                 echo '<table class = "pcarrello">';
-                foreach($ris as $riga){
+                foreach ($ris as $riga) {
                     $prodotto = $riga['nomep'];
-                    $elimina = $riga['nomep'];
-                    $prezzo = $riga['prezzo'];
-                    echo'
+                    echo '
                         <tr>
                             <td> 
-                                Nome: '.$riga["nomep"].' <br><br>
-                            </td>
-                            <td colspan = 3>
-                                Quantità:
-                                
-                                <td><form action="' . $_SERVER['PHP_SELF'] . '" method="post">
-                                <input class = "quantitacarr" type="number" name="quantita" value="'.$riga["quantita"].'">
-                                <input class="hidden" name="prodotto" value='.$prodotto.' ></input><input type="submit" value="Modifica"></p>
-                                </form>
+                                Nome: ' . $riga["nomep"] . ' <br><br>
                             </td>
                             <td>
-                                Prezzo: '.$riga["prezzo"].' €
+                                Quantità: ' . $riga["quantita"] . '
                             </td>
-                            <td class= "eliminacarr">                                    
-                                <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
-                                <input class="hidden" name="elimina" value='.$elimina.' ></input><input type="submit" value="Elimina"></p>
-                                </form>
+                            <td>
+                                Prezzo: ' . $riga["prezzo"] . ' €
                             </td>
                         </tr>';
                 }
                 echo '</table>
-                
-                <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
-                    <input class = "compracarr" type="submit" name= "compra" value="Compra"></p>
+                    <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
+                    <input class = "compracarr" type="submit" name= "compra" value="PROSEGUI">
                 </form>';
+
+                ?>
+            </ol>
+        </div>
+
+        <br<br>
+            <h2 class="normal-text" style="margin-top: 100px;">CONFERMA IL TUO INDIRIZZO</h2><br><br>
+            <?php
+            if ($comune == "" or $via == "" or $civico == NULL or $civico == 0) {
+                echo 'Inserisci a quale indirizzo sarà destinato il tuo ordine
+                <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
+                        <table class="form_modificadati">
+                            <tr>
+                                <td>Comune:</td> <td><input type="text" class="input_datipersonali" name="comune" value="' . $comune . '" placeholder="' . $comune . '"></td>
+                            </tr>
+                            <tr>
+                                <td>Via:</td> <td><input type="text" class="input_datipersonali" name="via" value="' . $via . '"></td>
+                            </tr>
+                            <tr>
+                                <td>Civico:</td> <td><input type="number" class="input_datipersonali" name="civico" value="' . $civico . '"></td>
+                            </tr>
+                        </table><br>
+                        <input type="submit" name= "subindirizzo" value="CONFERMA"></input>';
+            } else {
+                echo "<form  style='text-align: center' action=" . $_SERVER['PHP_SELF'] . " method='post'>
+                    <table>
+                        <td colspan='3'>
+                            Vuoi che il tuo ordine venga inviato all indirizzo gia registrato?
+                            Si <input type='radio' name='vindirizzo' value='Si'>
+                            No <input type='radio' name='vindirizzo' value='No'>
+                        </td>
+                        </table>
+                ";
+                // mettere sta roba sopra al centro
+                if($_POST["vindirizzo"] == 'No'){
+                    echo "bella";
+                } else {
+                    echo "no";
+                }
+            }
             ?>
-        </ol>
-    </div>
+
 
 </html>
 

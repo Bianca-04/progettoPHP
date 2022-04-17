@@ -18,13 +18,11 @@
     else $quantita = 0;
 
     $conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
-
-    
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT prezzo
                 FROM prodotto
-                WHERE nomep = '".$prodotto."'";
+                WHERE nomep = '.$prodotto.'";
         $ris = $conn->query($sql) or die("<p>Query fallita!</p>");
         
         $riga = $ris->fetch_assoc();
@@ -41,7 +39,6 @@
         $conn->query($sql) or die("<p>Query fallita!</p>");
         
         if($compra = $_POST["compra"]){
-            echo "ciao";
             header('Refresh: 0; URL=compra.php');
         }
     }
