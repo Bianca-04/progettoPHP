@@ -1,10 +1,20 @@
 <?php
 	session_start();
 
+    error_reporting(E_ALL ^ E_WARNING); 
+
 	require('../data/connessione_database.php');
     if (isset($_POST["cerca"])) $cerca = $_POST["cerca"];
     else $cerca = "";
+    if (isset($_POST["trovato"])) $trovato = $_POST["trovato"];
+    else $trovato = "";
+    if (isset($_POST["input"])) $input = $_POST["input"];
+    else $input = "";
+
     $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
+
+    if($conn->connect_error){
+        die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");}
 ?>
 
 <!DOCTYPE html>
@@ -80,30 +90,43 @@
             <h3 class="big-text reveal">CIAO, HAI BISOGNO DI AIUTO?</h3>
             <div class="ricerca reveal">
                 <ul><form action = "<?php $_SERVER['PHP_SELF'] ?>" method = "post">
-                    <input type="text" name="cerca" placeholder="cosa cerchi?"></ul>
-                    <button>search</button>
+                    <input type="text" name="cerca" placeholder="cosa cerchi?"></input></ul>
+                    <input type="submit" name="input" value="CERCA"></input>
                     </form>
-        <?php 
-            $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-            if($conn->connect_error){
-                die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");}
-            
-            $cerca = $_POST['cerca'];
-            $sql = "SELECT nomep
-                    FROM prodotto
-                    WHERE nomep LIKE '%$cerca%'";
-                    $ris=$conn->query($sql);
-                    $cerca = $ris->fetch_assoc();
-                    $cerca = $cerca['cerca'];
-                    echo $cerca;
-        ?>
-
-
-
-
-
             </div>
         </div>
+        <?php
+            $sql = "SELECT nomep
+                    FROM prodotto
+                    WHERE nomep = '$cerca'";
+            $ris=$conn->query($sql);
+            $trovato = $ris->fetch_assoc();
+            if($trovato['nomep'] != $cerca){
+                echo "<div class='asstesto reveal'>
+                    Il prodotto cercato non è presente nel nostro negozio 
+                    </div>";
+            } else $trovato = $trovato['nomep'];
+        
+                    
+            $sql = "SELECT categoria
+                    FROM prodotto
+                    WHERE nomep = '$trovato'";
+            $ris=$conn->query($sql);
+            $categoria = $ris->fetch_assoc();
+            $categoria = $categoria['categoria'];
+        
+            if("$categoria" == "labbra" AND $input = $_POST['input']){
+                header('Refresh: 0 URL=shop.php #labbra');
+            }
+        
+            if("$categoria" == "occhi" AND $input = $_POST['input']){
+                header('Refresh: 0 URL=shop.php #occhi');
+            }
+        
+            if("$categoria" == "viso" AND $input = $_POST['input']){
+                header('Refresh: 0 URL=shop.php #viso');
+            }  
+        ?>
         <video autoplay muted loop id="videoassistenza">
             <source src="../immagini/videoassistenza.mp4" type="video/mp4">
           </video>

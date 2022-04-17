@@ -45,7 +45,7 @@
         </ul>
 
         <div class="iconacarrello">
-        <a href="pagine/accedi.php"><img src="immagini/iconacarrello.png" alt="immagine non disponibile"></a>
+        <a href="pagine/accedi.php"><img src="../immagini/iconacarrello.png" alt="immagine non disponibile"></a>
         </div>
 
         <div class="cta">

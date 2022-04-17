@@ -12,6 +12,8 @@
 
     if (isset($_POST['prodotto'])) $prodotto = $_POST["prodotto"];
     else $prodotto = "";
+    if (isset($_POST['elimina'])) $elimina = $_POST["elimina"];
+    else $elimina = "";
     if (isset($_POST['quantita'])) $quantita = $_POST["quantita"];
     else $quantita = 0;
 
@@ -30,14 +32,20 @@
         
         $sql = "UPDATE carrello
                 SET carrello.quantita = '.$quantita.', carrello.prezzo = '".$quantita * $prezzo."'
-                WHERE nomep = '".$prodotto."'";
+                WHERE nomep = '".$prodotto."' AND carrello.username='$username'";
         $conn->query($sql) or die("<p>Query fallita!</p>");
         
+        $sql = "DELETE carrello.*
+                FROM carrello
+                WHERE nomep = '".$elimina."' AND carrello.username='$username'"; 
+        $conn->query($sql) or die("<p>Query fallita!</p>");
+        
+        if($compra = $_POST["compra"]){
+            echo "ciao";
+            header('Refresh: 0; URL=compra.php');
+        }
     }
 
-    
-
-    echo "prodotto: "
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +98,7 @@
         </div>
     </div>
 
-    <br<br><h3 class="big-text" style="margin-top: 100px;">I PRODOTTI NEL TUO CARRELLO</h3>
+    <br<br><h3 class="big-text" style="margin-top: 100px;">I PRODOTTI NEL <br> TUO CARRELLO</h3>
 
     <div class="prodottisel">
 			<?php
@@ -107,26 +115,36 @@
                     echo '<table class = "pcarrello">';
 					foreach($ris as $riga){
                         $prodotto = $riga['nomep'];
+                        $elimina = $riga['nomep'];
                         $prezzo = $riga['prezzo'];
 						echo'
 							<tr>
 								<td> 
 									Nome: '.$riga["nomep"].' <br><br>
 								</td>
-                                <td colspan = 2>
+                                <td colspan = 3>
                                     Quantità:
                                     
                                     <td><form action="' . $_SERVER['PHP_SELF'] . '" method="post">
-                                    <input class = "quantitacarr" type="number" name="quantita" placeholder="'.$riga["quantita"].'">
+                                    <input class = "quantitacarr" type="number" name="quantita" value="'.$riga["quantita"].'">
                                     <input class="hidden" name="prodotto" value='.$prodotto.' ></input><input type="submit" value="Modifica"></p>
                                     </form>
                                 </td>
                                 <td>
                                     Prezzo: '.$riga["prezzo"].' €
                                 </td>
+                                <td class= "eliminacarr">                                    
+                                    <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
+                                    <input class="hidden" name="elimina" value='.$elimina.' ></input><input type="submit" value="Elimina"></p>
+                                    </form>
+                                </td>
 							</tr>';
 					}
-                    echo '</table>';
+                    echo '</table>
+                    
+                    <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
+                        <input class = "compracarr" type="submit" name= "compra" value="Compra"></p>
+                    </form>';
 				?>
 			</ol>
 		</div>

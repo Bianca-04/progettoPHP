@@ -1,21 +1,24 @@
 <?php
     session_start();
-
+    error_reporting(E_ALL ^ E_WARNING);
     require('../../data/connessione_database.php');
 
     if(!isset($_SESSION['username'])){
         header('location: ../account.php');
     }
 
-    // if( $_SESSION["tipologia"]!="utenti"){ //controlla che siano utenti altrimenti da il logout
-	//     header('location: logout.php');
-	// }
-
     $username = $_SESSION['username'];
     $conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
-    // if($_SERVER["REQUEST METHOD"] == "POST"){
 
-    // }
+    if (isset($_POST["cerca"])) $cerca = $_POST["cerca"];
+    else $cerca = "";
+    if (isset($_POST["trovato"])) $trovato = $_POST["trovato"];
+    else $trovato = "";
+    if (isset($_POST["input"])) $input = $_POST["input"];
+    else $input = "";
+
+    if($conn->connect_error){
+        die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");}
 
 ?>
 
@@ -91,15 +94,48 @@
         });
     </script>
 
-    <div class="videoassistenza">
+<div class="videoassistenza">
         <div class="videoassistenza_content">
             <h3 class="big-text reveal">CIAO, HAI BISOGNO DI AIUTO?</h3>
             <div class="ricerca reveal">
-                <ul><input type="text" name="" placeholder="cosa cerchi?"></ul>
-                <button>search</button>
-
+                <ul><form action = "<?php $_SERVER['PHP_SELF'] ?>" method = "post">
+                    <input type="text" name="cerca" placeholder="cosa cerchi?"></input></ul>
+                    <input type="submit" name="input" value="CERCA"></input>
+                    </form>
             </div>
         </div>
+        <?php
+            $sql = "SELECT nomep
+                    FROM prodotto
+                    WHERE nomep = '$cerca'";
+            $ris=$conn->query($sql);
+            $trovato = $ris->fetch_assoc();
+            if($trovato['nomep'] != $cerca){
+                echo "<div class='asstesto reveal'>
+                    Il prodotto cercato non è presente nel nostro negozio 
+                    </div>";
+            } else $trovato = $trovato['nomep'];
+        
+                    
+            $sql = "SELECT categoria
+                    FROM prodotto
+                    WHERE nomep = '$trovato'";
+            $ris=$conn->query($sql);
+            $categoria = $ris->fetch_assoc();
+            $categoria = $categoria['categoria'];
+        
+            if("$categoria" == "labbra" AND $input = $_POST['input']){
+                header('Refresh: 0 URL=shop_login.php #labbra');
+            }
+        
+            if("$categoria" == "occhi" AND $input = $_POST['input']){
+                header('Refresh: 0 URL=shop_login.php #occhi');
+            }
+        
+            if("$categoria" == "viso" AND $input = $_POST['input']){
+                header('Refresh: 0 URL=shop_login.php #viso');
+            }  
+        ?>
         <video autoplay muted loop id="videoassistenza">
             <source src="../../immagini/videoassistenza.mp4" type="video/mp4">
           </video>

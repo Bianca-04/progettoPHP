@@ -1257,10 +1257,24 @@ h4 {
 }
 
 .pcarrello td {
-    width: 250px;
+    width: 200px;
 }
 
 .quantitacarr {
     width: 40px;
     margin-left: 10px;
+}
+
+.compracarr {
+    align: center;
+    text-align: center;
+    align-items: center;
+    width: 100px;
+}
+
+.asstesto {
+    padding-top: 180px;
+    margin-left: 100px;
+    color: burlywood;
+    z-index: 1;
 }
