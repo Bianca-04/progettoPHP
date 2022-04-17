@@ -5,7 +5,7 @@
 	require('../../data/connessione_database.php');
 
 	if(!isset($_SESSION['username'])){
-		header('location: ../index.php');
+		header('location: ../home.php');
 	}
 
 	$username = $_SESSION["username"];
@@ -23,16 +23,16 @@
 			$modifica = false;
 		}
 
-		if ($modifica == true){
-			$sql = "UPDATE utenti
+		if ($modifica == false){
+			$sql = "UPDATE utente
 					SET password = '".$_POST["password"]."', 
 						nome = '".$_POST["nome"]."', 
 						cognome = '".$_POST["cognome"]."', 
 						email = '".$_POST["email"]."', 
 						telefono = '".$_POST["telefono"]."', 
 						comune = '".$_POST["comune"]."', 
-						via = '".$_POST["via"]."' 
-                        civico = '".$_POST["civico"]."',
+						via = '".$_POST["via"]."', 
+                        civico = '".$_POST["civico"]."'
 					WHERE username = '".$username."'";
 			if($conn->query($sql) === true) {
 				//echo "Record updated successfully";
@@ -131,9 +131,8 @@
 			$sql = "SELECT username, password, nome, cognome, email, telefono, comune, via, civico 
 				FROM utente
 				WHERE username='".$username."'";
-			//echo $sql;
+			
 			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
-			// $row = $ris->fetch_array(MYSQLI_ASSOC);
 			$row = $ris->fetch_assoc();
 		?>
 
@@ -155,7 +154,7 @@
 					<td>Email:</td> <td><input type="text" class="input_datipersonali" name="email" value="<?php echo $row["email"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
 				</tr>
 				<tr>
-					<td>Telefono:</td> <td><input type="text" class="input_datipersonali" name="telefono" value="<?php echo $row["telefono"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+					<td>Telefono:</td> <td><input type="number" class="input_datipersonali" name="telefono" value="<?php echo $row["telefono"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
 				</tr>
 				<tr>
 					<td>Comune:</td> <td><input type="text" class="input_datipersonali" name="comune" value="<?php echo $row["comune"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
@@ -164,12 +163,12 @@
 					<td>Via:</td> <td><input type="text" class="input_datipersonali" name="via" value="<?php echo $row["via"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
 				</tr>
                 <tr>
-					<td>Civico:</td> <td><input type="text" class="input_datipersonali" name="civico" value="<?php echo $row["civico"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+					<td>Civico:</td> <td><input type="number" class="input_datipersonali" name="civico" value="<?php echo $row["civico"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
 				</tr>
 			</table>
 			<br><br>
 			<p style="text-align: center">
-				<input type="submit" name="pulsante_modifica" value="<?php if($modifica==false) echo $strmodifica; else echo $strconferma; ?>">
+				<input type="submit" name="pulsante_modifica" value="<?php if($modifica==false) echo "$strmodifica"; else echo "$strconferma"; ?>">
 			</p>
 		</form>	
 	</div>	
