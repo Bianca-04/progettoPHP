@@ -22,17 +22,18 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT prezzo
                 FROM prodotto
-                WHERE nomep = '.$prodotto.'";
+                WHERE nomep = '$prodotto'";
         $ris = $conn->query($sql) or die("<p>Query fallita!</p>");
         
         $riga = $ris->fetch_assoc();
         $prezzo = $riga['prezzo'];
+        echo "ciao".$prezzo;
         
         $sql = "UPDATE carrello
                 SET carrello.quantita = '.$quantita.', carrello.prezzo = '".$quantita * $prezzo."'
                 WHERE nomep = '".$prodotto."' AND carrello.username='$username'";
         $conn->query($sql) or die("<p>Query fallita!</p>");
-        
+
         $sql = "DELETE carrello.*
                 FROM carrello
                 WHERE nomep = '".$elimina."' AND carrello.username='$username'"; 

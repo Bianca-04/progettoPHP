@@ -1,3 +1,26 @@
+<?php
+	session_start();
+	//echo session_id();
+
+	require('../../data/connessione_database.php');
+
+	if(!isset($_SESSION['username'])){
+		header('location: ../index.php');
+	}
+	
+	$username = $_SESSION["username"];
+
+    if (isset($_POST['prodotto'])) $prodotto = $_POST["prodotto"];
+    else $prodotto = "";
+    if (isset($_POST['elimina'])) $elimina = $_POST["elimina"];
+    else $elimina = "";
+    if (isset($_POST['quantita'])) $quantita = $_POST["quantita"];
+    else $quantita = 0;
+
+    $conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,6 +77,55 @@
             <span></span>
         </div>
     </div>
+
+    <br<br><h3 class="big-text" style="margin-top: 100px;">ACQUISTI FATTI</h3>
+	
+    <?php
+        $sql = "SELECT DISTINCT compra.data
+                FROM compra
+                WHERE compra.username='$username'";
+        $ris = $conn->query($sql) or die("<p>Query fallita!</p>");
+        $data = $ris -> fetch_assoc();
+        $data = $data['data'];
+        if ($ris->num_rows == 0) {
+            echo "<p style='text-align:center'>Non hai ancora acquistato niente";
+        }
+	?>
+			<ol>
+				<?php
+                    foreach($ris as $riga){
+                        echo '<div class="prodottisel">
+                        <br>Acquisto eseguito in data: ' .$riga['data'].'<br><br>
+                        <table class = "pcarrello">';
+
+                        $sql = "SELECT compra.nomep, compra.quantita, compra.prezzo
+                        FROM compra
+                        WHERE compra.username='$username' AND compra.data = '$riga[data]'";
+                        $ris = $conn->query($sql) or die("<p>Query fallita!</p>");
+                        if ($ris->num_rows == 0) {
+                            echo "<p style='text-align:center'>Non hai ancora acquistato niente";
+                        }
+                        foreach($ris as $riga){
+                            $prodotto = $riga['nomep'];
+                            $elimina = $riga['nomep'];
+                            $prezzo = $riga['prezzo'];
+                            echo'
+                                <tr>
+                                    <td> 
+                                        Nome: '.$riga["nomep"].' <br><br>
+                                    </td>
+                                    <td>
+                                        Quantità: '.$riga["quantita"].'
+                                    </td>
+                                    <td>
+                                        Prezzo: '.$riga["prezzo"].' €
+                                    </td>';
+                        }
+                        echo '</table><br></div>';
+                    }
+				?>
+			</ol>
+
     
 </body>
 </html>

@@ -4,9 +4,9 @@ session_start();
 
 require('../../data/connessione_database.php');
 
-if (!isset($_SESSION['username'])) {
-    header('location: ../../home.php');
-}
+// if (!isset($_SESSION['username'])) {
+//     header('location: ../../home.php');
+// }
 
 $username = $_SESSION["username"];
 
@@ -14,12 +14,13 @@ if (isset($_POST["prodotto"])) $prodotto = $_POST["prodotto"];
 else $prodotto = "";
 if (isset($_POST["prosegui"])) $prosegui = $_POST["prosegui"];
 else $prosegui = "";
-if (isset($_POST["vindirizzo"]))  $vindirizzo = $_POST["vindirizzo"];
+if (isset($_POST["vindirizzo"])) $vindirizzo = $_POST["vindirizzo"];
 else $vindirizzo = "";
+if (isset($_POST["aggiungiac"])) $aggiungiac = $_POST["aggiungiac"];
+else $aggiungiac = "";
+if (isset($_POST['elimina'])) $elimina = $_POST["elimina"];
+else $elimina = "";
 
-// if ($prosegui = $_POST["prosegui"]) {
-//     header('URL=compra.php #indirizzo');
-// }
 
 $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
 
@@ -46,8 +47,19 @@ if ($subindirizzo = $_POST["subindirizzo"]) {
     $civico = $indirizzo['civico'];
 }
 
-$vindirizzo = false;
-echo "ciao CIAO". "$vindirizzo";
+if ($prosegui = $_POST['prosegui']) {
+    header("location: #prosegui");
+}
+
+if ($aggiungiac = $_POST['aggiungiac']) {
+    header('Refresh: 0; URL=acquistipersonali.php');
+}
+
+// voglio che questo funzioniiiii
+// if($vindirizzo = $_POST['vindirizzo']){
+//     header("location: #linkint");
+//     echo 'href = "#linkint"';
+// }
 ?>
 
 
@@ -175,19 +187,26 @@ echo "ciao CIAO". "$vindirizzo";
                         </tr>';
                 }
                 echo '</table>
-                    <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
-                    <input class = "compracarr" type="submit" name= "compra" value="PROSEGUI">
+                    <tr>PREZZO TOTALE: </tr>';
+                foreach ($ris as $riga) {
+                    $totale = $totale + $riga["prezzo"];
+                }
+                echo $totale;
+                echo '<br><tr><form action="' . $_SERVER['PHP_SELF'] . '" method="post">
+                    <input class = "compracarr" type="submit" name="prosegui" value="PROSEGUI"></tr>
                 </form>';
+                // prosegui dovrebbe mandare sotto
 
                 ?>
             </ol>
         </div>
 
-        <br<br>
-            <h2 class="normal-text" style="margin-top: 100px;">CONFERMA IL TUO INDIRIZZO</h2><br><br>
-            <?php
-            if ($comune == "" or $via == "" or $civico == NULL or $civico == 0) {
-                echo 'Inserisci a quale indirizzo sarà destinato il tuo ordine
+        <br><br><br>
+        <h2 class="normal-text" style="margin-top: 100px;"><a name="prosegui">CONFERMA IL TUO INDIRIZZO</a></h2><br>
+
+        <?php
+        if ($comune == "" or $via == "" or $civico == NULL or $civico == 0) {
+            echo 'Inserisci a quale indirizzo sarà destinato il tuo ordine
                 <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
                         <table class="form_modificadati">
                             <tr>
@@ -201,28 +220,72 @@ echo "ciao CIAO". "$vindirizzo";
                             </tr>
                         </table><br>
                         <input type="submit" name= "subindirizzo" value="CONFERMA"></input>';
-            } else {
-                echo "<form  style='text-align: center' action=" . $_SERVER['PHP_SELF'] . " method='post'>
+        } else {
+            echo "<form  style='text-align: center' action=" . $_SERVER['PHP_SELF'] . " method='post'>
                     <table>
                         <td colspan='3'>
                             Vuoi che il tuo ordine venga inviato all indirizzo gia registrato?
-                            Si <input type='radio' name='vindirizzo' value='Si'>
-                            No <input type='radio' name='vindirizzo' value='No'>
+                            <input class='hidden' type='submit' name='siindirizzo' value='Si'></input> Si <input type='radio' name='vindirizzo' value='Si'></input>
+                            <input class='hidden' type='submit' name='noindirizzo' value='No'></input> No <input type='radio' name='vindirizzo' value='No'></input>
+                            (premere invio dopo aver selezionato)
+                            <br> Comune: " . $comune . " Via: " . $via . " Civico: " . $civico . "
                         </td>
-                        </table>
+                    </table>
                 ";
-                // mettere sta roba sopra al centro
-                if($_POST["vindirizzo"] == 'No'){
-                    echo "bella";
-                } else {
-                    echo "no";
-                }
+
+            // mettere sta roba sopra al centro
+            if ($_POST['vindirizzo'] == "Si" or $_POST['vindirizzo'] == "") {
+            } else {
+                echo 'Inserisci a quale indirizzo sarà destinato il tuo ordine
+                    <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
+                        <table class="form_modificadati">
+                            <tr>
+                                <td>Comune:</td> <td><input type="text" class="input_datipersonali" name="comune" value="' . $comune . '" placeholder="' . $comune . '"></td>
+                            </tr>
+                            <tr>
+                                <td>Via:</td> <td><input type="text" class="input_datipersonali" name="via" value="' . $via . '"></td>
+                            </tr>
+                            <tr>
+                                <td>Civico:</td> <td><input type="number" class="input_datipersonali" name="civico" value="' . $civico . '"></td>
+                            </tr>
+                        </table><br>
+                        <input type="submit" name= "subindirizzo" value="CONFERMA"></input>
+                    </form>';
             }
-            ?>
+            //aggiungo la storia dei punti
+            echo '<br><br><input type="submit" name="aggiungiac" value="ACQUISTA">';
+            //ora deve aggiungere negli acquisti fatti
+        }
+
+        if ($aggiungiac = $_POST['aggiungiac']) {
+            $sql = "SELECT carrello.nomep, carrello.quantita, carrello.prezzo
+                FROM carrello
+                WHERE carrello.username='$username'";
+            $dac = $conn->query($sql) or die("<p>Query fallita!</p>");
+            $dac = $ris->fetch_assoc();
+
+            foreach ($ris as $riga) {
+                $nomep = $riga["nomep"];
+                $quantita = $riga["quantita"];
+                $prezzo = $riga["prezzo"];
+
+                $myquery = "INSERT INTO compra (username, nomep, quantita, prezzo, data)
+                    VALUES ('$username', '$nomep', '$quantita', '$prezzo', SYSDATE())";
+                $conn->query($myquery);
+            }
+
+            $sql = "DELETE carrello.*
+                FROM carrello
+                WHERE carrello.username='$username'"; 
+            $conn->query($sql) or die("<p>Query fallita!</p>");
+        }
+
+        ?>
+
+        <br><br><br><br><br><br><br><br><br><br><br><a name="linkint"></a>
 
 
 </html>
-
 
 <!-- tolgo i form prezzo tot aggiunge 1 punto ogni 10 euro 
 si possono usare i punti che si hanno -> 10 punti sconto del 20 % -> ti chiede se vuoi usarli 

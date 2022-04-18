@@ -1,9 +1,10 @@
 <?php
 	session_start();
 	
-
 	require('../data/connessione_database.php');
     echo session_id();
+
+    error_reporting(E_ALL ^ E_WARNING); 
 
 	// if(isset($_SESSION['username'])){
 	// 	header('location: pagine/home.php');
@@ -27,8 +28,8 @@
 
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
