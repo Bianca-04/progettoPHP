@@ -11,8 +11,8 @@
 	$username = $_SESSION["username"];
 	//echo $username;
 
-	$strmodifica = "Modifica";
-	$strconferma = "Conferma";
+	$strmodifica = "MODIFICA";
+	$strconferma = "CONFERMA";
 
 	$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
 	$modifica = false;
