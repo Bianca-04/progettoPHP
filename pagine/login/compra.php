@@ -4,12 +4,12 @@ session_start();
 
 require('../../data/connessione_database.php');
 
-// if (!isset($_SESSION['username'])) {
-//     header('location: ../../home.php');
-// }
+if (!isset($_SESSION['username'])) {
+    header('location: ../../home.php');
+}
 
 $username = $_SESSION["username"];
-error_reporting(E_ALL ^ E_WARNING);
+// error_reporting(E_ALL ^ E_WARNING);
 
 if (isset($_POST["prodotto"])) $prodotto = $_POST["prodotto"];
 else $prodotto = "";
@@ -59,7 +59,6 @@ if ($aggiungiac = $_POST['aggiungiac']) {
 // voglio che questo funzioniiiii
 // if($vindirizzo = $_POST['vindirizzo']){
 //     header("location: #linkint");
-//     echo 'href = "#linkint"';
 // }
 ?>
 
@@ -188,14 +187,14 @@ if ($aggiungiac = $_POST['aggiungiac']) {
                         </tr>';
                 }
                 echo '</table>
-                    <tr>PREZZO TOTALE: </tr>';
+                    <div  class="pulsanti"><tr>PREZZO TOTALE: </tr>';
                 foreach ($ris as $riga) {
                     $totale = $totale + $riga["prezzo"];
                 }
-                echo $totale;
-                echo '<br><tr><form action="' . $_SERVER['PHP_SELF'] . '" method="post">
+                echo $totale.'€';
+                echo '</div><br><br><tr><div class="pulsanti"><form action="' . $_SERVER['PHP_SELF'] . '" method="post">
                     <input class = "compracarr" type="submit" name="prosegui" value="PROSEGUI"></tr>
-                </form>';
+                </form></div>';
                 // prosegui dovrebbe mandare sotto
 
                 ?>
@@ -258,29 +257,29 @@ if ($aggiungiac = $_POST['aggiungiac']) {
             //ora deve aggiungere negli acquisti fatti
         }
 
+
         if ($aggiungiac = $_POST['aggiungiac']) {
-            $sql = "SELECT carrello.nomep, carrello.quantita, carrello.prezzo
-                FROM carrello
-                WHERE carrello.username='$username'";
-            $dac = $conn->query($sql) or die("<p>Query fallita!</p>");
-            $dac = $ris->fetch_assoc();
+        $sql = "SELECT carrello.nomep, carrello.quantita, carrello.prezzo
+            FROM carrello
+            WHERE carrello.username='$username'";
+        $dac = $conn->query($sql) or die("<p>Query fallita!</p>");
+        $dac = $ris->fetch_assoc();
 
-            foreach ($ris as $riga) {
-                $nomep = $riga["nomep"];
-                $quantita = $riga["quantita"];
-                $prezzo = $riga["prezzo"];
+        foreach ($ris as $riga) {
+            $nomep = $riga["nomep"];
+            $quantita = $riga["quantita"];
+            $prezzo = $riga["prezzo"];
 
-                $myquery = "INSERT INTO compra (username, nomep, quantita, prezzo, data)
-                    VALUES ('$username', '$nomep', '$quantita', '$prezzo', SYSDATE())";
-                $conn->query($myquery);
-            }
-
-            $sql = "DELETE carrello.*
-                FROM carrello
-                WHERE carrello.username='$username'"; 
-            $conn->query($sql) or die("<p>Query fallita!</p>");
+            $myquery = "INSERT INTO compra (username, nomep, quantita, prezzo, data)
+                VALUES ('$username', '$nomep', '$quantita', '$prezzo', SYSDATE())";
+            $conn->query($myquery);
         }
 
+        $sql = "DELETE carrello.*
+            FROM carrello
+            WHERE carrello.username='$username'"; 
+        $conn->query($sql) or die("<p>Query fallita!</p>");
+    }
         ?>
 
         <br><br><br><br><br><br><br><br><br><br><br><a name="linkint"></a>

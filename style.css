@@ -1265,16 +1265,13 @@ h4 {
     margin-left: 10px;
 }
 
-.compracarr {
-    /*align: center;*/
-    text-align: center;
-    align-items: center;
-    width: 100px;
-}
-
 .asstesto {
     padding-top: 180px;
     margin-left: 100px;
     color: burlywood;
     z-index: 1;
+}
+
+.pulsanti {
+    text-align: center;
 }

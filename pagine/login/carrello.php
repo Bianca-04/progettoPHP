@@ -140,9 +140,9 @@
 					}
                     echo '</table>
                     
-                    <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
-                        <input class = "compracarr" type="submit" name= "compra" value="Compra"></p>
-                    </form>';
+                    <div class="pulsanti"><form action="' . $_SERVER['PHP_SELF'] . '" method="post">
+                        <input class = "compracarr" type="submit" name= "compra" value="Compra">
+                    </form></div>';
 				?>
 			</ol>
 		</div>
