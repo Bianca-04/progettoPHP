@@ -1,5 +1,5 @@
 -- --------------------------------------------------------
--- Host:                         127.0.0.1
+-- Host:                         localhost
 -- Versione server:              10.4.21-MariaDB - mariadb.org binary distribution
 -- S.O. server:                  Win64
 -- HeidiSQL Versione:            11.3.0.6295
@@ -23,7 +23,8 @@ DROP TABLE IF EXISTS `carrello`;
 CREATE TABLE IF NOT EXISTS `carrello` (
   `username` char(50) NOT NULL DEFAULT '',
   `nomep` char(50) NOT NULL DEFAULT '',
-  `quantità` int(10) unsigned NOT NULL,
+  `quantita` int(10) unsigned NOT NULL,
+  `prezzo` float unsigned DEFAULT NULL,
   PRIMARY KEY (`username`,`nomep`),
   KEY `FK__prodotto` (`nomep`),
   CONSTRAINT `FK__prodotto` FOREIGN KEY (`nomep`) REFERENCES `prodotto` (`nomep`) ON UPDATE CASCADE,
@@ -32,6 +33,8 @@ CREATE TABLE IF NOT EXISTS `carrello` (
 
 -- Dump dei dati della tabella negozio_gbg.carrello: ~0 rows (circa)
 /*!40000 ALTER TABLE `carrello` DISABLE KEYS */;
+INSERT INTO `carrello` (`username`, `nomep`, `quantita`, `prezzo`) VALUES
+	('Giulia13', 'correttore', 3, 60);
 /*!40000 ALTER TABLE `carrello` ENABLE KEYS */;
 
 -- Dump della struttura di tabella negozio_gbg.compra
@@ -39,17 +42,21 @@ DROP TABLE IF EXISTS `compra`;
 CREATE TABLE IF NOT EXISTS `compra` (
   `username` char(50) NOT NULL,
   `nomep` char(50) NOT NULL,
-  `quantità` int(11) unsigned NOT NULL,
-  `data` date NOT NULL,
+  `quantita` int(11) unsigned NOT NULL DEFAULT 0,
+  `data` datetime NOT NULL,
   `prezzo` float unsigned NOT NULL,
-  PRIMARY KEY (`username`,`nomep`),
+  PRIMARY KEY (`username`,`nomep`,`data`) USING BTREE,
   KEY `FK_compra_prodotto` (`nomep`),
   CONSTRAINT `FK_compra_prodotto` FOREIGN KEY (`nomep`) REFERENCES `prodotto` (`nomep`) ON UPDATE CASCADE,
   CONSTRAINT `FK_compra_utente` FOREIGN KEY (`username`) REFERENCES `utente` (`username`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dump dei dati della tabella negozio_gbg.compra: ~0 rows (circa)
+-- Dump dei dati della tabella negozio_gbg.compra: ~2 rows (circa)
 /*!40000 ALTER TABLE `compra` DISABLE KEYS */;
+INSERT INTO `compra` (`username`, `nomep`, `quantita`, `data`, `prezzo`) VALUES
+	('Giulia13', 'cipria', 6, '2022-04-19 00:36:28', 29.4),
+	('Giulia13', 'conturing', 1, '2022-04-19 00:36:28', 15.3),
+	('Giulia13', 'fondotinta', 7, '2022-04-19 00:36:28', 129.5);
 /*!40000 ALTER TABLE `compra` ENABLE KEYS */;
 
 -- Dump della struttura di tabella negozio_gbg.prodotto
@@ -57,23 +64,39 @@ DROP TABLE IF EXISTS `prodotto`;
 CREATE TABLE IF NOT EXISTS `prodotto` (
   `nomep` char(50) NOT NULL,
   `prezzo` float unsigned NOT NULL DEFAULT 0,
+  `categoria` char(50) DEFAULT NULL,
   PRIMARY KEY (`nomep`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dump dei dati della tabella negozio_gbg.prodotto: ~0 rows (circa)
+-- Dump dei dati della tabella negozio_gbg.prodotto: ~12 rows (circa)
 /*!40000 ALTER TABLE `prodotto` DISABLE KEYS */;
+INSERT INTO `prodotto` (`nomep`, `prezzo`, `categoria`) VALUES
+	('burrocacao', 5.8, 'labbra'),
+	('cipria', 4.9, 'viso'),
+	('conturing', 15.3, 'viso'),
+	('correttore', 20.1, 'viso'),
+	('eyeliner', 12.5, 'occhi'),
+	('fondotinta', 18.5, 'viso'),
+	('lucidalabbra', 7.6, 'labbra'),
+	('mascara', 8, 'occhi'),
+	('matita', 4.5, 'occhi'),
+	('ombretto', 10, 'occhi'),
+	('rossetto', 9.9, 'labbra'),
+	('tintalabbra', 9.9, 'labbra');
 /*!40000 ALTER TABLE `prodotto` ENABLE KEYS */;
 
 -- Dump della struttura di tabella negozio_gbg.tessera
 DROP TABLE IF EXISTS `tessera`;
 CREATE TABLE IF NOT EXISTS `tessera` (
-  `n_tessera` int(11) unsigned NOT NULL,
+  `n_tessera` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `punti` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`n_tessera`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- Dump dei dati della tabella negozio_gbg.tessera: ~0 rows (circa)
 /*!40000 ALTER TABLE `tessera` DISABLE KEYS */;
+INSERT INTO `tessera` (`n_tessera`, `punti`) VALUES
+	(1, NULL);
 /*!40000 ALTER TABLE `tessera` ENABLE KEYS */;
 
 -- Dump della struttura di tabella negozio_gbg.utente
@@ -87,13 +110,16 @@ CREATE TABLE IF NOT EXISTS `utente` (
   `telefono` int(10) unsigned DEFAULT NULL,
   `comune` char(50) NOT NULL DEFAULT '',
   `via` char(50) NOT NULL DEFAULT '',
-  `civico` int(10) unsigned NOT NULL,
+  `civico` int(10) unsigned DEFAULT NULL,
   `n_tessera` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dump dei dati della tabella negozio_gbg.utente: ~0 rows (circa)
+-- Dump dei dati della tabella negozio_gbg.utente: ~3 rows (circa)
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
+INSERT INTO `utente` (`username`, `password`, `nome`, `cognome`, `email`, `telefono`, `comune`, `via`, `civico`, `n_tessera`) VALUES
+	('Biahorse', 'pippi', 'Bianca', 'Pirovano', 'bianca.pirovano@liceobanfi.eu', 0, 'Lomagna', '', 0, NULL),
+	('Giulia13', 'giuliag', 'Giulia', 'Gubellini', 'giulia.gubellini@liceobanfi.eu', 56789, 'Milano', '25 Aprile', 4, NULL);
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
