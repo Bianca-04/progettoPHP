@@ -9,6 +9,7 @@ require('../../data/connessione_database.php');
 // }
 
 $username = $_SESSION["username"];
+error_reporting(E_ALL ^ E_WARNING);
 
 if (isset($_POST["prodotto"])) $prodotto = $_POST["prodotto"];
 else $prodotto = "";
