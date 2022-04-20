@@ -1275,3 +1275,14 @@ h4 {
 .pulsanti {
     text-align: center;
 }
+
+/* COMPRA */
+
+.form_modificaindirizzo {
+    color: burlywood;
+    text-align: center;
+    margin: auto;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+}

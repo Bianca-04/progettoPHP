@@ -204,11 +204,12 @@ if ($aggiungiac = $_POST['aggiungiac']) {
         <br><br><br>
         <h2 class="normal-text" style="margin-top: 100px;"><a name="prosegui">CONFERMA IL TUO INDIRIZZO</a></h2><br>
 
+        
         <?php
         if ($comune == "" or $via == "" or $civico == NULL or $civico == 0) {
-            echo 'Inserisci a quale indirizzo sarà destinato il tuo ordine
+            echo '<div class="indirizzo" style="margin-top: 50px;">Inserisci a quale indirizzo sarà destinato il tuo ordine
                 <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
-                        <table class="form_modificadati">
+                        <table class="form_modificaindirizzo">
                             <tr>
                                 <td>Comune:</td> <td><input type="text" class="input_datipersonali" name="comune" value="' . $comune . '" placeholder="' . $comune . '"></td>
                             </tr>
@@ -219,16 +220,16 @@ if ($aggiungiac = $_POST['aggiungiac']) {
                                 <td>Civico:</td> <td><input type="number" class="input_datipersonali" name="civico" value="' . $civico . '"></td>
                             </tr>
                         </table><br>
-                        <input type="submit" name= "subindirizzo" value="CONFERMA"></input>';
+                        <input type="submit" name= "subindirizzo" value="CONFERMA"></input></div>';
         } else {
-            echo "<form  style='text-align: center' action=" . $_SERVER['PHP_SELF'] . " method='post'>
+            echo "<form  style='margin-left: 220px;' action=" . $_SERVER['PHP_SELF'] . " method='post'>
                     <table>
                         <td colspan='3'>
-                            Vuoi che il tuo ordine venga inviato all indirizzo gia registrato?
+                            Vuoi che il tuo ordine venga inviato all'indirizzo gia registrato?
                             <input class='hidden' type='submit' name='siindirizzo' value='Si'></input> Si <input type='radio' name='vindirizzo' value='Si'></input>
                             <input class='hidden' type='submit' name='noindirizzo' value='No'></input> No <input type='radio' name='vindirizzo' value='No'></input>
                             (premere invio dopo aver selezionato)
-                            <br> Comune: " . $comune . " Via: " . $via . " Civico: " . $civico . "
+                            <br><br> Comune: " . $comune . "<br> Via: " . $via . "<br> Civico: " . $civico . "
                         </td>
                     </table>
                 ";
@@ -236,9 +237,9 @@ if ($aggiungiac = $_POST['aggiungiac']) {
             // mettere sta roba sopra al centro
             if ($_POST['vindirizzo'] == "Si" or $_POST['vindirizzo'] == "") {
             } else {
-                echo 'Inserisci a quale indirizzo sarà destinato il tuo ordine
+                echo '<div class="indirizzo" style="margin-top: 50px; margin-right: 220px;">Inserisci a quale indirizzo sarà destinato il tuo ordine
                     <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
-                        <table class="form_modificadati">
+                        <table class="form_modificaindirizzo">
                             <tr>
                                 <td>Comune:</td> <td><input type="text" class="input_datipersonali" name="comune" value="' . $comune . '" placeholder="' . $comune . '"></td>
                             </tr>
@@ -250,7 +251,7 @@ if ($aggiungiac = $_POST['aggiungiac']) {
                             </tr>
                         </table><br>
                         <input type="submit" name= "subindirizzo" value="CONFERMA"></input>
-                    </form>';
+                    </form></div>';
             }
             //aggiungo la storia dei punti
             echo '<br><br><input type="submit" name="aggiungiac" value="ACQUISTA">';
@@ -281,7 +282,6 @@ if ($aggiungiac = $_POST['aggiungiac']) {
         $conn->query($sql) or die("<p>Query fallita!</p>");
     }
         ?>
-
         <br><br><br><br><br><br><br><br><br><br><br><a name="linkint"></a>
 
 
