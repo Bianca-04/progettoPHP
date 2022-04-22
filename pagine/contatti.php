@@ -80,8 +80,8 @@
                 <h4 class="med-text">Live Chat</h4>
                 <p>Richiedi supporto ai nostri esperti in tempo reale.</p>
             </div>
-            <div class="box revel">
-                <h4 class="med-text reveal">Inviaci un'email</h4>
+            <div class="box reveal">
+                <h4 class="med-text">Inviaci un'email</h4>
                 <p>Riceverai una risposta entro 1 giorno lavorativo dalla tua richiesta.</p>
             </div>
             <div class="box reveal">
