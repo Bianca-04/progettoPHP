@@ -167,7 +167,7 @@
 			}
 			?>
             
-            <h3 class="med-text"  style="margin-top: 20px;">Non hai ancora un account?<br><br><a href="iscriviti.php" style="color:antiquewhite">REGISTRATI ORA!</a> </h3>
+            <h3 class="med-text"  style="margin-top: 20px;">Non hai ancora un account?<br><br><a href="iscriviti.php" style="color:antiquewhite">ISCRIVITI ORA!</a> </h3>
             
     </div>
         <video autoplay muted loop id="VideoIscriviti">
