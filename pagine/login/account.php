@@ -50,6 +50,11 @@
                     <div class="elenco">ASSISTENZA</div>
                 </a>
             </li>
+            <li>
+                <a href="recensioni.php">
+                    <div class="elenco">RECENSIONI</div>
+                </a>
+            </li>
         </ul>
 
         <div class="iconacarrello">
