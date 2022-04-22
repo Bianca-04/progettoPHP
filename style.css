@@ -1276,6 +1276,7 @@ h4 {
     text-align: center;
 }
 
+
 /* COMPRA */
 
 .form_modificaindirizzo {
@@ -1285,4 +1286,17 @@ h4 {
     font-size: 20px;
     font-family: sans-serif;
     font-weight: bold;
+}
+
+.centro td {
+    width: 1250px;
+    text-align: center;
+    position: absolute;
+    margin: 0px;
+    /* left: 50%;
+    transform: translate(50%, 50%); */
+}
+
+.indirizzo {
+    width: 100%;
 }

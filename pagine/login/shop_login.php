@@ -7,15 +7,10 @@ if (!isset($_SESSION['username'])) {
     header('location: ../account.php');
 }
 
-// if( $_SESSION["tipologia"]!="utenti"){ //controlla che siano utenti altrimenti da il logout
-//     header('location: logout.php');
-// }
+error_reporting(E_ALL ^ E_WARNING);
 
 $username = $_SESSION['username'];
 $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
-// if($_SERVER["REQUEST METHOD"] == "POST"){
-
-// }
 
 if (isset($_POST["nomep"])) $nomep = $_POST["nomep"];
 else $nomep = "";

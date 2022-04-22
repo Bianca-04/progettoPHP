@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 $username = $_SESSION["username"];
-// error_reporting(E_ALL ^ E_WARNING);
+error_reporting(E_ALL ^ E_WARNING);
 
 if (isset($_POST["prodotto"])) $prodotto = $_POST["prodotto"];
 else $prodotto = "";
@@ -47,6 +47,11 @@ if ($subindirizzo = $_POST["subindirizzo"]) {
     $via = $indirizzo["via"];
     $civico = $indirizzo['civico'];
 }
+
+if ($subindirizzo = $_POST['subindirizzo']) {
+    header("Refresh: 0; URL=compra.php");
+}
+
 
 if ($prosegui = $_POST['prosegui']) {
     header("location: #prosegui");
@@ -253,9 +258,7 @@ if ($aggiungiac = $_POST['aggiungiac']) {
                         <input type="submit" name= "subindirizzo" value="CONFERMA"></input>
                     </form></div>';
             }
-            //aggiungo la storia dei punti
-            echo '<br><br><input type="submit" name="aggiungiac" value="ACQUISTA">';
-            //ora deve aggiungere negli acquisti fatti
+            echo '<br><br><input class="pulsanti" type="submit" name="aggiungiac" value="ACQUISTA">';
         }
 
 
@@ -286,8 +289,3 @@ if ($aggiungiac = $_POST['aggiungiac']) {
 
 
 </html>
-
-<!-- tolgo i form prezzo tot aggiunge 1 punto ogni 10 euro 
-si possono usare i punti che si hanno -> 10 punti sconto del 20 % -> ti chiede se vuoi usarli 
-volendo si mette il controllo dell indirizzo poi compra
-mettere la data se riesco-->

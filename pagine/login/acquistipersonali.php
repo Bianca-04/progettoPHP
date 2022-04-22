@@ -1,13 +1,14 @@
 <?php
 	session_start();
-	//echo session_id();
 
 	require('../../data/connessione_database.php');
 
 	if(!isset($_SESSION['username'])){
 		header('location: ../index.php');
 	}
-	
+
+	error_reporting(E_ALL ^ E_WARNING);
+
 	$username = $_SESSION["username"];
 
     if (isset($_POST['prodotto'])) $prodotto = $_POST["prodotto"];
@@ -120,8 +121,12 @@
                                     <td>
                                         Prezzo: '.$riga["prezzo"].' €
                                     </td>';
+
+                                    $totale = $totale + $riga["prezzo"];
                         }
-                        echo '</table><br></div>';
+                        echo '</table>TOTALE: '.$totale.' €';
+                        echo '<br></div>';
+                        $totale = 0;
                     }
 				?>
 			</ol>
