@@ -1138,6 +1138,7 @@ h3 {
     width: 30%;
     height: 250px;
     background-color: #ebcba1;
+    position: fixed;
 }
 
 .tabellaaccount img {
@@ -1148,6 +1149,7 @@ h3 {
     height: 50%;
     margin: auto;
     margin-top: 10%;
+    position: fixed;
 }
 
 .tabellaaccount p {
@@ -1169,6 +1171,7 @@ h3 {
     font-size: 20px;
     color: black;
     text-align: center;
+    position: fixed;
 }
 
 @media (max-width: 768px) {

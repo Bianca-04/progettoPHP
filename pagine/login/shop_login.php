@@ -250,26 +250,11 @@ else $quantita = "";
         </div>
     </div>
     </div>
-
-    <!--sistemare questo-->
-    <div class="spazio"></div>
+    
     <div class="join reveal">
-        <p><a href="../pagine/accedi.php" class="join"># Join the IG Makeup Community</a></p>
+        <p><a href="../pagine/accedi.php" class="join"># IG Makeup Community</a></p>
     </div>
-    <div class="spazio"></div>
-
-    <div class="footer">
-        <ul class="social">
-            <li><a href="../pagine/iscriviti.php">Iscriviti Ora</a></li>
-            <li><a href="../pagine/shop.php">Rivenditori</a></li>
-            <li><a href="../pagine/contatti.php">Contatti</a></li>
-        </ul>
-        <ul class="social">
-            <li><a href="https://www.instagram.com/">Instagram</a></li>
-            <li><a href="https://it-it.facebook.com/login/web/">Facebook</a></li>
-            <li><a href="https://www.pinterest.it/">Pinterest</a></li>
-        </ul>
-    </div>
+  
     <script>
         $(document).ready(function() {
             /* Open Panel */
