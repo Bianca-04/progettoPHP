@@ -149,5 +149,10 @@
 		</form>	
 	</div>	
 	
+	<br>
+	<?php 
+		include('footer.php')
+	?>
+	
 </body>
 </html>

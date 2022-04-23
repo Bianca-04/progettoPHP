@@ -151,6 +151,12 @@
         <a href="carrello.php"><img src="../../immagini/pagamento.png" alt=""></a>
     </div>
     <div class="spazio"></div>
+    
+    <br>
+    <?php 
+		include('footer.php')
+	?>
+
     <script>
         $(document).ready(function() {
             /* Open Panel */

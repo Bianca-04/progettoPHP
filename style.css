@@ -1310,3 +1310,19 @@ h4 {
     padding: 15px;
     padding-top: 7.5px;
 }
+
+
+/* FOOTER */
+
+.footerp {
+    /* position: fixed; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 2 solid #be935b;
+    box-shadow: 1px 0px 4px #be935b;
+    font-size: 11px;
+    text-align: center;
+    padding: 10px;
+    color: #000;
+}

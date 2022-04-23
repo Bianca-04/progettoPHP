@@ -254,6 +254,11 @@ else $quantita = "";
     <div class="join reveal">
         <p><a href="../pagine/accedi.php" class="join"># IG Makeup Community</a></p>
     </div>
+
+    <?php 
+		include('footer.php')
+	?>
+
   
     <script>
         $(document).ready(function() {

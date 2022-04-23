@@ -288,4 +288,9 @@ if ($aggiungiac = $_POST['aggiungiac']) {
             <br><br><br><br><br><br><br><br><br><br><br><a name="linkint"></a>
 
 
+    <?php 
+		include('footer.php')
+	?>
+
+
 </html>

@@ -114,6 +114,9 @@
     <div class="spazio"></div>
     <br> 
 
+    <?php 
+		include('footer.php')
+	?>
 
 </body>
 </html>
