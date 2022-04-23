@@ -196,7 +196,7 @@ if ($aggiungiac = $_POST['aggiungiac']) {
                 foreach ($ris as $riga) {
                     $totale = $totale + $riga["prezzo"];
                 }
-                echo $totale.'€';
+                echo $totale . '€';
                 echo '</div><br><br><tr><div class="pulsanti"><form action="' . $_SERVER['PHP_SELF'] . '" method="post">
                     <input class = "compracarr" type="submit" name="prosegui" value="PROSEGUI"></tr>
                 </form></div>';
@@ -207,14 +207,14 @@ if ($aggiungiac = $_POST['aggiungiac']) {
         </div>
 
         <br><br><br>
-        <h2 class="normal-text" style="margin-top: 100px;"><a name="prosegui">CONFERMA IL TUO INDIRIZZO</a></h2><br>
+        <h2 style="margin-top: 100px;"><a name="prosegui">CONFERMA IL TUO INDIRIZZO</a></h2><br>
 
-        
-        <?php
-        if ($comune == "" or $via == "" or $civico == NULL or $civico == 0) {
-            echo '<div class="indirizzo" style="margin-top: 50px;">Inserisci a quale indirizzo sarà destinato il tuo ordine
+        <div class="cindirizzo">
+            <?php
+            if ($comune == "" or $via == "" or $civico == NULL or $civico == 0) {
+                echo '<div class="indirizzo" style="margin-top: 50px;">Inserisci a quale indirizzo sarà destinato il tuo ordine
                 <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
-                        <table class="form_modificaindirizzo">
+                <table class="form_modificaindirizzo">
                             <tr>
                                 <td>Comune:</td> <td><input type="text" class="input_datipersonali" name="comune" value="' . $comune . '" placeholder="' . $comune . '"></td>
                             </tr>
@@ -222,70 +222,70 @@ if ($aggiungiac = $_POST['aggiungiac']) {
                                 <td>Via:</td> <td><input type="text" class="input_datipersonali" name="via" value="' . $via . '"></td>
                             </tr>
                             <tr>
-                                <td>Civico:</td> <td><input type="number" class="input_datipersonali" name="civico" value="' . $civico . '"></td>
+                            <td>Civico:</td> <td><input type="number" class="input_datipersonali" name="civico" value="' . $civico . '"></td>
                             </tr>
                         </table><br>
                         <input type="submit" name= "subindirizzo" value="CONFERMA"></input></div>';
-        } else {
-            echo "<form  style='margin-left: 220px;' action=" . $_SERVER['PHP_SELF'] . " method='post'>
+            } else {
+                echo "<form action=" . $_SERVER['PHP_SELF'] . " method='post'>
                     <table>
                         <td colspan='3'>
-                            Vuoi che il tuo ordine venga inviato all'indirizzo gia registrato?
+                            Vuoi che il tuo ordine venga inviato all'indirizzo gia registrato?<br>
                             <input class='hidden' type='submit' name='siindirizzo' value='Si'></input> Si <input type='radio' name='vindirizzo' value='Si'></input>
                             <input class='hidden' type='submit' name='noindirizzo' value='No'></input> No <input type='radio' name='vindirizzo' value='No'></input>
                             (premere invio dopo aver selezionato)
                             <br><br> Comune: " . $comune . "<br> Via: " . $via . "<br> Civico: " . $civico . "
-                        </td>
-                    </table>
-                ";
+                            </td>
+                            </table>
+                            ";
 
-            // mettere sta roba sopra al centro
-            if ($_POST['vindirizzo'] == "Si" or $_POST['vindirizzo'] == "") {
-            } else {
-                echo '<div class="indirizzo" style="margin-top: 50px; margin-right: 220px;">Inserisci a quale indirizzo sarà destinato il tuo ordine
+                // mettere sta roba sopra al centro
+                if ($_POST['vindirizzo'] == "Si" or $_POST['vindirizzo'] == "") {
+                } else {
+                    echo '<br><br>Inserisci a quale indirizzo sarà destinato il tuo ordine
                     <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
-                        <table class="form_modificaindirizzo">
-                            <tr>
-                                <td>Comune:</td> <td><input type="text" class="input_datipersonali" name="comune" value="' . $comune . '" placeholder="' . $comune . '"></td>
-                            </tr>
-                            <tr>
-                                <td>Via:</td> <td><input type="text" class="input_datipersonali" name="via" value="' . $via . '"></td>
-                            </tr>
-                            <tr>
-                                <td>Civico:</td> <td><input type="number" class="input_datipersonali" name="civico" value="' . $civico . '"></td>
-                            </tr>
-                        </table><br>
-                        <input type="submit" name= "subindirizzo" value="CONFERMA"></input>
-                    </form></div>';
-            }
-            echo '<br><br><input class="pulsanti" type="submit" name="aggiungiac" value="ACQUISTA">';
-        }
+                    <table class="form_modificaindirizzo">
+                    <tr>
+                    <td>Comune:</td> <td><input type="text" class="input_datipersonali" name="comune" value="' . $comune . '" placeholder="' . $comune . '"></td>
+                    </tr>
+                    <tr>
+                    <td>Via:</td> <td><input type="text" class="input_datipersonali" name="via" value="' . $via . '"></td>
+                    </tr>
+                    <tr>
+                    <td>Civico:</td> <td><input type="number" class="input_datipersonali" name="civico" value="' . $civico . '"></td>
+                    </tr>
+                    </table><br>
+                    <input type="submit" name= "subindirizzo" value="CONFERMA"></input>
+                    </form>';
+                }
+                echo '<br><br><input class="pulsanti" type="submit" name="aggiungiac" value="ACQUISTA">';
+            } echo '</div>';
 
 
-        if ($aggiungiac = $_POST['aggiungiac']) {
-        $sql = "SELECT carrello.nomep, carrello.quantita, carrello.prezzo
+            if ($aggiungiac = $_POST['aggiungiac']) {
+                $sql = "SELECT carrello.nomep, carrello.quantita, carrello.prezzo
             FROM carrello
             WHERE carrello.username='$username'";
-        $dac = $conn->query($sql) or die("<p>Query fallita!</p>");
-        $dac = $ris->fetch_assoc();
+                $dac = $conn->query($sql) or die("<p>Query fallita!</p>");
+                $dac = $ris->fetch_assoc();
 
-        foreach ($ris as $riga) {
-            $nomep = $riga["nomep"];
-            $quantita = $riga["quantita"];
-            $prezzo = $riga["prezzo"];
+                foreach ($ris as $riga) {
+                    $nomep = $riga["nomep"];
+                    $quantita = $riga["quantita"];
+                    $prezzo = $riga["prezzo"];
 
-            $myquery = "INSERT INTO compra (username, nomep, quantita, prezzo, data)
+                    $myquery = "INSERT INTO compra (username, nomep, quantita, prezzo, data)
                 VALUES ('$username', '$nomep', '$quantita', '$prezzo', SYSDATE())";
-            $conn->query($myquery);
-        }
+                    $conn->query($myquery);
+                }
 
-        $sql = "DELETE carrello.*
+                $sql = "DELETE carrello.*
             FROM carrello
-            WHERE carrello.username='$username'"; 
-        $conn->query($sql) or die("<p>Query fallita!</p>");
-    }
-        ?>
-        <br><br><br><br><br><br><br><br><br><br><br><a name="linkint"></a>
+            WHERE carrello.username='$username'";
+                $conn->query($sql) or die("<p>Query fallita!</p>");
+            }
+            ?>
+            <br><br><br><br><br><br><br><br><br><br><br><a name="linkint"></a>
 
 
 </html>
