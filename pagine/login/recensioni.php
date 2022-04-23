@@ -126,6 +126,7 @@
 			<br><br><p><input class="grandezzainput" type="submit" value="INVIA"></p>
 		</form>
 
+        <div class="cindirizzo">
         <?php
             if(isset($_POST["titolo"]) and isset($_POST["testo"])) {
                 if ($_POST["titolo"] == "" or $_POST["testo"] == "") {
@@ -157,8 +158,9 @@
                             // echo "Recensione pubblicata con successo!";
                             echo "<table>
                                     <td> ". $username ." <br> ". $titolo ." <br> ". $testo ." </td>";
-
-                        } else {
+                                    
+                            echo '</div>';
+                         }else {
                             echo "Non è stato possibile pubblicare la recensione per il seguente motivo: " . $conn->error;
                         }
                     }
