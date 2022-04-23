@@ -159,11 +159,22 @@
                                     <td> ". $username ." <br> ". $titolo ." <br> ". $testo ." </td>";
 
                         } else {
-                            echo "Non è stato possibile effettuare la registrazione per il seguente motivo: " . $conn->error;
+                            echo "Non è stato possibile pubblicare la recensione per il seguente motivo: " . $conn->error;
                         }
                     }
                 }
             }
 
-            echo $username and  $titolo and $testo;
+            // echo $username and  $titolo and $testo;
+            $myquery = "SELECT * 
+            FROM recensione
+            WHERE titolo!='" . $_POST["titolo"] . "'";
+
+            // $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
+                    while ($ris->num_rows > 0) {
+                        foreach ($ris as $riga) {
+                            echo "<table>
+                            <td> ". $username ." <br> ". $titolo ." <br> ". $testo ." </td>";
+                        }
+                    }
             ?>
