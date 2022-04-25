@@ -52,7 +52,7 @@
         </div>
         <ul class="menu">
             <li>
-                <a href="../../home.php">
+                <a href="account.php">
                     <div class="elenco">HOME</div>
                 </a>
             </li>
@@ -61,18 +61,27 @@
                     <div class="elenco">SHOP</div>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="../shop.php #labbra">labbra</a></li>
-                    <li><a href="../shop.php #occhi">occhi</a></li>
-                    <li><a href="../shop.php #viso">viso</a></li>
+                    <li><a href="shop_login.php #labbra">labbra</a></li>
+                    <li><a href="shop_login.php #occhi">occhi</a></li>
+                    <li><a href="shop_login.php #viso">viso</a></li>
                 </ul>
             </li>
             <li>
-                <a href="../assistenza.php">
+                <a href="assistenza_login.php">
                     <div class="elenco">ASSISTENZA</div>
                 </a>
             </li>
         </ul>
 
+        <div class="cta">
+            <a href="../logout.php" class="buttona">Logout</a>
+        </div>
+
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         
 
     </div>
@@ -117,13 +126,14 @@
 			<table class="form_accedi" style="margin-top: 100px;">
 				<tr>
 					<td>Titolo:</td> <td><input class="grandezzainput" type="text" name="titolo" required></td>
-				</tr><br>
+				</tr>
+                <br>
 				<tr>
 					<td>Testo:</td> <td><textarea class="grandezzainput" type="bigtext" name="testo" required></textarea></td>
 				</tr>
             </table>
 
-			<br><br><p><input class="grandezzainput" type="submit" value="INVIA"></p>
+			<br><br><p><input class="pulsanti" type="submit" value="INVIA"></p>
 		</form>
 
         <div class="cindirizzo">

@@ -123,7 +123,7 @@
     <div class="spazio"></div>
 
     <div class="sconto reveal">
-        <p>Spedizione gratuita oltre 50€</p>
+        <p>Abbiamo la soluzione a tutte le tue esigenze beauty!</p>
     </div>
 
     <div class="spazio"></div>
