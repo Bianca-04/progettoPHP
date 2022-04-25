@@ -77,11 +77,9 @@ h2 a {
 }
 
 .iconacarrello img {
-    width: 4%;
+    width: 3%;
     height: auto;
     position: fixed;
-    margin-top: 18px;
-    margin-left: -55px;
 }
 
 .iconacarrello img:hover {
@@ -100,9 +98,11 @@ h2 a {
         color: white;
         border: solid white 2px;
     }
-    .iconacarrello {
-        margin-top: 15px;
-        margin-left: -300px;
+    .iconacarrello img {
+        width: 5%;
+        position: center;
+        margin-top: -20px;
+        margin-left: -15px;
     }
 }
 
@@ -465,6 +465,9 @@ h2 a {
     display: none;
 }
 
+
+/* media menù */
+
 @media (max-width: 768px) {
     .cta {
         margin-right: 60px;
@@ -478,7 +481,7 @@ h2 a {
         height: 360px;
         padding-top: 80px;
     }
-    .menusx {
+    /*.menusx {
         display: block;
         text-align: center;
         width: 100%;
@@ -500,7 +503,7 @@ h2 a {
     }
     .line-menu {
         opacity: 0
-    }
+    } */
     .hamburger {
         display: block;
         width: 30px;
