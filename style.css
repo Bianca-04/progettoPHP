@@ -1323,6 +1323,7 @@ h4 {
     box-shadow: 1px 0px 4px #be935b;
     font-size: 11px;
     text-align: center;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     color: #000;
 }
