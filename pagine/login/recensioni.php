@@ -25,6 +25,11 @@
 		$titolo = "";
 	}
 
+    $conn = new mysqli("localhost", "root", "", "negozio_gbg");
+    if($conn->connect_error){
+        die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -142,11 +147,6 @@
                 if ($_POST["titolo"] == "" or $_POST["testo"] == "") {
                     echo "titolo e testo non possono essere vuoti!";
                 } else {
-                    $conn = new mysqli("localhost", "root", "", "negozio_gbg");
-                    if($conn->connect_error){
-                        die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                    }
-
                     $myquery = "SELECT titolo 
 						    FROM recensione
 						    WHERE titolo='" . $_POST["titolo"] . "'";
@@ -162,14 +162,12 @@
                         if ($conn->query($myquery) === true) {
                             // session_start();
                             $_SESSION["username"]=$username;
-                            
-						    $conn->close();
 
                             // echo "Recensione pubblicata con successo!";
-                            echo "<table>
-                                    <td> ". $username ." <br> ". $titolo ." <br> ". $testo ." </td>";
+                            // echo "<table>
+                            //         <td> ". $username ." <br> ". $titolo ." <br> ". $testo ." </td>";
                                     
-                            echo '</div>';
+                            // echo '</div>';
                          }else {
                             echo "Non è stato possibile pubblicare la recensione per il seguente motivo: " . $conn->error;
                         }
@@ -180,13 +178,31 @@
             // echo $username and  $titolo and $testo;
             $myquery = "SELECT * 
             FROM recensione
-            WHERE titolo!='" . $_POST["titolo"] . "'";
+            WHERE username = '" . $username . "'";
 
-            // $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
-                    while ($ris->num_rows > 0) {
-                        foreach ($ris as $riga) {
-                            echo "<table>
-                            <td> ". $username ." <br> ". $titolo ." <br> ". $testo ." </td>";
-                        }
-                    }
+            $ris = $conn->query($myquery) or die("<p>Query fallita!".$conn->error."</p>");
+            
+            if ($ris->num_rows > 0) {
+                echo "<table>";
+                foreach ($ris as $riga) {
+                    echo "<tr><td>". $riga["username"] ."</td><td>". $riga["titolo"] ."</td><td>". $riga["testo"] ."</td></tr>";
+                }
+                echo "</table>";
+            }
+
+            // echo $username and  $titolo and $testo;
+            $myquery = "SELECT * 
+            FROM recensione
+            WHERE username != '" . $username . "'";
+
+            $ris = $conn->query($myquery) or die("<p>Query fallita!".$conn->error."</p>");
+            
+            if ($ris->num_rows > 0) {
+                echo "<table>";
+                foreach ($ris as $riga) {
+                    echo "<tr><td>". $riga["username"] ."</td><td>". $riga["titolo"] ."</td><td>". $riga["testo"] ."</td></tr>";
+                }
+                echo "</table>";
+            }
             ?>
+            </div>
