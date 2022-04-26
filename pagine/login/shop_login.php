@@ -72,11 +72,10 @@ else $quantita = "";
             
         </ul>
 
-        
-
         <div class="cta">
             <a href="../logout.php" class="buttona">Logout</a>
         </div>
+
         <div class="hamburger">
             <span></span>
             <span></span>

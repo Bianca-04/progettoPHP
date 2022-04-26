@@ -83,11 +83,12 @@
                     <div class="elenco">ASSISTENZA</div>
                 </a>
             </li>
+			<li>
+                <a href="carrello.php">
+                    <div class="iconacarrello"><img src="../../immagini/iconacarrello.png" alt="immagine non disponibile"></div>
+                </a>
+            </li>
         </ul>
-
-		<div class="iconacarrello">
-        <a href="carrello.php"><img src="../../immagini/iconacarrello.png" alt="immagine non disponibile"></a>
-        </div>
 
         <div class="cta">
             <a href="../logout.php" class="buttona">Logout</a>
