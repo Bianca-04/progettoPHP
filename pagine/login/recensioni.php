@@ -76,6 +76,11 @@
                     <div class="elenco">ASSISTENZA</div>
                 </a>
             </li>
+            <li>
+                <a href="carrello.php">
+                    <div class="iconacarrello"><img src="../../immagini/iconacarrello.png" alt="immagine non disponibile"></div>
+                </a>
+            </li>
         </ul>
 
         <div class="cta">

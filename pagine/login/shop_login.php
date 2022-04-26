@@ -69,7 +69,6 @@ else $quantita = "";
                     <div class="iconacarrello"><img src="../../immagini/iconacarrello.png" alt="immagine non disponibile"></div>
                 </a>
             </li>
-            
         </ul>
 
         <div class="cta">
