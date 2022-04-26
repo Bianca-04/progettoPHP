@@ -146,7 +146,7 @@
 			<br><br><p><input class="pulsanti" type="submit" value="INVIA"></p>
 		</form>
 
-        <div class="cindirizzo">
+       
         <?php
             if(isset($_POST["titolo"]) and isset($_POST["testo"])) {
                 if ($_POST["titolo"] == "" or $_POST["testo"] == "") {
@@ -180,7 +180,6 @@
                 }
             }
 
-            // echo $username and  $titolo and $testo;
             $myquery = "SELECT * 
             FROM recensione
             WHERE username = '" . $username . "'";
@@ -190,12 +189,14 @@
             if ($ris->num_rows > 0) {
                 echo "<table>";
                 foreach ($ris as $riga) {
+                    echo '<div class="recensione">';
                     echo "<tr><td>". $riga["username"] ."</td><td>". $riga["titolo"] ."</td><td>". $riga["testo"] ."</td></tr>";
+                    echo '</div>';
                 }
                 echo "</table>";
             }
 
-            // echo $username and  $titolo and $testo;
+        
             $myquery = "SELECT * 
             FROM recensione
             WHERE username != '" . $username . "'";
@@ -205,9 +206,11 @@
             if ($ris->num_rows > 0) {
                 echo "<table>";
                 foreach ($ris as $riga) {
+                    echo '<div class="recensione">';
                     echo "<tr><td>". $riga["username"] ."</td><td>". $riga["titolo"] ."</td><td>". $riga["testo"] ."</td></tr>";
+                    echo '</div>';
                 }
                 echo "</table>";
             }
             ?>
-            </div>
+           

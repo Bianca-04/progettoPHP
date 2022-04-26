@@ -1314,6 +1314,18 @@ h4 {
     padding-top: 7.5px;
 }
 
+/* RECENSIONI */
+
+.recensione{
+    display: inline-block;
+    background-color: #e9dbc2;
+    border: 1.5px solid #be935b;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 15px;
+    padding-top: 7.5px;
+}
 
 /* FOOTER */
 
