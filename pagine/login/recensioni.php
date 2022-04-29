@@ -133,17 +133,17 @@
     </script>
 
 <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-			<table class="form_accedi" style="margin-top: 100px;">
-				<tr>
+			<table class="form_recensioni" style="margin-top: 100px;">
+			<br><br>	
+            <tr>
 					<td>Titolo:</td> <td><input class="grandezzainput" type="text" name="titolo" required></td>
 				</tr>
-                <br>
-				<tr>
+                <tr>
 					<td>Testo:</td> <td><textarea class="grandezzainput" type="bigtext" name="testo" required></textarea></td>
 				</tr>
             </table>
 
-			<br><br><p><input class="pulsanti" type="submit" value="INVIA"></p>
+			<p><input class="pulsanti" type="submit" value="INVIA"></p>
 		</form>
 
        
@@ -187,13 +187,11 @@
             $ris = $conn->query($myquery) or die("<p>Query fallita!".$conn->error."</p>");
             
             if ($ris->num_rows > 0) {
-                echo "<table>";
                 foreach ($ris as $riga) {
                     echo '<div class="recensione">';
-                    echo "<tr><td>". $riga["username"] ."</td><td>". $riga["titolo"] ."</td><td>". $riga["testo"] ."</td></tr>";
+                    echo "". $riga["username"] ."<br>". $riga["titolo"] ."<br>". $riga["testo"] ."";
                     echo '</div>';
                 }
-                echo "</table>";
             }
 
         
@@ -204,13 +202,11 @@
             $ris = $conn->query($myquery) or die("<p>Query fallita!".$conn->error."</p>");
             
             if ($ris->num_rows > 0) {
-                echo "<table>";
                 foreach ($ris as $riga) {
                     echo '<div class="recensione">';
-                    echo "<tr><td>". $riga["username"] ."</td><td>". $riga["titolo"] ."</td><td>". $riga["testo"] ."</td></tr>";
+                    echo "". $riga["username"] ."<br>". $riga["titolo"] ."<br>". $riga["testo"] ."";
                     echo '</div>';
                 }
-                echo "</table>";
             }
             ?>
            

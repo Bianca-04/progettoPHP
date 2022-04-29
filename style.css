@@ -1314,18 +1314,35 @@ h4 {
     padding-top: 7.5px;
 }
 
+
 /* RECENSIONI */
 
-.recensione{
+.recensione {
     display: inline-block;
     background-color: #e9dbc2;
     border: 1.5px solid #be935b;
     text-align: center;
     margin: auto;
     margin-bottom: 20px;
+    margin-left: 30px;
     padding: 15px;
     padding-top: 7.5px;
 }
+
+.form_recensioni {
+    color: burlywood;
+    text-align: left;
+    margin: auto;
+    font-size: 30px;
+    font-family: sans-serif;
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+.form_recensioni td {
+    padding-bottom: 30px;
+}
+
 
 /* FOOTER */
 
