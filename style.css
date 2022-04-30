@@ -1044,10 +1044,14 @@ h2 a {
 .servizi {
     position: relative;
     display: inline-block;
+    width: 100%;
+    justify-content: center;
 }
 
 .servizi img {
-    float: left;
+    /* float: left; */
+    width: 250px;
+    padding: 10px;
 }
 
 .servizi img:hover {

@@ -148,7 +148,7 @@
     <div class="spessore-assistenza"></div>
     <div class="servizi  reveal">
         <a href="account.php"><img src="../../immagini/iconaaccount.png" alt=""></a>
-        <a href="shop_login.php"><img src="../../immagini/offerte.jpg" alt=""></a>
+        <a href="recensioni.php"><img src="../../immagini/recensioni.png" alt=""></a>
         <a href="shop_login.php"><img src="../../immagini/ordini.png" alt=""></a>
         <a href="carrello.php"><img src="../../immagini/pagamento.png" alt=""></a>
     </div>
