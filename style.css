@@ -1321,12 +1321,19 @@ h4 {
 
 /* RECENSIONI */
 
+.tabellar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .recensione {
-    display: inline-block;
+    display: block;
     background-color: #e9dbc2;
     border: 1.5px solid #be935b;
     text-align: center;
-    margin: auto;
+    /* margin: auto; */
     margin-bottom: 20px;
     margin-left: 30px;
     padding: 10px;

@@ -180,6 +180,7 @@
 
             $ris = $conn->query($myquery) or die("<p>Query fallita!".$conn->error."</p>");
             
+            echo '<div class="tabellar">';
             if ($ris->num_rows > 0) {
                 foreach ($ris as $riga) {
                     echo '<div class="recensione">';
@@ -208,5 +209,8 @@
                     echo '</div>';
                 }
             }
+            echo '</div>';
+            echo '<br>';
+            include('footer.php')
             ?>
            
