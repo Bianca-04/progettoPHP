@@ -1331,6 +1331,8 @@ h4 {
     margin-left: 30px;
     padding: 10px;
     margin-right: 30px;
+    width: 300px;
+    height: auto;
 }
 
 .recensione p {
@@ -1354,7 +1356,9 @@ h4 {
     border: 1px solid #be935b;
     margin-top: 10px;
     padding: 10px;
-    width: 70%;
+    width: 200px;
+    height: auto;
+    text-justify: distribute;
     /* text-align: left; */
 }
 
