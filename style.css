@@ -1333,6 +1333,30 @@ h4 {
     padding-top: 7.5px;
 }
 
+.recensione p {
+    font-weight: bold;
+    padding-bottom: 0px;
+    text-align: left;
+}
+
+.titolo {
+    text-align: left;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.testo {
+    display: inline-block;
+    background-color: #e6e0d5;
+    border: 1px solid #be935b;
+    margin-top: 5px;
+    padding: 10px;
+    width: 50%;
+    /* text-align: left; */
+}
+
 .form_recensioni {
     color: burlywood;
     text-align: left;

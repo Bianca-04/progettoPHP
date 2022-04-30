@@ -165,14 +165,7 @@
                                     VALUES ('$username', '$titolo', '$testo')";
 
                         if ($conn->query($myquery) === true) {
-                            // session_start();
                             $_SESSION["username"]=$username;
-
-                            // echo "Recensione pubblicata con successo!";
-                            // echo "<table>
-                            //         <td> ". $username ." <br> ". $titolo ." <br> ". $testo ." </td>";
-                                    
-                            // echo '</div>';
                          }else {
                             echo "Non è stato possibile pubblicare la recensione per il seguente motivo: " . $conn->error;
                         }
@@ -189,7 +182,10 @@
             if ($ris->num_rows > 0) {
                 foreach ($ris as $riga) {
                     echo '<div class="recensione">';
-                    echo "". $riga["username"] ."<br>". $riga["titolo"] ."<br>". $riga["testo"] ."";
+                    // echo "". $riga["username"] ."<br>". $riga["titolo"] ."<br>". $riga["testo"] ."";
+                    echo "<p>". $riga["username"] ."</p>";
+                    echo '<div class="titolo"> Titolo:<span class="bold">'. $riga["titolo"] .'</span></div>';
+                    echo '<div class="testo">'. $riga["testo"] .'<br></div>';
                     echo '</div>';
                 }
             }
@@ -204,7 +200,10 @@
             if ($ris->num_rows > 0) {
                 foreach ($ris as $riga) {
                     echo '<div class="recensione">';
-                    echo "". $riga["username"] ."<br>". $riga["titolo"] ."<br>". $riga["testo"] ."";
+                    // echo "". $riga["username"] ."<br>". $riga["titolo"] ."<br>". $riga["testo"] ."";
+                    echo "<p>". $riga["username"] ."</p>";
+                    echo "". $riga["titolo"] ."<br>";
+                    echo "". $riga["testo"] ."<br>";
                     echo '</div>';
                 }
             }
