@@ -103,6 +103,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
+        <!-- Jquery - FORM CHE SCENDE -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            /* Open Panel */
+            $("..hamburger").on('click', function() {
+                $("..menu").toggleClass("menu--open");
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            /* Open Panel */
+            $(".hamburger").on('click', function() {
+                $(".menu").toggleClass("menu--open");
+            });
+
+        });
+        ScrollReveal().reveal('.reveal', {
+            distance: '100px',
+            duration: 1500,
+            easing: 'cubic-bezier(.215, .61, .355, 1)',
+            interval: 400,
+        });
+
+        ScrollReveal().reveal('.zoom', {
+            duration: 1500,
+            easing: 'cubic-bezier(.215, .61, .355, 1)',
+            interval: 200,
+            scale: 0.65,
+            mobile: false,
+        });
+    </script>
+
     <br<br>
         <h3 class="big-text" style="margin-top: 100px;">I PRODOTTI NEL <br> TUO CARRELLO</h3>
 
