@@ -202,8 +202,8 @@
                     echo '<div class="recensione">';
                     // echo "". $riga["username"] ."<br>". $riga["titolo"] ."<br>". $riga["testo"] ."";
                     echo "<p>". $riga["username"] ."</p>";
-                    echo "". $riga["titolo"] ."<br>";
-                    echo "". $riga["testo"] ."<br>";
+                    echo '<div class="titolo"> Titolo:<span class="bold">'. $riga["titolo"] .'</span></div>';
+                    echo '<div class="testo">'. $riga["testo"] .'<br></div>';
                     echo '</div>';
                 }
             }
